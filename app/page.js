@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Portfolio from "../components/Portfolio";
 import AboutCard from "../components/About";
 import Collections from "../components/Collections";
+import ContactSection from "../components/Contact";
 
 // --- Új Hero Szekció Komponens ---
 const HeroSection = () => {
@@ -49,7 +50,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-        <Link href="#kollekciok" passHref legacyBehavior>
+        <Link href="/kollekciok" passHref legacyBehavior>
           <a
             className="gradient-border-button 
                   w-full max-w-[300px] md:max-w-[400px] 
@@ -108,6 +109,7 @@ export default function HomePage() {
       </section>
 
       <Collections />
+      <ContactSection />
     </>
   );
 }

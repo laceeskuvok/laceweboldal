@@ -48,11 +48,11 @@ const Header = () => {
 
   const navLinks = [
     { name: "Főoldal", href: "/" },
-    { name: "Kollekciók", href: "#kollekciok" },
+    { name: "Kollekciók", href: "/kollekciok" },
     { name: "Termék információk", href: "#info" },
     { name: "Rendelés menete", href: "#rendeles" },
     { name: "Árak", href: "#arak" },
-    { name: "Kapcsolat", href: "#kapcsolat" },
+    { name: "Kapcsolat", href: "/kapcsolat" },
   ];
 
   return (

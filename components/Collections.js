@@ -72,7 +72,7 @@ export default function CollectionsSlider() {
           w-full max-w-[300px] md:max-w-[400px] 
           h-[70px] md:h-[100px]"
           >
-            <Link href="#kollekciok" passHref legacyBehavior>
+            <Link href="/kollekciok" passHref legacyBehavior>
               <a
                 className="gradient-inner 
           flex items-center justify-center 
