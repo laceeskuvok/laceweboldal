@@ -1,4 +1,4 @@
-import { Montserrat, Cormorant_Garamond } from 'next/font/google'
+import { Montserrat, Cormorant_Garamond, Playfair_Display, Lora  } from 'next/font/google'
 import './globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -14,6 +14,16 @@ const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-font-cormorant',
   weight: ['400', '600', '700'],
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
 })
 
 export const metadata = {

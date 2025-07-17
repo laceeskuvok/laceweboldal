@@ -64,28 +64,40 @@ const Header = () => {
 
       {/* Asztali nézet (desktop) */}
       <div className="hidden md:flex flex-col items-center py-0">
-        <Link href="/" className="mb-2"> {/* Kisebb margó a logónak */}
-            <Image
-              src="/images/LACE_logo.png"
-              alt="LACE logó"
-              width={120} // Kicsit kisebb logó, hogy jobban illeszkedjen
-              height={120}
-              className="object-contain drop-shadow-lg" // Árnyék a jobb olvashatóságért
-            />
+        <Link href="/" className="mb-2">
+          {" "}
+          {/* Kisebb margó a logónak */}
+          <Image
+            src="/images/LACE_logo.png"
+            alt="LACE logó"
+            width={120} // Kicsit kisebb logó, hogy jobban illeszkedjen
+            height={120}
+            className="object-contain drop-shadow-lg" // Árnyék a jobb olvashatóságért
+          />
         </Link>
-        <nav className="py-2 px-6 bg-black/10 backdrop-blur-sm rounded-full"> {/* JAVÍTVA: Finom, áttetsző háttér a menünek */}
+        <nav className="py-2 px-6 bg-black/10 backdrop-blur-sm rounded-full">
           <ul className="flex items-center space-x-8">
             {navLinks.map((link) => (
               <li key={link.name} className="relative group">
                 <Link
                   href={link.href}
-                  // JAVÍTVA: A szöveg fehér lesz, árnyékkal a jobb olvashatóságért
-                  className="font-sans uppercase tracking-wider text-white drop-shadow-md text-sm pb-2"
+                  className="font-playfair italic text-wwhite-800 text-lg pb-2 tracking-wide"
                 >
                   {link.name}
                 </Link>
-                {/* Az aláhúzás marad, de a színe lehet kontrasztosabb */}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-center"></span>
+                <span
+                  className="absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-center"
+                  style={{
+                    backgroundImage: `linear-gradient(
+              to right,
+              transparent 0%,
+              #a65c6dc3 15%,
+              #d5bfc0 50%,
+              #a65c6dc3 65%,
+              transparent 100%
+            )`,
+                  }}
+                ></span>
               </li>
             ))}
           </ul>
@@ -98,12 +110,12 @@ const Header = () => {
         <Link href="/">
           {/* Mobil logó */}
           <Image
-              src="/images/LACE_logo.png"
-              alt="LACE logó"
-              width={60}
-              height={60}
-              className="object-contain drop-shadow-lg"
-            />
+            src="/images/LACE_logo.png"
+            alt="LACE logó"
+            width={60}
+            height={60}
+            className="object-contain drop-shadow-lg"
+          />
         </Link>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}

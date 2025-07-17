@@ -1,8 +1,12 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link"; // Fontos: importáljuk a Link komponenst
+import { motion } from 'framer-motion';
 import Header from "../components/Header";
 import Portfolio from "../components/Portfolio";
-import About from "../components/About";
+import AboutCard from "../components/About";
+import Collections from "../components/Collections";
 
 // --- Új Hero Szekció Komponens ---
 const HeroSection = () => {
@@ -85,12 +89,80 @@ const HeroSection = () => {
   );
 };
 
+// --- Főoldal Komponens ---
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <Portfolio />
-      <About />
+
+      {/* --- A LACE TÖRTÉNETE SZEKCIÓ --- */}
+      <section className="py-16 md:py-24 bg-white">
+        <DividerWithTitle title="A LACE története" />
+      </section>
+
+      <AboutCard />
+
+      {/* --- KOLLEKCIÓK SZEKCIÓ --- */}
+      <section className="py-16 md:py-24 bg-white">
+        <DividerWithTitle title="Kollekciók" link="#portfolio" />
+      </section>
+
+      <Collections />
     </>
   );
 }
+
+function DividerWithTitle({ title, link }) {
+  const TitleTag = title === "Kollekciók" ? "h3" : "h2";
+  const textClasses =
+    title === "Kollekciók"
+      ? "font-serif text-3xl md:text-4xl italic text-gray-700 whitespace-nowrap"
+      : "font-serif text-4xl md:text-5xl italic text-gray-700 whitespace-nowrap";
+
+  return (
+    <div className="flex items-center justify-center gap-6 px-4 relative">
+      {/* Bal oldali vonal */}
+      <ShimmerLine direction="right" />
+
+      {/* Szöveg */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8 }}
+      >
+        {link ? (
+          <Link href={link} className="hover:text-brand-rose transition-colors">
+            <TitleTag className={textClasses}>{title}</TitleTag>
+          </Link>
+        ) : (
+          <TitleTag className={textClasses}>{title}</TitleTag>
+        )}
+      </motion.div>
+
+      {/* Jobb oldali vonal */}
+      <ShimmerLine direction="left" />
+    </div>
+  );
+}
+
+/* 🔥 A CSILLOGÓ VONAL KOMPONENS 🔥 */
+function ShimmerLine({ direction = "right" }) {
+  return (
+    <motion.div
+      className="relative h-[3px] flex-1 max-w-[500px] rounded-full overflow-hidden"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+      style={{ transformOrigin: direction }}
+    >
+      {/* Alap gradient */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#e8b7b7] via-white to-[#e8b7b7]" />
+
+      {/* Csillogó fény animáció */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-shimmer" />
+    </motion.div>
+  );
+}
+
