@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Akaya Kanadaka";
+  src: url("/fonts/AkayaKanadaka-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("/fonts/Anton-Regular.ttf") format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
+
+.font-akaya {
+  font-family: "Akaya Kanadaka", sans-serif;
+  font-weight: 600;
+  color: #c79c8d;
+}
+
+.footer-title {
+  font-family: "Anton", sans-serif;
+  font-weight: bold;
+}
+
+
+.debug-section {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  html, body {
+    height: auto;
+    overflow-y: scroll !important;
+  }
+
+  .gradient-border-button {
+    position: relative;
+    z-index: 0;
+    border-radius: 9999px;
+    padding: 0.75rem 2.5rem;
+    font-weight: 500;
+    overflow: hidden;
+    border: 5px solid transparent;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1)) padding-box,
+                linear-gradient(145deg, #d5bfc0, #c2aeb0) border-box;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03);
+  }
+  .gradient-border-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
