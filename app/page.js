@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link"; // Fontos: importáljuk a Link komponenst
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Portfolio from "../components/Portfolio";
 import AboutCard from "../components/About";
 import Collections from "../components/Collections";
 import ContactSection from "../components/Contact";
+import ProductInfo from "../components/ProductInfo";
 
 // --- Új Hero Szekció Komponens ---
 const HeroSection = () => {
@@ -34,21 +35,30 @@ const HeroSection = () => {
 
       {/* 4. Központi tartalom - FRISSÍTVE */}
       <div className="mt-8 md:mt-60">
-      <div className="absolute top-[30%] left-6 md:left-24 text-left z-10 px-4">
-      {/* LACE felirat + A te történeted együtt, de középre igazítva egymáshoz képest */}
-        <div className="inline-block">
-          <h1 className="text-6xl md:text-[9rem] font-playfair tracking-wide flex justify-center gap-2">
-            <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">L</span>
-            <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">A</span>
-            <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">C</span>
-            <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">E</span>
-          </h1>
+        <div className="absolute top-[30%] left-6 md:left-24 text-left z-10 px-4">
+          {/* LACE felirat + A te történeted együtt, de középre igazítva egymáshoz képest */}
+          <div className="inline-block">
+            <h1 className="text-6xl md:text-[9rem] font-playfair tracking-wide flex justify-center gap-2">
+              <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">
+                L
+              </span>
+              <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">
+                A
+              </span>
+              <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">
+                C
+              </span>
+              <span className="bg-gradient-to-r from-[#f1cdd6] via-[#d68fa1] to-[#a65c6d] text-transparent bg-clip-text">
+                E
+              </span>
+            </h1>
 
-          <p className="mt-2 text-xl md:text-4xl italic font-vibes text-black text-center">
-            A te történeted.
-          </p>
+            <p className="font-dancing text-3xl italic text-black text-center">
+              A te történeted.
+            </p>
+
+          </div>
         </div>
-      </div>
 
         <Link href="/kollekciok" passHref legacyBehavior>
           <a
@@ -105,10 +115,23 @@ export default function HomePage() {
 
       {/* --- KOLLEKCIÓK SZEKCIÓ --- */}
       <section className="py-16 md:py-24 bg-white">
-        <DividerWithTitle title="Kollekciók" link="#portfolio" />
+        <DividerWithTitle title="Kollekciók" link="/kollekciok" />
       </section>
 
       <Collections />
+      {/* === ÚJ TERMÉKINFORMÁCIÓS SZEKCIÓ === */}
+      <section
+        id="info-section"
+        className="font-serif italic text-3xl text-center"
+      >
+        <DividerWithTitle title="Termék információk" />
+      </section>
+
+      <ProductInfo />
+
+      <section className="bg-white pb-16 md:pb-24">
+        <DividerWithTitle title="Hogyan tudsz rendelni?" />
+      </section>
       <ContactSection />
     </>
   );
@@ -118,8 +141,8 @@ function DividerWithTitle({ title, link }) {
   const TitleTag = title === "Kollekciók" ? "h3" : "h2";
   const textClasses =
     title === "Kollekciók"
-      ? "font-serif text-3xl md:text-4xl italic text-gray-700 whitespace-nowrap"
-      : "font-serif text-4xl md:text-5xl italic text-gray-700 whitespace-nowrap";
+      ? "font-playfair text-3xl md:text-4xl italic text-gray-700 whitespace-nowrap"
+      : "font-playfair text-3xl md:text-4xl italic text-gray-700 whitespace-nowrap";
 
   return (
     <div className="flex items-center justify-center gap-6 px-4 relative">
@@ -167,4 +190,3 @@ function ShimmerLine({ direction = "right" }) {
     </motion.div>
   );
 }
-

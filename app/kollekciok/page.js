@@ -62,89 +62,95 @@ export default function CollectionsPage() {
   );
 }
 
-// === Egy Kollekció Szekció Komponense (TOVÁBBFEJLESZTVE) ===
+// === Egy Kollekció Szekció Komponense (GOMB HOZZÁADVA) ===
 function CollectionSection({ collection }) {
-  const { id, name, description, items, bgColor } = collection;
+    const { id, name, description, items, bgColor } = collection;
+    
+    const [open, setOpen] = useState(false);
+    const [index, setIndex] = useState(0);
   
-  // State a Lightbox vezérléséhez
-  const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-  };
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+    };
   
-  const imagesForLightbox = items.map(item => ({ src: item.img }));
-
-  return (
-    <>
-      <motion.section
-        className="h-screen w-full snap-start flex items-center justify-center p-8 relative overflow-hidden"
-        style={{ backgroundColor: bgColor }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
-        variants={containerVariants}
-      >
-        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Bal oldal: Szöveges tartalom (MINDEN SZÖVEG ANIMÁLVA) */}
-          <div className="relative z-10">
-            <motion.span variants={itemVariants} className="font-serif text-7xl lg:text-8xl text-brand-rose opacity-20">{id}</motion.span>
-            <motion.h2 variants={itemVariants} className="font-serif text-5xl lg:text-6xl text-brand-text -mt-8">{name}</motion.h2>
-            <motion.p variants={itemVariants} className="mt-4 text-lg text-gray-600 max-w-md leading-relaxed font-body">{description}</motion.p>
-            <motion.div variants={itemVariants} className="mt-8 border-t border-brand-rose/30 pt-6">
-              <h4 className="font-sans uppercase tracking-widest text-brand-text mb-4">Kollekció elemei</h4>
-              <ul className="space-y-2">
+    const itemVariants = {
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    };
+    
+    const imagesForLightbox = items.map(item => ({ src: item.img }));
+  
+    return (
+      <>
+        <motion.section
+          className="h-screen w-full snap-start flex items-center justify-center p-8 relative overflow-hidden"
+          style={{ backgroundColor: bgColor }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={containerVariants}
+        >
+          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div className="relative z-10">
+              <motion.span variants={itemVariants} className="font-serif text-7xl lg:text-8xl text-brand-rose opacity-20">{id}</motion.span>
+              <motion.h2 variants={itemVariants} className="font-serif text-5xl lg:text-6xl text-brand-text -mt-8">{name}</motion.h2>
+              <motion.p variants={itemVariants} className="mt-4 text-lg text-gray-600 max-w-md leading-relaxed font-body">{description}</motion.p>
+              <motion.div variants={itemVariants} className="mt-8 border-t border-brand-rose/30 pt-6">
+                <h4 className="font-sans uppercase tracking-widest text-brand-text mb-4">Kollekció elemei</h4>
+                <ul className="space-y-2">
+                  {items.map((item, i) => (
+                    <motion.li key={i} custom={i} variants={itemVariants} className="font-body text-gray-500">{item.name}</motion.li>
+                  ))}
+                </ul>
+                {/* === ÚJ GOMB === */}
+                <Link href={`/kapcsolat?kollekcio=${encodeURIComponent(name)}`} passHref>
+                   <motion.a 
+                      variants={itemVariants} 
+                      className="inline-block mt-8 px-8 py-3 bg-brand-rose text-white font-sans font-bold uppercase tracking-widest rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
+                    >
+                     Árajánlatot kérek
+                   </motion.a>
+                </Link>
+              </motion.div>
+            </div>
+  
+            <motion.div variants={containerVariants} className="relative h-[300px] lg:h-[500px] w-full">
                 {items.map((item, i) => (
-                  <motion.li key={i} custom={i} variants={itemVariants} className="font-body text-gray-500">{item.name}</motion.li>
+                    <motion.div
+                        key={i}
+                        className="absolute rounded-lg shadow-2xl overflow-hidden border-4 border-white cursor-pointer"
+                        style={imagePositions[i % 4]}
+                        variants={itemVariants}
+                        whileHover={{ 
+                          scale: 1.03,
+                          boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
+                          zIndex: 20,
+                        }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                        onClick={() => {
+                          setIndex(i);
+                          setOpen(true);
+                        }}
+                    >
+                        <Image src={item.img} alt={item.name} layout="fill" objectFit="cover" />
+                    </motion.div>
                 ))}
-              </ul>
             </motion.div>
           </div>
-
-          {/* Jobb oldal: Képek (FINOMÍTOTT ANIMÁCIÓVAL ÉS LIGHTBOX FUNKCIÓVAL) */}
-          <motion.div variants={containerVariants} className="relative h-[300px] lg:h-[500px] w-full">
-              {items.map((item, i) => (
-                  <motion.div
-                      key={i}
-                      className="absolute rounded-lg shadow-2xl overflow-hidden border-4 border-white cursor-pointer"
-                      style={imagePositions[i % 4]}
-                      variants={itemVariants}
-                      whileHover={{ 
-                        scale: 1.03, // Finomabb nagyítás
-                        boxShadow: "0px 20px 40px rgba(0,0,0,0.15)", // Finomabb árnyék
-                        zIndex: 20,
-                      }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                      onClick={() => {
-                        setIndex(i);
-                        setOpen(true);
-                      }}
-                  >
-                      <Image src={item.img} alt={item.name} layout="fill" objectFit="cover" />
-                  </motion.div>
-              ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        slides={imagesForLightbox}
-        index={index}
-        styles={{ container: { backgroundColor: "rgba(0, 0, 0, .85)" } }}
-      />
-    </>
-  );
-}
+        </motion.section>
+  
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={imagesForLightbox}
+          index={index}
+          styles={{ container: { backgroundColor: "rgba(0, 0, 0, .85)" } }}
+        />
+      </>
+    );
+  }
 
 // Kép pozíciók (Változatlan)
 const imagePositions = [

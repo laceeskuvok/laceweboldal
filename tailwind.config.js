@@ -15,9 +15,8 @@ module.exports = {
         'brand-pale-pink': '#F5EBEB',  // A logó háttérszíne
       },
       fontFamily: {
-        // A minták alapján egy elegáns serif és egy letisztult sans-serif betűtípus illik
-        // Ezeket a layout.js-ben fogjuk importálni a Google Fonts-ból
         serif: ['var(--font-cormorant)'],
+        dancing: ['var(--font-dancing)', 'cursive'],
         playfair_serif: ['var(--font-playfair)', 'serif'],
         body: ['var(--font-lora)', 'serif'],
         sans: ['var(--font-montserrat)'],

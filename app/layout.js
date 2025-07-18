@@ -1,39 +1,64 @@
-import { Montserrat, Cormorant_Garamond, Playfair_Display, Lora  } from 'next/font/google'
+import { Cormorant_Garamond, Playfair_Display, Lora, Montserrat, Great_Vibes, Dancing_Script } from 'next/font/google';
 import './globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 // Betűtípusok beállítása
-const montserrat = Montserrat({
+export const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-montserrat',
-  weight: ['400', '500', '700'],
-})
+  weight: ['400', '500', '600'],
+  style: ['italic', 'normal'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
 
-const cormorant = Cormorant_Garamond({
+export const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-font-cormorant',
-  weight: ['400', '600', '700'],
-})
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  style: ['italic', 'normal'],
   variable: '--font-playfair',
-})
+  display: 'swap',
+});
 
-const lora = Lora({
+export const lora = Lora({
   subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['italic', 'normal'],
   variable: '--font-lora',
-})
+  display: 'swap',
+});
+
+export const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
+
+export const vibes = Great_Vibes({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-vibes',
+  display: 'swap',
+});
+
+export const dancing = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-dancing',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Vivi Grafika - Portfólió',
   description: 'Esküvői meghívók és grafikai tervezés',
 }
 
+const fontVariables = `${montserrat.variable} ${cormorant.variable} ${dancing.variable} ${playfair.variable} ${lora.variable} ${vibes.variable}`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="hu" className={`${montserrat.variable} ${cormorant.variable}`}>
+    <html lang="hu" className={fontVariables}>
       <body className="bg-white text-dark-text">
         <main>{children}</main>
         <Footer />
