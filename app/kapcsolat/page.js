@@ -9,27 +9,24 @@ import * as THREE from 'three';
 import ContactForm from '../../components/ContactForm';
 import Header from '../../components/Header';
 
-// --- MOCK DATA: Ezt ide is be kell másolnunk ---
+// --- TELJES, FRISSÍTETT ADATLISTA ---
 const collectionsData = [
-    {
-      id: '01',
-      name: 'Klasszikus Romantika',
-      description: 'Időtlen elegancia, finom vonalak és pasztell színek harmóniája.',
-      items: [ 'Meghívó', 'Menükártya', 'Ültetőkártya', 'Esküvői Hírlap', 'Köszönőkártya' ],
-    },
-    {
-      id: '02',
-      name: 'Modern Minimalista',
-      description: 'Letisztult formák, merész tipográfia és a kevesebb-több elve.',
-      items: [ 'Save the Date', 'Meghívó', 'Menükártya', 'Digitális Meghívó', 'Weboldal' ],
-    },
-    {
-      id: '03',
-      name: 'Rusztikus Varázslat',
-      description: 'Természetes textúrák, kézzel rajzolt motívumok és földszínek.',
-      items: [ 'Meghívó', 'Itallap', 'Ültetési Rend', 'Pecsét', 'Boríték' ],
-    },
-  ];
+  { id: "01", slug: "eskuvoi-hirlap", name: "Esküvői hírlap", price: "29 900 Ft", description: "Egyedi esküvői hírlap a nagy nap legszebb pillanataival.", items: [ { name: "Esküvői hírlap borító", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#FAF7F6", },
+  { id: "02", slug: "tortenetek-kepekben", name: "Történetek képekben", price: "34 900 Ft", description: "Színes, történetmesélő képes kollekció személyre szabva.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Idézetkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Ajándékkísérő", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F5EBEB", },
+  { id: "03", slug: "idotlen-romantika", name: "Időtlen romantika", price: "39 900 Ft", description: "Letisztult, elegáns stílusú kollekció örök emlékekkel.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Asztalszám", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F3F0E9", },
+  { id: "04", slug: "vintage-varazs", name: "Vintage Varázs", price: "32 000 Ft", description: "Retro hangulatú kollekció klasszikus kerettel.", items: [ { name: "Vintage meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Asztalszám", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#EFEAE6", },
+  { id: "05", slug: "modern-minimal", name: "Modern Minimal", price: "31 000 Ft", description: "Tiszta, modern dizájn a minimalizmus szerelmeseinek.", items: [ { name: "Minimal meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Köszönőkártya", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F9F4F1", },
+  { id: "06", slug: "boho-alom", name: "Boho álom", price: "36 500 Ft", description: "Szabad szellemű, természetes hangulatú kollekció.", items: [ { name: "Boho meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Természetes ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Kézzel írt üzenetkártya", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F6EFE9", },
+];
+
+const extrasData = [
+    { name: "Egyedi menükártya", price: "8 000 Ft" },
+    { name: "Esküvői weboldal", price: "25 000 Ft" },
+    { name: "Ajándékkísérő (20 db)", price: "5 000 Ft" },
+    { name: "Kézzel írt levél", price: "12 000 Ft" },
+    { name: "Ültetési rend tábla", price: "15 000 Ft" },
+    { name: "Pecsét egyedi monogrammal", price: "10 000 Ft" },
+];
 
 // Wrapper komponens, ami kiolvassa az URL paramétereket
 // Erre azért van szükség, mert a useSearchParams hook használatához Suspense "határ" kell
@@ -65,6 +62,7 @@ const ContactPageContent = () => {
         {/* Átadjuk a teljes kollekció listát ÉS a kiválasztottat is */}
         <ContactForm 
           collections={collectionsData} 
+          extras={extrasData} 
           initialCollectionName={selectedCollection} 
         />
       </motion.div>
@@ -88,13 +86,13 @@ export default function ContactPage() {
           gyrocontrols: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0xd9c4c4,
-          midtoneColor: 0xb76e79,
+          highlightColor: 0xffffff,
+          midtoneColor: 0xd9c4c4,
           lowlightColor: 0xf5ebeb,
-          baseColor: 0xf9f6f6,
-          blurFactor: 0.6,
-          speed: 0.5,
-          zoom: 0.8
+          baseColor: 0xfaf7f6,
+          blurFactor: 0.5,
+          speed: 0.6,
+          zoom: 0.6
         })
       );
     }

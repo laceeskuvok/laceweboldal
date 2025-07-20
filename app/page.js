@@ -93,11 +93,13 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.6, type: "spring" }}
+            className="mt-8"
         >
-            <Link href="/kollekciok" passHref legacyBehavior>
-              <a className="gradient-border-button w-full max-w-[300px] md:max-w-[400px] h-[70px] md:h-[100px] flex items-center justify-center bg-transparent text-[#4A4A4A] font-serif italic text-base md:text-2xl tracking-wide rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105 mx-auto mt-8">
-                Megnézem a kollekciót
-              </a>
+            <Link href={`/kollekciok`} legacyBehavior>
+                {/* JAVÍTVA: Az új, egységes 'btn-primary' osztály használata */}
+                <a className="btn-primary mt-5">
+                    Kollekciók megtekintése
+                </a>
             </Link>
         </motion.div>
       </motion.div>

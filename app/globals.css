@@ -41,69 +41,46 @@
     overflow-y: scroll !important;
   }
 
-  .gradient-border-button {
-    position: relative;
-    z-index: 0;
-    border-radius: 9999px;
-    padding: 0.75rem 2.5rem;
-    font-weight: 500;
-    overflow: hidden;
-    border: 3px solid transparent;
-    background-color: #d5bfc0;      
-    background-image:
-      linear-gradient(#d5bfc0, #d5bfc0), /* sima belső szín */
-      linear-gradient(145deg, #d5bfc0, #a65c6d); /* keret gradient */
-    background-origin: padding-box, border-box;
-    background-clip: padding-box, border-box;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  
-/* --- Hover Effektek --- */
-.gradient-border-button:hover {
-  transform: scale(1.09) rotate(0.3deg);
-  box-shadow: 0 15px 40px rgba(166, 92, 109, 0.35),
-              0 0 25px rgba(255, 182, 193, 0.5);
+ /* === ÚJ, UNIVERZÁLIS PRÉMIUM GOMB STÍLUS === */
+.btn-primary {
+  position: relative;
+  overflow: hidden; /* Szükséges a belső animációhoz */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem; /* px-8 py-3 */
+  background-color: #B76E79; /* brand-rose */
+  color: white;
+  font-family: var(--font-sans); /* Montserrat */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* tracking-widest */
+  border-radius: 9999px; /* rounded-full */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  z-index: 1;
 }
 
-/* --- Pulzáló "fénycsík" a kereten --- */
-.gradient-border-button::after {
+/* --- ÚJ, FINOMÍTOTT HOVER ANIMÁCIÓ --- */
+.btn-primary::before {
   content: "";
   position: absolute;
+  z-index: -1;
   top: 0;
-  left: -150%;
-  width: 200%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  transition: all 0.6s ease-in-out;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)) 100% 100%;
+  transform: scale(0);
+  transition: transform 0.4s ease-out;
 }
 
-.gradient-border-button:hover::after {
-  left: 150%;
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(183, 110, 121, 0.3); /* brand-rose árnyék */
 }
 
-/* --- Enyhe belső pulzálás --- */
-@keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
-  }
+.btn-primary:hover::before {
+  transform: scale(2.5);
 }
-
-.gradient-border-button:hover {
-  animation: pulse-glow 1.5s infinite ease-in-out;
-}
-  
