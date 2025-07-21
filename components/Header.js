@@ -36,7 +36,7 @@ const Header = () => {
   const navLinks = [
     { name: "Főoldal", href: "/" },
     { name: "Kollekciók", href: "/kollekciok" },
-    { name: "Termék infó", href: "/#info-section" },
+    { name: "Termék infó", href: "/info" },
     { name: "Kapcsolat", href: "/kapcsolat" },
   ];
   
