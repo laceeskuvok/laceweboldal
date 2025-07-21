@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 // === Ikonok az állapotjelzéshez ===
 const SpinnerIcon = () => ( <motion.svg className="w-5 h-5" animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.75V6.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M17.1266 6.87347L16.0659 7.93413" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M19.25 12L17.75 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M17.1266 17.1265L16.0659 16.0659" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 17.75V19.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M6.87344 17.1265L7.9341 16.0659" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M6.25 12L4.75 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M6.87344 6.87347L7.9341 7.93413" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></motion.svg> );
@@ -48,19 +49,45 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    let finalData;
-    if (formType === 'quote') {
-        const extrasList = selection.extras.map(e => `${e.name} (${e.price})`).join('\n- ');
-        const finalMessage = `Tisztelt Cím!\n\nÉrdeklődnék a(z) "${selection.collection.name}" kollekcióval kapcsolatban.\n\nKiválasztott extrák:\n- ${extrasList || 'Nincs.'}\n\nÜzenetem: ${formData.message || ''}\n\nÜdvözlettel,\n${formData.name}`;
-        finalData = { ...formData, message: finalMessage };
-    } else {
-        finalData = formData;
+
+    // 1. Látványos HTML sablonok elkészítése
+    const extrasHtml = selection.extras.length > 0
+        ? `<ul>${selection.extras.map(e => `<li>${e.name} - <strong>${e.price}</strong></li>`).join('')}</ul>`
+        : "<p>Nincs extra kiválasztva.</p>";
+
+    const ownerTemplateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        collection_name: selection.collection?.name || 'Általános érdeklődés',
+        selected_extras: extrasHtml,
+        message: formData.message,
+    };
+    
+    const customerTemplateParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        collection_name: selection.collection?.name || 'Általános érdeklődés',
+    };
+
+    try {
+        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+        // Emailek párhuzamos küldése
+        await Promise.all([
+            // Email küldése NEKED
+            emailjs.send('service_o12cdtu', 'template_up0zvgm', ownerTemplateParams, publicKey),
+            // Visszaigazoló email küldése az ÜGYFÉLNEK
+            emailjs.send('service_o12cdtu', 'template_11w8l4y', customerTemplateParams, publicKey),
+        ]);
+
+        setStatus('success');
+    } catch (error) {
+        console.error('EMAILJS HIBA:', error);
+        setStatus('error');
     }
-    console.log("Elküldendő adat:", finalData);
-    setTimeout(() => setStatus('success'), 2000);
   };
   
   const stepVariants = {
@@ -69,12 +96,17 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
     exit: { opacity: 0, y: -30 },
   };
 
-  if (status === 'success') {
+  // === Sikeres vagy Hiba állapot kijelzése ===
+  if (status === 'success' || status === 'error') {
     return (
-      <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 flex flex-col items-center justify-center h-full min-h-[400px]">
-        <SuccessIcon />
-        <h3 className="text-2xl font-serif text-gray-800 mt-4">Köszönöm a megkeresésed!</h3>
-        <p className="text-gray-600 mt-2">Hamarosan felveszem veled a kapcsolatot.</p>
+      <motion.div key={status} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10 flex flex-col items-center justify-center h-full min-h-[400px]">
+        {status === 'success' ? <SuccessIcon /> : <ErrorIcon />}
+        <h3 className="text-2xl font-serif text-gray-800 mt-4">
+            {status === 'success' ? 'Köszönöm a megkeresésed!' : 'Hoppá, hiba történt!'}
+        </h3>
+        <p className="text-gray-600 mt-2">
+            {status === 'success' ? 'Hamarosan felveszem veled a kapcsolatot.' : 'Kérlek, próbáld újra később, vagy írj e-mailt közvetlenül.'}
+        </p>
       </motion.div>
     );
   }

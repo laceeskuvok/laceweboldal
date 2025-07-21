@@ -1,5 +1,5 @@
 {
   "/kapcsolat/page": "app/kapcsolat/page.js",
-  "/page": "app/page.js",
-  "/kollekciok/page": "app/kollekciok/page.js"
+  "/kollekciok/page": "app/kollekciok/page.js",
+  "/page": "app/page.js"
 }

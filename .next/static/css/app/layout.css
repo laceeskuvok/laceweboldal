@@ -2632,6 +2632,10 @@ video {
   cursor: not-allowed;
 }
 
+.disabled\:opacity-60:disabled {
+  opacity: 0.6;
+}
+
 .disabled\:opacity-70:disabled {
   opacity: 0.7;
 }
