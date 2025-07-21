@@ -12,6 +12,7 @@ import AboutCard from '../components/About';
 import Collections from '../components/Collections';
 import ProductInfo from '../components/ProductInfo';
 import ContactSection from '../components/Contact';
+import HomePageReviews from '../components/HomePageReviews';
 
 // === FELTURBÓZOTT HERO SZEKCIÓ VANTA.JS HÁTTÉRREL ===
 const HeroSection = () => {
@@ -136,13 +137,16 @@ export default function HomePage() {
       </section>
       <Collections />
 
-      <section id="info-section" className="bg-white pt-16 md:pt-24">
+      <section className="py-16 md:py-24 bg-white">
         <DividerWithTitle title="Termék információk" />
       </section>
       <ProductInfo />
-
-      <section className="bg-white pb-16 md:pb-24">
-        <DividerWithTitle title="Hogyan tudsz rendelni?" />
+      <section className="py-16 md:py-24 bg-white">
+        <DividerWithTitle title="Vélemények" />
+      </section>
+      <HomePageReviews />
+      <section className="py-16 md:py-24 bg-white">
+        <DividerWithTitle title="Vedd fel velünk a kapcsolatot!" />
       </section>
       <ContactSection />
     </>

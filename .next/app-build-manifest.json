@@ -12,15 +12,26 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/info/page": [
+    "/admin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/info/page.js"
+      "static/chunks/app/admin/page.js"
     ],
-    "/kapcsolat/page": [
+    "/velemenyek/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/kapcsolat/page.js"
+      "static/chunks/app/velemenyek/page.js"
+    ],
+    "/kollekciok/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/kollekciok/page.css",
+      "static/chunks/app/kollekciok/page.js"
+    ],
+    "/velemeny-iras/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/velemeny-iras/page.js"
     ]
   }
 }

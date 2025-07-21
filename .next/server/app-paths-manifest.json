@@ -1,5 +1,6 @@
 {
-  "/page": "app/page.js",
-  "/kapcsolat/page": "app/kapcsolat/page.js",
-  "/info/page": "app/info/page.js"
+  "/velemeny-iras/page": "app/velemeny-iras/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/velemenyek/page": "app/velemenyek/page.js",
+  "/page": "app/page.js"
 }
