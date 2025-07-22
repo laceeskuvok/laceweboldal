@@ -138,16 +138,9 @@ export default function HomePage() {
       <Collections />
 
       <section className="py-16 md:py-24 bg-white">
-        <DividerWithTitle title="Termék információk" />
-      </section>
-      <ProductInfo />
-      <section className="py-16 md:py-24 bg-white">
-        <DividerWithTitle title="Vélemények" />
+        <DividerWithTitle title="Vélemények" link="/velemenyek" />
       </section>
       <HomePageReviews />
-      <section className="py-16 md:py-24 bg-white">
-        <DividerWithTitle title="Vedd fel velünk a kapcsolatot!" />
-      </section>
       <ContactSection />
     </>
   );
