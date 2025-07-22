@@ -38,6 +38,7 @@ const Header = () => {
     { name: "Kollekciók", href: "/kollekciok" },
     { name: "Termék infó", href: "/info" },
     { name: "Vélemények", href: "/velemenyek" },
+    { name: "Blog", href: "/blog" },
     { name: "Kapcsolat", href: "/kapcsolat" },
   ];
   
