@@ -1,25 +1,12 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import Link from "next/link";
-import {
-  Heart,
-  Feather,
-  GitMerge,
-  QrCode,
-  Sparkles,
-  CheckCircle,
-} from "lucide-react";
-import Header from "../../components/Header";
-import FOG from "vanta/dist/vanta.fog.min.js";
-import * as THREE from "three";
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import Link from 'next/link';
+import { Newspaper, QrCode, Sparkles, CheckCircle, GitMerge } from 'lucide-react';
+import Header from '../../components/Header';
+import FOG from 'vanta/dist/vanta.fog.min.js';
+import * as THREE from 'three';
 
 // === Fő Komponens ===
 export default function InfoPage() {
@@ -94,68 +81,26 @@ export default function InfoPage() {
       <Header />
       <main ref={vantaRef} className="relative">
         <FloatingShapes />
-
         <section className="h-[70vh] flex items-center justify-center text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative z-10"
-          >
-            <h1 className="font-serif text-5xl md:text-7xl italic text-brand-text drop-shadow-lg">
-              A részletekben rejlő varázslat
-            </h1>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body drop-shadow-md">
-              Ismerd meg, hogyan kelnek életre az álmaitok a LACE egyedi
-              grafikai megoldásaival, a tervezés első pillanatától az utolsó
-              simításig.
-            </p>
-          </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: 'easeOut' }} className="relative z-10">
+                <h1 className="font-serif text-5xl md:text-7xl italic text-brand-text drop-shadow-lg">A részletekben rejlő varázslat</h1>
+                <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body drop-shadow-md">Ismerd meg, hogyan kelnek életre az álmaitok a LACE egyedi grafikai megoldásaival, a tervezés első pillanatától az utolsó simításig.</p>
+            </motion.div>
         </section>
 
         <div className="relative z-10 px-4 pb-20 md:pb-32">
-          <motion.div
-            className="max-w-5xl mx-auto bg-white/70 backdrop-blur-2xl p-8 md:p-16 rounded-3xl border border-white/20 shadow-2xl space-y-28"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
-            variants={containerVariants}
-          >
-            <motion.div variants={itemVariants} className="text-center">
-              <AnimatedIcon>
-                <Feather
-                  className="w-12 h-12 text-brand-rose"
-                  strokeWidth={1}
-                />
-              </AnimatedIcon>
-              <h2 className="font-serif text-4xl md:text-5xl text-brand-text mt-4">
-                Minden, amire szükségetek lehet
-              </h2>
-              <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">
-                Minden kollekciónk egy gondosan összeállított csomag.
-                Természetesen minden elem színvilága, betűtípusa és szövegezése
-                teljes mértékben Rátok szabható, hogy a végeredmény igazán
-                egyedi és személyes legyen.
-              </p>
-              <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
-                <InfoCard
-                  title="Meghívó"
-                  description="Kétoldalas, prémium minőségű, texturált papíron."
-                />
-                <InfoCard
-                  title="Boríték"
-                  description="A meghívó stílusához és színvilágához tökéletesen illeszkedő."
-                />
-                <InfoCard
-                  title="Ültetőkártya"
-                  description="A vendégek nevével ellátott, a kollekció dizájnjával megegyező."
-                />
-                <InfoCard
-                  title="Program- vagy Menükártya"
-                  description="Igény szerint, a nap menetrendjével vagy a vacsora fogásaival."
-                />
-              </div>
-            </motion.div>
+            <motion.div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-2xl p-8 md:p-16 rounded-3xl border border-white/20 shadow-2xl space-y-28"
+                initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} variants={containerVariants}>
+                
+                {/* === ÚJ: KIEMELT SZOLGÁLTATÁSOK SZEKCIÓ === */}
+                <motion.div variants={itemVariants} className="text-center">
+                    <h2 className="font-serif text-4xl md:text-5xl text-brand-text">Két Különleges Történet</h2>
+                    <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">Két zászlóshajónk, amelyek garantáltan egyedivé és felejthetetlenné teszik a nagy napotok bejelentését.</p>
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <InteractiveCard icon={<Newspaper size={48} strokeWidth={1}/>} title="Az Esküvői Hírlap" description="Egy valódi újság, tele a ti történeteitekkel, interjúkkal és a nagy nap programjával. Garantáltan minden vendég megőrzi majd!" buttonHref="/kollekciok#eskuvoi-hirlap" buttonText="Részletek" />
+                        <InteractiveCard icon={<QrCode size={48} strokeWidth={1}/>} title="A QR Kódos Varázslat" description="Lepjétek meg a vendégeket egy személyes videóüzenettel, amit a meghívóba rejtett QR kód kelt életre. Egy modern, meghitt gesztus." buttonHref="/kollekciok#tortenetek-kepekben" buttonText="Részletek" isDark />
+                    </div>
+                </motion.div>
 
             {/* === AZ ALKOTÁS FOLYAMATA === */}
 
@@ -197,25 +142,26 @@ export default function InfoPage() {
               </div>
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10"
-            >
-              <InteractiveCard
-                icon={<QrCode size={48} strokeWidth={1} />}
-                title="Az Extra Varázslat"
-                description="Az egyedi QR-kódos videóüzenet egy felejthetetlen, interaktív élménnyé teszi a meghívást, amivel garantáltan lenyűgözitek a vendégeiteket."
-              />
-              <InteractiveCard
-                icon={<Sparkles size={48} strokeWidth={1} />}
-                title="Egyedi Megrendelés"
-                description="Nem találtad meg, amit kerestél? Valósítsuk meg együtt a teljesen egyedi elképzelésedet, kompromisszumok nélkül!"
-                buttonHref="/kapcsolat?type=egyedi"
-                buttonText="Kapcsolatfelvétel"
-                isDark
-              />
+            {/* === EGYÉB LEHETŐSÉGEK === */}
+            <motion.div variants={itemVariants}>
+                    <div className="text-center">
+                        <h2 className="font-serif text-4xl md:text-5xl text-brand-text">További Lehetőségek</h2>
+                        <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">A kiemelt kollekciók mellett természetesen számos más stílusban is alkotunk, sőt, teljesen egyedi elképzeléseket is megvalósítunk.</p>
+                    </div>
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
+                         <Link href="/kollekciok" className="block bg-brand-pale-pink/50 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow">
+                            <Sparkles className="w-12 h-12 text-brand-rose" strokeWidth={1}/>
+                            <h3 className="font-serif text-3xl text-brand-text mt-4">További kollekciók</h3>
+                            <p className="mt-2 text-gray-600 leading-relaxed font-body">Böngészd végig az összes elérhető stílust, a moderntől a rusztikusig.</p>
+                        </Link>
+                         <Link href="/kapcsolat?type=egyedi" className="block bg-gray-800 text-white rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow">
+                            <Sparkles className="w-12 h-12 text-brand-rose" strokeWidth={1}/>
+                            <h3 className="font-serif text-3xl mt-4">Egyedi Megrendelés</h3>
+                            <p className="mt-2 text-gray-300 leading-relaxed font-body">Valósítsuk meg együtt a teljesen egyedi elképzelésedet!</p>
+                        </Link>
+                    </div>
+                </motion.div>
             </motion.div>
-          </motion.div>
         </div>
       </main>
     </>

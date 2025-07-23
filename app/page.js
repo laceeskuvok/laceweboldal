@@ -13,6 +13,7 @@ import Collections from '../components/Collections';
 import ProductInfo from '../components/ProductInfo';
 import ContactSection from '../components/Contact';
 import HomePageReviews from '../components/HomePageReviews';
+import HomePageBlog from '../components/HomePageBlog';
 
 // === FELTURBÓZOTT HERO SZEKCIÓ VANTA.JS HÁTTÉRREL ===
 const HeroSection = () => {
@@ -141,6 +142,12 @@ export default function HomePage() {
         <DividerWithTitle title="Vélemények" link="/velemenyek" />
       </section>
       <HomePageReviews />
+
+      <section className="py-16 md:py-24 bg-white">
+        <DividerWithTitle title="Blogok" link="/blog" />
+      </section>
+      <HomePageBlog />
+      
       <ContactSection />
     </>
   );
