@@ -1,7 +1,9 @@
 {
-  "/page": "app/page.js",
-  "/velemenyek/page": "app/velemenyek/page.js",
   "/blog/page": "app/blog/page.js",
-  "/info/page": "app/info/page.js",
-  "/kollekciok/page": "app/kollekciok/page.js"
+  "/admin/blog/page": "app/admin/blog/page.js",
+  "/admin/blog/new/page": "app/admin/blog/new/page.js",
+  "/page": "app/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/blog/edit/[id]/page": "app/admin/blog/edit/[id]/page.js"
 }

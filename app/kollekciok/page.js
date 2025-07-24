@@ -15,10 +15,10 @@ const featuredCollections = [
 ];
 const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel, melyek tökéletesen illeszkednek a választott kollekció stílusához.", items: [ { name: "Egyedi menükártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Esküvői weboldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Ajándékkísérő", img: "/images/eskuvoihirlap.jpg" }, { name: "Kézzel írt levél", img: "/images/eskuvoihirlap.jpg" } ] };
 const otherCollections = [
-    { id: "03", slug: "idotlen-romantika", name: "Időtlen romantika", price: "39 900 Ft", description: "Letisztult, elegáns stílusú kollekció örök emlékekkel.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" } ] },
-    { id: "04", slug: "vintage-varazs", name: "Vintage Varázs", price: "32 000 Ft", description: "Retro hangulatú kollekció klasszikus kerettel.", items: [ { name: "Vintage meghívó", img: "/images/eskuvoihirlap.jpg" } ] },
-    { id: "05", slug: "modern-minimal", name: "Modern Minimal", price: "31 000 Ft", description: "Tiszta, modern dizájn a minimalizmus szerelmeseinek.", items: [ { name: "Minimal meghívó", img: "/images/eskuvoihirlap.jpg" } ] },
-    { id: "06", slug: "boho-alom", name: "Boho álom", price: "36 500 Ft", description: "Szabad szellemű, természetes hangulatú kollekció.", items: [ { name: "Boho meghívó", img: "/images/eskuvoihirlap.jpg" } ] },
+    { id: "03", slug: "idotlen-romantika", name: "Időtlen romantika", price: "39 900 Ft", description: "Letisztult, elegáns stílusú kollekció örök emlékekkel.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ] },
+    { id: "04", slug: "vintage-varazs", name: "Vintage Varázs", price: "32 000 Ft", description: "Retro hangulatú kollekció klasszikus kerettel.", items: [ { name: "Vintage meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ] },
+    { id: "05", slug: "modern-minimal", name: "Modern Minimal", price: "31 000 Ft", description: "Tiszta, modern dizájn a minimalizmus szerelmeseinek.", items: [ { name: "Minimal meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ] },
+    { id: "06", slug: "boho-alom", name: "Boho álom", price: "36 500 Ft", description: "Szabad szellemű, természetes hangulatú kollekció.", items: [ { name: "Boho meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ] },
 ];
 
 export default function CollectionsPage() {
@@ -78,9 +78,9 @@ export default function CollectionsPage() {
             </div>
         </div>
         
-        {/* A "mellékes" kollekciók részletes nézete, a galériából ide ugrik */}
-        {otherCollections.map((collection) => (
-            <CollectionSection key={collection.id} collection={collection} />
+        {/* === JAVÍTVA: A "mellékes" kollekciók részletes nézete váltakozó elrendezéssel === */}
+        {otherCollections.map((collection, index) => (
+            <CollectionSection key={collection.id} collection={collection} reverseLayout={index % 2 !== 0} />
         ))}
       </main>
     </>
