@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
-import { PlusCircle, Edit, Trash2, AlertTriangle } from 'lucide-react';
+import { useRouter } from 'next/navigation'; // useRouter importálása
+import { PlusCircle, Edit, Trash2, AlertTriangle, MessageSquare, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- SUPABASE INICIALIZÁLÁSA ---
@@ -11,7 +12,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// === ÚJ: Törlési Megerősítő Ablak ===
+// === Törlési Megerősítő Ablak (változatlan) ===
 const DeleteConfirmationModal = ({ onConfirm, onCancel }) => (
     <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -36,6 +37,7 @@ const DeleteConfirmationModal = ({ onConfirm, onCancel }) => (
 
 
 export default function AdminBlogPage() {
+    const router = useRouter(); // useRouter hook inicializálása
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [showDeleteModal, setShowDeleteModal] = useState(null);
@@ -65,40 +67,66 @@ export default function AdminBlogPage() {
         setShowDeleteModal(null);
     };
 
+     // === ÚJ: Kijelentkezés funkció ===
+     const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        router.push('/login');
+    };
+
     return (
         <>
             <main className="min-h-screen bg-gray-100 p-8">
                 <div className="max-w-4xl mx-auto">
-                    <div className="flex justify-between items-center">
+                    {/* === JAVÍTVA: Egységes admin fejléc === */}
+                    <div className="flex justify-between items-center mb-8">
                         <div>
-                            <h1 className="text-3xl font-serif text-gray-800">Blog Bejegyzések</h1>
-                            <p className="mt-1 text-gray-600">Itt kezelheted a weboldalon megjelenő cikkeket.</p>
+                            <h1 className="text-3xl font-serif text-gray-800">Admin Felület</h1>
+                            <p className="mt-1 text-gray-600">Itt kezelheted a weboldal dinamikus tartalmait.</p>
                         </div>
-                        <Link href="/admin/blog/new" className="btn-primary flex items-center gap-2"><PlusCircle size={20} />Új Bejegyzés</Link>
+                        <div className="flex items-center gap-4">
+                            <Link href="/admin" className="btn-primary text-sm flex items-center gap-2">
+                                <MessageSquare size={16} />
+                                Vélemények
+                            </Link>
+                            <button onClick={handleSignOut} className="p-2 text-gray-500 hover:text-red-600" title="Kijelentkezés">
+                                <LogOut size={20}/>
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="mt-8 bg-white rounded-xl shadow-md">
-                        {isLoading ? <p className="p-6">Betöltés...</p> :
-                         posts.length === 0 ? <p className="p-6">Nincsenek még bejegyzések.</p> :
-                         (
-                            <ul className="divide-y divide-gray-200">
-                                {posts.map(post => (
-                                    <li key={post.id} className="p-4 flex justify-between items-center">
-                                        <div>
-                                            <p className="font-semibold text-gray-800">{post.title}</p>
-                                            <span className={`text-xs font-bold px-2 py-1 rounded-full ${post.is_published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                                                {post.is_published ? 'Publikálva' : 'Piszkozat'}
-                                            </span>
-                                        </div>
-                                        <div className="flex gap-2">
-                                            <Link href={`/admin/blog/edit/${post.id}`} className="p-2 text-gray-500 hover:text-blue-600"><Edit size={18}/></Link>
-                                            <button onClick={() => setShowDeleteModal(post.id)} className="p-2 text-gray-500 hover:text-red-600"><Trash2 size={18}/></button>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                         )
-                        }
+                    {/* === Blog Bejegyzések Szekció === */}
+                    <div>
+                        <div className="flex justify-between items-center">
+                            <div>
+                                <h2 className="text-2xl font-serif text-gray-700">Blog Bejegyzések</h2>
+                                <p className="mt-1 text-gray-600">Itt kezelheted a weboldalon megjelenő cikkeket.</p>
+                            </div>
+                            <Link href="/admin/blog/new" className="btn-primary flex items-center gap-2"><PlusCircle size={20} />Új Bejegyzés</Link>
+                        </div>
+
+                        <div className="mt-4 bg-white rounded-xl shadow-md">
+                            {isLoading ? <p className="p-6">Betöltés...</p> :
+                             posts.length === 0 ? <p className="p-6">Nincsenek még bejegyzések.</p> :
+                             (
+                                <ul className="divide-y divide-gray-200">
+                                    {posts.map(post => (
+                                        <li key={post.id} className="p-4 flex justify-between items-center">
+                                            <div>
+                                                <p className="font-semibold text-gray-800">{post.title}</p>
+                                                <span className={`text-xs font-bold px-2 py-1 rounded-full ${post.is_published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                                    {post.is_published ? 'Publikálva' : 'Piszkozat'}
+                                                </span>
+                                            </div>
+                                            <div className="flex gap-2">
+                                                <Link href={`/admin/blog/edit/${post.id}`} className="p-2 text-gray-500 hover:text-blue-600"><Edit size={18}/></Link>
+                                                <button onClick={() => setShowDeleteModal(post.id)} className="p-2 text-gray-500 hover:text-red-600"><Trash2 size={18}/></button>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                             )
+                            }
+                        </div>
                     </div>
                 </div>
             </main>
