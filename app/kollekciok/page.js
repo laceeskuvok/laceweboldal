@@ -8,6 +8,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Header from "../../components/Header";
 import { CheckCircle } from "lucide-react";
+import DemoDrawer from "../../components/DemoDrawer";
 
 
 // === ÚJ, VÉGLEGES ADATSTRUKTÚRA ===
@@ -178,6 +179,14 @@ function CollectionSection({ collection, reverseLayout = false }) {
 
 function ExtrasSection({ collection }) {
   const { name, description, items, slug } = collection;
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleExtraClick = (itemName) => {
+    if (itemName.toLowerCase().includes("weboldal")) {
+      setIsDrawerOpen(true);
+    }
+  };
+
   return (
     <section id={slug} className="py-24 bg-brand-text text-white">
       <div className="max-w-4xl mx-auto text-center px-4">
@@ -198,18 +207,20 @@ function ExtrasSection({ collection }) {
         >
           {description}
         </motion.p>
-        
-        {/* === JAVÍTVA: Flexbox elrendezés a tökéletes középre igazításhoz === */}
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          // A grid helyett flex-et használunk, ami középre rendezi az elemeket
           className="mt-12 flex flex-wrap justify-center items-start gap-x-8 gap-y-12"
         >
           {items.map((item) => (
-            <div key={item.name} className="flex flex-col items-center gap-3 w-36"> {/* Fix szélességet adunk a konzisztens tördelésért */}
+            <div
+              key={item.name}
+              className="flex flex-col items-center gap-3 w-36 cursor-pointer hover:scale-105 transition-transform duration-300"
+              onClick={() => handleExtraClick(item.name)}
+            >
               <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brand-rose/50">
                 <Image
                   src={item.img}
@@ -239,6 +250,9 @@ function ExtrasSection({ collection }) {
           </Link>
         </motion.div>
       </div>
+
+      {/* === Panel megjelenítése === */}
+      <DemoDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </section>
   );
 }
