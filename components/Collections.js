@@ -8,70 +8,57 @@ import "swiper/css/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
+// === JAVÍTVA: Frissített adatok és a kollekciok/page.js-hez igazított slug-ok ===
 const collections = [
   {
-    title: "Esküvői hírlap",
+    title: "Lace Gazette",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
-      images: [
-        "/images/eskuvoihirlap.jpg",
-        "/images/eskuvoihirlap.jpg",
-        "/images/eskuvoihirlap.jpg",
-      ],
-      price: "29 900 Ft",
-      description: "Egyedi esküvői hírlap a nagy nap legszebb pillanataival.",
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "29 900 Ft-tól",
+      description: "Egy valódi újság, tele a ti történeteitekkel, interjúkkal és a nagy nap programjával.",
     },
-    slug: "eskuvoi-hirlap",
+    slug: "lace-gazette", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Történetek képekben",
+    title: "Lace Message",
     img: "/images/szines_mockup.jpg",
     preview: {
-      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "34 900 Ft",
-      description: "Színes, történetmesélő képes kollekció személyre szabva.",
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "34 900 Ft-tól",
+      description: "QR-kódos meghívó, amelyen keresztül videóüzenetet küldhettek a vendégeknek.",
     },
-    slug: "tortenetek-kepekben",
+    slug: "lace-message", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Időtlen romantika",
+    title: "Lace Portrait",
     img: "/images/letisztultelegancia.jpg",
     preview: {
-      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "39 900 Ft",
-      description: "Letisztult, elegáns stílusú kollekció örök emlékekkel.",
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "39 900 Ft-tól",
+      description: "Képcentrikus design, minimális szöveggel. Boríték helyett szalaggal összekötve érkezik.",
     },
-    slug: "idotlen-romantika",
+    slug: "lace-portrait", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Vintage Varázs",
+    title: "Lace Pure",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
-      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "32 000 Ft",
-      description: "Retro hangulatú kollekció klasszikus kerettel.",
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "31 000 Ft-tól",
+      description: "Minimalista design, egyszerű és letisztult szövegvilággal. Időtlen elegancia.",
     },
-    slug: "vintage-varazs",
+    slug: "lace-pure", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Modern Minimal",
+    title: "Lace Bloom",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
-      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "31 000 Ft",
-      description: "Tiszta, modern dizájn a minimalizmus szerelmeseinek.",
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "Egyedi árazás",
+      description: "Extrém design, merész minták és látványos megjelenés. Kérd egyedi igényeid szerint!",
     },
-    slug: "modern-minimal",
-  },
-  {
-    title: "Boho álom",
-    img: "/images/eskuvoihirlap.jpg",
-    preview: {
-      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "36 500 Ft",
-      description: "Szabad szellemű, természetes hangulatú kollekció.",
-    },
-    slug: "boho-alom",
+    slug: "lace-bloom", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
 ];
 

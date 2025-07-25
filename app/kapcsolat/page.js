@@ -1,7 +1,7 @@
 'use client';
 
-import { Suspense } from 'react'; // Suspense importálása
-import { useSearchParams } from 'next/navigation'; // Hook importálása
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import FOG from 'vanta/dist/vanta.fog.min.js';
@@ -9,27 +9,25 @@ import * as THREE from 'three';
 import ContactForm from '../../components/ContactForm';
 import Header from '../../components/Header';
 
-// --- TELJES, FRISSÍTETT ADATLISTA ---
+// --- TELJES, VÉGLEGES ADATLISTA ---
 const collectionsData = [
-  { id: "01", slug: "eskuvoi-hirlap", name: "Esküvői hírlap", price: "29 900 Ft", description: "Egyedi esküvői hírlap a nagy nap legszebb pillanataival.", items: [ { name: "Esküvői hírlap borító", img: "/images/eskuvoihirlap.jpg" }, { name: "Páros interjú oldal", img: "/images/eskuvoihirlap.jpg" }, { name: "Programoldal", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#FAF7F6", },
-  { id: "02", slug: "tortenetek-kepekben", name: "Történetek képekben", price: "34 900 Ft", description: "Színes, történetmesélő képes kollekció személyre szabva.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Idézetkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Ajándékkísérő", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F5EBEB", },
-  { id: "03", slug: "idotlen-romantika", name: "Időtlen romantika", price: "39 900 Ft", description: "Letisztult, elegáns stílusú kollekció örök emlékekkel.", items: [ { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Asztalszám", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F3F0E9", },
-  { id: "04", slug: "vintage-varazs", name: "Vintage Varázs", price: "32 000 Ft", description: "Retro hangulatú kollekció klasszikus kerettel.", items: [ { name: "Vintage meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Asztalszám", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#EFEAE6", },
-  { id: "05", slug: "modern-minimal", name: "Modern Minimal", price: "31 000 Ft", description: "Tiszta, modern dizájn a minimalizmus szerelmeseinek.", items: [ { name: "Minimal meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Köszönőkártya", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F9F4F1", },
-  { id: "06", slug: "boho-alom", name: "Boho álom", price: "36 500 Ft", description: "Szabad szellemű, természetes hangulatú kollekció.", items: [ { name: "Boho meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Természetes ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Kézzel írt üzenetkártya", img: "/images/eskuvoihirlap.jpg" } ], bgColor: "#F6EFE9", },
+  { id: "01", name: "Lace Gazette", description: "4 oldalas meghívó újság formában...", price: "29 900 Ft-tól" },
+  { id: "02", name: "Lace Message", description: "Lepjétek meg vendégeiteket egy igazán modern, mégis meghitt gesztussal!...", price: "34 900 Ft-tól" },
+  { id: "03", name: "Lace Portrait", description: "Ebben a kollekcióban a főszerep a fotóitoké...", price: "39 900 Ft-tól" },
+  { id: "04", name: "Lace Pure", description: "A letisztultság és a minimalizmus kedvelőinek...", price: "32 000 Ft-tól" },
+  { id: "05", name: "Lace Bloom", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik...", price: "Egyedi árazás" },
+  // A korábbi 'otherCollections' és 'featuredCollections' itt egyesítve vannak
 ];
 
 const extrasData = [
-    { name: "Egyedi menükártya", price: "8 000 Ft" },
-    { name: "Esküvői weboldal", price: "25 000 Ft" },
-    { name: "Ajándékkísérő (20 db)", price: "5 000 Ft" },
-    { name: "Kézzel írt levél", price: "12 000 Ft" },
-    { name: "Ültetési rend tábla", price: "15 000 Ft" },
-    { name: "Pecsét egyedi monogrammal", price: "10 000 Ft" },
+    { name: "Kollekcióhoz illeszkedő menükártyák", price: "Egyedi" },
+    { name: "Esküvői weboldal a meghívó stílusában", price: "Egyedi" },
+    { name: "1 db QR-kód videóüzenettel", price: "Egyedi" },
+    // A korábbi 'extraCollection' items-ei alapján
 ];
 
+
 // Wrapper komponens, ami kiolvassa az URL paramétereket
-// Erre azért van szükség, mert a useSearchParams hook használatához Suspense "határ" kell
 const ContactPageContent = () => {
   const searchParams = useSearchParams();
   const selectedCollection = searchParams.get('kollekcio');
@@ -42,11 +40,10 @@ const ContactPageContent = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl md:text-5xl font-serif italic text-brand-text drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
+        <h1 className="font-serif text-4xl md:text-5xl italic text-brand-text drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
           Kapcsolatfelvétel
         </h1>
         <p className="mt-4 text-lg text-gray-600 font-body drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
-          {/* A szöveg dinamikusan változik, ha van kiválasztott kollekció */}
           {selectedCollection 
             ? `Érdeklődés a "${selectedCollection}" kollekcióról` 
             : 'Kérdésed van, vagy árajánlatot szeretnél kérni?'}
@@ -59,7 +56,6 @@ const ContactPageContent = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
       >
-        {/* Átadjuk a teljes kollekció listát ÉS a kiválasztottat is */}
         <ContactForm 
           collections={collectionsData} 
           extras={extrasData} 
@@ -76,7 +72,7 @@ export default function ContactPage() {
   const [vantaEffect, setVantaEffect] = useState(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
+    if (!vantaEffect && typeof window !== 'undefined') {
       setVantaEffect(
         FOG({
           el: vantaRef.current,
@@ -105,7 +101,7 @@ export default function ContactPage() {
     <>
       <Header />
       <main ref={vantaRef} className="min-h-screen relative overflow-hidden flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
-        <Suspense fallback={<div>Betöltés...</div>}>
+        <Suspense fallback={<div className="text-white">Betöltés...</div>}>
           <ContactPageContent />
         </Suspense>
       </main>

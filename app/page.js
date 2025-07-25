@@ -10,7 +10,6 @@ import * as THREE from 'three';
 import Header from '../components/Header';
 import AboutCard from '../components/About';
 import Collections from '../components/Collections';
-import ProductInfo from '../components/ProductInfo';
 import ContactSection from '../components/Contact';
 import HomePageReviews from '../components/HomePageReviews';
 import HomePageBlog from '../components/HomePageBlog';
@@ -147,7 +146,7 @@ export default function HomePage() {
         <DividerWithTitle title="Blogok" link="/blog" />
       </section>
       <HomePageBlog />
-      
+
       <ContactSection />
     </>
   );
