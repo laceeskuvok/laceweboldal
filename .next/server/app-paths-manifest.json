@@ -1,4 +1,7 @@
 {
+  "/page": "app/page.js",
+  "/info/page": "app/info/page.js",
+  "/kollekciok/page": "app/kollekciok/page.js",
   "/demo/eskuvoi/page": "app/demo/eskuvoi/page.js",
-  "/kollekciok/page": "app/kollekciok/page.js"
+  "/kapcsolat/page": "app/kapcsolat/page.js"
 }

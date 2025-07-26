@@ -25,7 +25,7 @@ const AboutCard = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.div
-            className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-xl border-4 border-white"
+            className="relative w-80 h-80 md:w-96 md:h-96 overflow-hidden shadow-xl border-4 border-white"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           >

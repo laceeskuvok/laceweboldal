@@ -10,7 +10,7 @@ const SuccessIcon = () => ( <motion.svg xmlns="http://www.w3.org/2000/svg" class
 const CheckIcon = (props) => ( <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg> );
 
 // === Fő Komponens ===
-const ContactForm = ({ collections, extras, initialCollectionName }) => {
+const ContactForm = ({ collections, extras, initialCollectionName, initialItems }) => {
   const [formType, setFormType] = useState(null);
   const [step, setStep] = useState(1);
   const [selection, setSelection] = useState({ collection: null, extras: [] });
@@ -18,15 +18,29 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   useEffect(() => {
+    // Ha a kollekciók oldalról érkezik egy konkrét kollekcióval
     if (initialCollectionName) {
       const preselected = collections.find(c => c.name === initialCollectionName);
       if (preselected) {
         setFormType('quote');
         setSelection(prev => ({ ...prev, collection: preselected }));
-        setStep(2); // Egyből a 2. lépésre ugrás: Extrák kiválasztása
+        setStep(2); // Ugrás az extrákhoz
       }
+    } 
+    // === JAVÍTVA: Ha a csomagösszeállítóból érkezik ===
+    else if (initialItems) {
+        setFormType('quote');
+        const itemsArray = initialItems.split(',').map(name => {
+            // Megkeressük az árát az 'extras' listából, ha van
+            const extraDetails = extras.find(e => e.name === name);
+            return { name, price: extraDetails?.price || 'Egyedi' };
+        });
+        
+        // A kollekció "Egyedi csomag", az elemek pedig bekerülnek az extrák közé
+        setSelection({ collection: { name: 'Egyedi csomag' }, extras: itemsArray });
+        setStep(2); // Ugrás az extrákhoz, hogy továbbiakat is választhasson
     }
-  }, [initialCollectionName, collections]);
+  }, [initialCollectionName, initialItems, collections, extras]);
 
   const handleSelectFormType = (type) => {
     setFormType(type);
@@ -118,13 +132,17 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
             <h3 className="font-sans uppercase tracking-wider text-brand-text border-b border-brand-rose/30 pb-2 mb-4">Választásod</h3>
             <div className="space-y-4">
                 <div>
-                    <p className="text-sm text-gray-500">Kollekció:</p>
+                    <p className="text-sm text-gray-500">
+                        {selection.collection?.name === 'Egyedi csomag' ? 'Egyedileg összeállított csomag' : 'Kollekció:'}
+                    </p>
                     <AnimatePresence>
                         {selection.collection && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-semibold text-brand-rose">{selection.collection.name}</motion.p>}
                     </AnimatePresence>
                 </div>
                 <div>
-                    <p className="text-sm text-gray-500">Extrák:</p>
+                    <p className="text-sm text-gray-500">
+                        {selection.collection?.name === 'Egyedi csomag' ? 'Választott elemek:' : 'Extrák:'}
+                    </p>
                     <ul className="mt-1 space-y-1">
                     <AnimatePresence>
                         {selection.extras.map(item => (
@@ -204,7 +222,7 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
                   )}
                   {step === 2 && (
                     <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit">
-                        <h4 className="font-serif text-xl text-brand-text mb-4">2. Válassz extrákat</h4>
+                        <h4 className="font-serif text-xl text-brand-text mb-4">{selection.collection?.name === 'Egyedi csomag' ? 'Válassz további extrákat' : '2. Válassz extrákat'}</h4>
                         <div className="space-y-3">
                             {extras.map(extra => (
                                 <button type="button" key={extra.name} onClick={() => handleExtraToggle(extra)}
@@ -215,7 +233,7 @@ const ContactForm = ({ collections, extras, initialCollectionName }) => {
                             ))}
                         </div>
                         <div className="flex justify-between mt-6">
-                            <button type="button" onClick={() => setStep(1)} className="text-sm font-sans text-gray-500 hover:text-brand-text">Vissza</button>
+                            <button type="button" onClick={() => { initialItems ? router.push('/kollekciok') : setStep(1) }} className="text-sm font-sans text-gray-500 hover:text-brand-text">Vissza</button>
                             <button type="button" onClick={() => setStep(3)} className="px-6 py-2 bg-brand-rose text-white font-sans text-sm rounded-full hover:bg-opacity-90 transition-opacity">Tovább</button>
                         </div>
                     </motion.div>

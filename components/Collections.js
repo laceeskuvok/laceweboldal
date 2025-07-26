@@ -94,7 +94,7 @@ export default function CollectionsSlider() {
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
                   </div>
 
-                  <div className="py-4 text-center font-serif italic text-lg text-gray-700">
+                  <div className="py-4 text-center font-serif text-xl text-gray-700">
                     {item.title}
                   </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { Newspaper, QrCode, Sparkles, CheckCircle, GitMerge } from 'lucide-react';
 import Header from '../../components/Header';
@@ -17,64 +17,24 @@ export default function InfoPage() {
     if (!vantaEffect && typeof window !== "undefined") {
       setVantaEffect(
         FOG({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyrocontrols: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          highlightColor: 0xffffff,
-          midtoneColor: 0xd9c4c4,
-          lowlightColor: 0xf5ebeb,
-          baseColor: 0xfaf7f6,
-          blurFactor: 0.5,
-          speed: 0.6,
-          zoom: 0.6,
+          el: vantaRef.current, THREE: THREE, mouseControls: true, touchControls: true, gyrocontrols: false,
+          minHeight: 200.0, minWidth: 200.0, highlightColor: 0xffffff, midtoneColor: 0xd9c4c4,
+          lowlightColor: 0xf5ebeb, baseColor: 0xfaf7f6, blurFactor: 0.5, speed: 0.6, zoom: 0.6,
         })
       );
     }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
+    return () => { if (vantaEffect) vantaEffect.destroy(); };
   }, [vantaEffect]);
 
   const processSteps = [
-    {
-      title: "Konzultáció & Álmodozás",
-      description:
-        "Egy inspiráló beszélgetés során megismerem az elképzeléseiteket, stílusotokat és a nagy nap egyedi hangulatát.",
-    },
-    {
-      title: "Az Első Varázslat",
-      description:
-        "A megbeszéltek alapján életre keltem az első, izgalmas látványterveket, amiket izgatottan küldök át nektek.",
-    },
-    {
-      title: "Tökéletesítés",
-      description:
-        "Lehetőségetek van finomhangolni a részleteket (általában 2 körben), hogy minden pixel a helyére kerüljön.",
-    },
-    {
-      title: "A Kész Alkotás",
-      description:
-        "A jóváhagyott, végleges tervet prémium minőségben valósítjuk meg, hogy kézzelfogható emlékké váljon.",
-    },
+    { title: "Konzultáció", description: "Egy beszélgetes során megismerem az elképzeléseiteket és a nagy nap hangulatát." },
+    { title: "Látványtervek", description: "A megbeszéltek alapján elkészitem az első vázlatokat." },
+    { title: "Tökéletesítés", description: "Lehetőségetek van finomhangolni a részleteket (általában 2 körben), hogy minden pixel a helyére kerüljön." },
+    { title: "A Kész Alkotás", description: "A jóváhagyott, végleges tervet prémium minőségben valósítjuk meg, hogy kézzelfogható emlékké váljon." },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+  const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } } };
+  const itemVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
   return (
     <>
@@ -92,50 +52,36 @@ export default function InfoPage() {
             <motion.div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-2xl p-8 md:p-16 rounded-3xl border border-white/20 shadow-2xl space-y-28"
                 initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} variants={containerVariants}>
                 
-                {/* === ÚJ: KIEMELT SZOLGÁLTATÁSOK SZEKCIÓ === */}
                 <motion.div variants={itemVariants} className="text-center">
                     <h2 className="font-serif text-4xl md:text-5xl text-brand-text">Két Különleges Történet</h2>
                     <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">Két zászlóshajónk, amelyek garantáltan egyedivé és felejthetetlenné teszik a nagy napotok bejelentését.</p>
+                    {/* === JAVÍTVA: Egyszerűbb, egységes kártya stílus === */}
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <InteractiveCard icon={<Newspaper size={48} strokeWidth={1}/>} title="Az Esküvői Hírlap" description="Egy valódi újság, tele a ti történeteitekkel, interjúkkal és a nagy nap programjával. Garantáltan minden vendég megőrzi majd!" buttonHref="/kollekciok#eskuvoi-hirlap" buttonText="Részletek" />
-                        <InteractiveCard icon={<QrCode size={48} strokeWidth={1}/>} title="A QR Kódos Varázslat" description="Lepjétek meg a vendégeket egy személyes videóüzenettel, amit a meghívóba rejtett QR kód kelt életre. Egy modern, meghitt gesztus." buttonHref="/kollekciok#tortenetek-kepekben" buttonText="Részletek" isDark />
+                        <Link href="/kollekciok#lace-gazette" className="block bg-brand-pale-pink/50 rounded-2xl p-8 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300">
+                            <Newspaper className="w-12 h-12 text-brand-rose" strokeWidth={1}/>
+                            <h3 className="font-serif text-3xl text-brand-text mt-4">Lace Gazette</h3>
+                            <p className="mt-2 text-gray-600 leading-relaxed font-body">Egy valódi újság, tele a ti történeteitekkel, interjúkkal és a nagy nap programjával. Garantáltan minden vendég megőrzi majd!</p>
+                        </Link>
+                         <Link href="/kollekciok#lace-message" className="block bg-brand-rose text-white rounded-2xl p-8 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300">
+                            <QrCode className="w-12 text-gray-700 h-12" strokeWidth={1}/>
+                            <h3 className="font-serif text-3xl text-gray-700 mt-4">Lace Message</h3>
+                            <p className="mt-2 text-gray-700 leading-relaxed font-body">Lepjétek meg a vendégeket egy személyes videóüzenettel, amit a meghívóba rejtett QR kód kelt életre. Egy modern, meghitt gesztus.</p>
+                        </Link>
                     </div>
                 </motion.div>
 
             {/* === AZ ALKOTÁS FOLYAMATA === */}
-
             <motion.div variants={itemVariants} className="text-center">
-              <GitMerge
-                className="w-12 h-12 mx-auto text-brand-rose"
-                strokeWidth={1}
-              />
-
-              <h2 className="font-serif text-4xl md:text-5xl text-brand-text mt-4">
-                Az álomból valóság: a közös munka lépései
-              </h2>
-
+              <GitMerge className="w-12 h-12 mx-auto text-brand-rose" strokeWidth={1} />
+              <h2 className="font-serif text-4xl md:text-5xl text-brand-text mt-4">Az álomból valóság: a közös munka lépései</h2>
               <div className="mt-16 relative">
-                {/* Összekötő vonal */}
-
                 <div className="absolute top-5 left-0 w-full h-0.5 bg-gray-200" />
-
                 <div className="relative grid grid-cols-1 md:grid-cols-4 gap-12">
                   {processSteps.map((step, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center text-center"
-                    >
-                      <div className="w-10 h-10 bg-brand-rose text-white rounded-full flex items-center justify-center font-serif text-xl z-10 shadow-lg">
-                        {index + 1}
-                      </div>
-
-                      <h4 className="mt-6 font-serif text-2xl text-brand-text">
-                        {step.title}
-                      </h4>
-
-                      <p className="mt-2 text-gray-500 font-body">
-                        {step.description}
-                      </p>
+                    <div key={index} className="flex flex-col items-center text-center">
+                      <div className="w-10 h-10 bg-brand-rose text-white rounded-full flex items-center justify-center font-serif text-xl z-10 shadow-lg">{index + 1}</div>
+                      <h4 className="mt-6 font-serif text-2xl text-brand-text">{step.title}</h4>
+                      <p className="mt-2 text-gray-500 font-body">{step.description}</p>
                     </div>
                   ))}
                 </div>
@@ -149,15 +95,15 @@ export default function InfoPage() {
                         <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">A kiemelt kollekciók mellett természetesen számos más stílusban is alkotunk, sőt, teljesen egyedi elképzeléseket is megvalósítunk.</p>
                     </div>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
-                         <Link href="/kollekciok" className="block bg-brand-pale-pink/50 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow">
+                         <Link href="/kollekciok" className="block bg-brand-pale-pink/50 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300">
                             <Sparkles className="w-12 h-12 text-brand-rose" strokeWidth={1}/>
                             <h3 className="font-serif text-3xl text-brand-text mt-4">További kollekciók</h3>
                             <p className="mt-2 text-gray-600 leading-relaxed font-body">Böngészd végig az összes elérhető stílust, a moderntől a rusztikusig.</p>
                         </Link>
-                         <Link href="/kapcsolat?type=egyedi" className="block bg-gray-800 text-white rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow">
-                            <Sparkles className="w-12 h-12 text-brand-rose" strokeWidth={1}/>
-                            <h3 className="font-serif text-3xl mt-4">Egyedi Megrendelés</h3>
-                            <p className="mt-2 text-gray-300 leading-relaxed font-body">Valósítsuk meg együtt a teljesen egyedi elképzelésedet!</p>
+                         <Link href="/kapcsolat?type=egyedi" className="block bg-brand-rose text-white rounded-2xl p-8 md:p-12 text-center flex flex-col items-center justify-center hover:shadow-xl transition-shadow duration-300">
+                            <Sparkles className="w-12 text-gray-700 h-12" strokeWidth={1}/>
+                            <h3 className="font-serif text-3xl text-gray-700 mt-4">Egyedi Megrendelés</h3>
+                            <p className="mt-2 text-gray-700 leading-relaxed font-body">Valósítsuk meg együtt a teljesen egyedi elképzelésedet!</p>
                         </Link>
                     </div>
                 </motion.div>
@@ -167,89 +113,6 @@ export default function InfoPage() {
     </>
   );
 }
-
-// === ÚJRAHASZNÁLHATÓ ÉS FELTURBÓZOTT KOMPONENSEK ===
-
-const AnimatedIcon = ({ children }) => {
-  // JAVÍTVA: A hiba elkerülése érdekében itt már nincs 'useScroll'
-  return (
-    <motion.div
-      initial={{ y: -20, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.8 }}
-      transition={{ duration: 0.8 }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const InfoCard = ({ title, description }) => (
-  <motion.div
-    whileHover={{ y: -10 }}
-    className="flex flex-col items-center p-4"
-  >
-    <div className="w-20 h-20 rounded-full bg-brand-pale-pink flex items-center justify-center mb-5 shadow-inner transition-all duration-300 hover:shadow-lg">
-      <CheckCircle className="w-10 h-10 text-brand-rose" strokeWidth={1.5} />
-    </div>
-    <h4 className="font-serif text-xl text-brand-text">{title}</h4>
-    <p className="text-gray-500 mt-2 text-sm font-body">{description}</p>
-  </motion.div>
-);
-
-const ProcessTimeline = ({ steps }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start center", "end center"],
-  });
-  return (
-    <div ref={ref} className="mt-24 relative max-w-2xl mx-auto">
-      <motion.div
-        style={{ scaleY: scrollYProgress }}
-        className="absolute left-1/2 -ml-0.5 w-1 h-full bg-gradient-to-b from-brand-pale-pink via-brand-rose to-brand-pale-pink origin-top"
-      />
-      <div className="space-y-20">
-        {steps.map((step, index) => {
-          const side = index % 2 === 0;
-          return (
-            <motion.div
-              key={index}
-              className="flex items-center gap-8"
-              initial={{ opacity: 0, x: side ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ amount: 0.8, once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div
-                className={`w-1/2 ${
-                  side ? "text-right pr-12" : "order-2 text-left pl-12"
-                }`}
-              >
-                <h4 className="font-serif text-2xl text-brand-text">
-                  {step.title}
-                </h4>
-                <p className="mt-2 text-gray-500 font-body">
-                  {step.description}
-                </p>
-              </div>
-              <motion.div
-                whileInView={{
-                  scale: [1, 1.25, 1],
-                  transition: { duration: 0.8, delay: 0.4, ease: "circOut" },
-                }}
-                viewport={{ amount: 0.8, once: true }}
-                className="w-16 h-16 bg-white border-4 border-brand-rose text-brand-rose rounded-full flex items-center justify-center font-serif text-2xl z-10 shadow-lg flex-shrink-0 order-1"
-              >
-                {index + 1}
-              </motion.div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
 
 const InteractiveCard = ({
   icon,

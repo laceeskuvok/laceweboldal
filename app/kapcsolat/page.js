@@ -31,40 +31,35 @@ const extrasData = [
 const ContactPageContent = () => {
   const searchParams = useSearchParams();
   const selectedCollection = searchParams.get('kollekcio');
+  const selectedItems = searchParams.get('items'); // <<< EZ HIÁNYZOTT
 
   return (
     <div className="relative z-10 w-full max-w-4xl">
-      <motion.div 
-        className="text-center mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div className="text-center mb-8" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h1 className="font-serif text-4xl md:text-5xl italic text-brand-text drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
           Kapcsolatfelvétel
         </h1>
         <p className="mt-4 text-lg text-gray-600 font-body drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
-          {selectedCollection 
-            ? `Érdeklődés a "${selectedCollection}" kollekcióról` 
-            : 'Kérdésed van, vagy árajánlatot szeretnél kérni?'}
+          {selectedCollection
+            ? `Érdeklődés a "${selectedCollection}" kollekcióról`
+            : selectedItems
+              ? 'Egyedi csomag alapján kérsz ajánlatot'
+              : 'Kérdésed van, vagy árajánlatot szeretnél kérni?'}
         </p>
       </motion.div>
 
-      <motion.div 
-        className="bg-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-      >
-        <ContactForm 
-          collections={collectionsData} 
-          extras={extrasData} 
-          initialCollectionName={selectedCollection} 
+      <motion.div className="bg-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}>
+        <ContactForm
+          collections={collectionsData}
+          extras={extrasData}
+          initialCollectionName={selectedCollection}
+          initialItems={selectedItems} // <<< EZ A MÁSODIK FONTOS RÉSZ
         />
       </motion.div>
     </div>
   );
 };
+
 
 // A fő oldal komponens, ami a hátteret és az elrendezést kezeli
 export default function ContactPage() {
