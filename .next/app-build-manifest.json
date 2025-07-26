@@ -24,11 +24,6 @@
       "static/css/app/demo/eskuvoi/page.css",
       "static/chunks/app/demo/eskuvoi/page.js"
     ],
-    "/kapcsolat/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/kapcsolat/page.js"
-    ],
     "/info/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

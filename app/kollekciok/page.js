@@ -46,7 +46,7 @@ const featuredCollections = [
   {
     id: "03", 
     slug: "lace-website", 
-    name: "Lace Website", 
+    name: "Lace Page", 
     price: "49 900 Ft-tól", 
     description: "Minden információ egy helyen, a meghívótok stílusában! Egy személyre szabott esküvői weboldal a legelegánsabb és legkényelmesebb módja, hogy a vendégeitekkel minden fontos részletet megosszátok, a helyszíntől az ajándéklistáig.", 
     items: [ 
@@ -288,94 +288,105 @@ return (
 
 const imagePositions = [ { top: "5%", left: "10%", width: "60%", height: "80%", rotate: -8 }, { top: "25%", left: "45%", width: "50%", height: "65%", rotate: 5 }, { top: "50%", left: "5%", width: "45%", height: "45%", rotate: 10 }, { top: "60%", left: "60%", width: "35%", height: "40%", rotate: -3 }, ];
 
-// === ÚJ, FELTURBÓZOTT CSOMAGÖSSZEÁLLÍTÓ KOMPONENS ===
+// === ÚJ, FELTURBÓZOTT CSOMAGÖSSZEÁLLÍTÓ ("Stílus-Keverő") ===
 const packageOptions = {
-  basics: [
-      { name: 'Meghívó', description: 'Kétoldalas, prémium papíron', price: '15 000 Ft-tól' },
-      { name: 'Boríték', description: 'A meghívó stílusához illeszkedő', price: '5 000 Ft-tól' },
-      { name: 'Ültetőkártya', description: 'Vendégek nevével ellátva', price: '8 000 Ft-tól' },
-      { name: 'Menükártya', description: 'A vacsora fogásai elegánsan', price: '8 000 Ft-tól' },
+  styles: [
+    { name: 'Időtlen Romantika', description: 'Klasszikus, elegáns betűtípusok és finom vonalak.' },
+    { name: 'Modern Minimalista', description: 'Letisztult formák, merész tipográfia, szellős elrendezés.' },
+    { name: 'Rusztikus Varázslat', description: 'Természetes textúrák, kézzel rajzolt motívumok.' },
   ],
-  extras: [
-      { name: 'Esküvői Hírlap', description: 'Egyedi újság a történetetekkel', price: '29 900 Ft-tól' },
-      { name: 'QR Kódos Videóüzenet', description: 'Modern & meghitt gesztus', price: '15 000 Ft' },
-      { name: 'Esküvői Weboldal', description: 'Minden infó egy helyen, stílusosan', price: '25 000 Ft-tól' },
-      { name: 'Pecsét Monogrammal', description: 'Elegáns zárás a borítékokra', price: '10 000 Ft' },
+  formats: [
+      { name: 'Klasszikus Meghívó', description: 'Kétoldalas kártya, prémium papíron.' },
+      { name: 'Esküvői Hírlap', description: '4 oldalas, magazinszerű élmény a történetetekkel.' },
+      { name: 'QR Kódos Meghívó', description: 'Interaktív megoldás videóüzenettel.' },
+  ],
+  addons: [
+      { name: 'Ültetőkártya', description: 'Vendégek nevével ellátva' },
+      { name: 'Menükártya', description: 'A vacsora fogásai elegánsan' },
+      { name: 'Programkártya', description: 'A nagy nap menetrendje' },
+      { name: 'Köszönőkártya', description: 'Személyes üzenet a vendégeknek' },
+  ],
+  finishes: [
+      { name: 'Pecsét Monogrammal', description: 'Elegáns viaszpecsét a ti monogramotokkal a borítékra.' },
+      { name: 'Esküvői Weboldal', description: 'Minden információ egy helyen, a választott stílusban. Késöbb teljesen testreszabható a részletekkel.' },
   ]
 };
 
 function CustomPackageBuilder() {
-  const [selectedItems, setSelectedItems] = useState([]);
+    const [step, setStep] = useState(1);
+    const [selection, setSelection] = useState({ style: null, format: null, addons: [], finishes: [] });
 
-    const handleToggleItem = (item) => {
-        setSelectedItems(prev => 
-            prev.some(p => p.name === item.name)
-                ? prev.filter(p => p.name !== item.name)
-                : [...prev, item]
-        );
+    const handleSelect = (category, value) => {
+        if (category === 'addons' || category === 'finishes') {
+            setSelection(prev => ({
+                ...prev,
+                [category]: prev[category].includes(value) ? prev[category].filter(i => i !== value) : [...prev[category], value]
+            }));
+        } else {
+            setSelection(prev => ({ ...prev, [category]: value }));
+            setStep(prevStep => prevStep + 1);
+        }
     };
     
-    // === ÚJ: Dinamikus URL generálása a kiválasztott elemek alapján ===
-    const customPackageQuery = new URLSearchParams({
-        type: 'custom',
-        items: selectedItems.map(item => item.name).join(','),
-    }).toString();
+    const canProceed = () => {
+        if (step === 1) return selection.style;
+        if (step === 2) return selection.format;
+        return true;
+    };
+    
+    const getSummary = () => {
+        let summary = [];
+        if (selection.style) summary.push({ name: selection.style.name, type: 'Stílus' });
+        if (selection.format) summary.push({ name: selection.format.name, type: 'Formátum' });
+        selection.addons.forEach(item => summary.push({ name: item.name, type: 'Kiegészítő' }));
+        selection.finishes.forEach(item => summary.push({ name: item.name, type: 'Extra' }));
+        return summary;
+    };
 
-  return (
+    const summaryItems = getSummary();
+    const customPackageQuery = new URLSearchParams({ type: 'custom', items: summaryItems.map(i => i.name).join(',') }).toString();
+
+    return (
       <section className="py-24 bg-brand-background">
           <div className="max-w-7xl mx-auto px-8">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center">
-                  <h2 className="font-serif text-4xl md:text-5xl text-brand-text">Állítsd össze egyedi csomagodat!</h2>
-                  <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto font-body">Nincs két egyforma esküvő, és a meghívóknak sem kell azoknak lenniük. Válogasd össze az elemeket, amikre valóban szükségetek van, és kérj egy személyre szabott árajánlatot!</p>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+                  <h2 className="font-serif text-4xl md:text-5xl text-brand-text">Tervezd meg a saját kollekciódat!</h2>
+                  <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto font-body">Nem találtad meg a tökéleteset? Nincs gond! Ezzel a három egyszerű lépéssel Te magad állíthatod össze az álomcsomagot.</p>
               </motion.div>
 
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                  {/* Választó felület */}
-                  <div className="lg:col-span-2 space-y-12">
-                      <div>
-                          <h3 className="font-serif text-2xl text-brand-text border-b border-brand-rose/30 pb-3 mb-6">Alapvető elemek</h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              {packageOptions.basics.map(item => (
-                                  <OptionCard key={item.name} item={item} onSelect={handleToggleItem} isSelected={selectedItems.some(p => p.name === item.name)} />
-                              ))}
-                          </div>
-                      </div>
-                      <div>
-                          <h3 className="font-serif text-2xl text-brand-text border-b border-brand-rose/30 pb-3 mb-6">Különleges extrák</h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              {packageOptions.extras.map(item => (
-                                  <OptionCard key={item.name} item={item} onSelect={handleToggleItem} isSelected={selectedItems.some(p => p.name === item.name)} />
-                              ))}
-                          </div>
-                      </div>
+                  <div className="lg:col-span-2">
+                    <AnimatePresence mode="wait">
+                        {step === 1 && <StepComponent key={1} title="1. Lépés: Mi legyen az alap stílus?" options={packageOptions.styles} selected={selection.style} onSelect={(val) => handleSelect('style', val)} />}
+                        {step === 2 && <StepComponent key={2} title="2. Lépés: Milyen formátumban mesélitek el a történetet?" options={packageOptions.formats} selected={selection.format} onSelect={(val) => handleSelect('format', val)} />}
+                        {step === 3 && <StepComponent key={3} title="3. Lépés: Válassz kiegészítőket és extrákat" options={[...packageOptions.addons, ...packageOptions.finishes]} selected={[...selection.addons, ...selection.finishes]} onSelect={(val) => val.price ? handleSelect('finishes', val) : handleSelect('addons', val)} isMultiSelect />}
+                    </AnimatePresence>
                   </div>
                   
-                  {/* Összegző panel */}
                   <div className="lg:sticky top-28 h-fit">
                         <div className="bg-white rounded-2xl shadow-xl p-8">
                             <h3 className="font-serif text-2xl text-brand-text flex items-center gap-3"><PackageCheck /> Összeállított csomagod</h3>
-                            <div className="mt-6 border-t border-gray-200 pt-6 min-h-[150px]">
+                            <div className="mt-6 border-t border-gray-200 pt-6 min-h-[200px]">
                                 <AnimatePresence>
-                                    {selectedItems.length > 0 ? (
+                                    {summaryItems.length > 0 ? (
                                         <motion.ul className="space-y-3">
-                                            {selectedItems.map(item => (
-                                                <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="flex justify-between text-sm">
+                                            {summaryItems.map(item => (
+                                                <motion.li key={item.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="text-sm">
+                                                    <span className="font-semibold text-gray-500 block">{item.type}</span>
                                                     <span className="text-gray-700">{item.name}</span>
-                                                    <span className="font-semibold text-gray-500">{item.price}</span>
                                                 </motion.li>
                                             ))}
                                         </motion.ul>
                                     ) : (
-                                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-gray-500 pt-8">Válassz elemeket a csomagod összeállításához!</motion.p>
+                                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-gray-500 pt-12">Válogasd össze álmaid csomagját!</motion.p>
                                     )}
                                 </AnimatePresence>
                             </div>
-                            {/* === JAVÍTVA: A link most már a dinamikus URL-t használja === */}
-                            <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior>
-                                <a className={`btn-primary w-full mt-6 text-center ${selectedItems.length === 0 ? 'opacity-50 pointer-events-none' : ''}`}>
-                                    Megrendelem <ArrowRight className="inline ml-2 w-4 h-4"/>
-                                </a>
-                            </Link>
+                            <div className="flex items-center gap-4 mt-6">
+                                {step > 1 && <button onClick={() => setStep(s => s - 1)} className="text-sm text-gray-500 hover:text-brand-text">Vissza</button>}
+                                {step < 3 && <button onClick={() => setStep(s => s + 1)} disabled={!canProceed()} className="btn-primary flex-grow text-center disabled:opacity-50">Tovább</button>}
+                                {step === 3 && <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior><a className="btn-primary w-full text-center">Árajánlatot kérek</a></Link>}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -384,15 +395,26 @@ function CustomPackageBuilder() {
   );
 }
 
+const StepComponent = ({ title, options, selected, onSelect, isMultiSelect = false }) => (
+    <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} transition={{ type: 'spring', stiffness: 200, damping: 25 }}>
+        <h3 className="font-serif text-2xl text-brand-text border-b border-brand-rose/30 pb-3 mb-6">{title}</h3>
+        <div className={`grid grid-cols-1 ${isMultiSelect ? 'sm:grid-cols-2' : 'sm:grid-cols-3'} gap-4`}>
+            {options.map(item => (
+                <OptionCard key={item.name} item={item} onSelect={() => onSelect(item)} isSelected={isMultiSelect ? selected.some(s => s.name === item.name) : selected?.name === item.name} />
+            ))}
+        </div>
+    </motion.div>
+);
+
 const OptionCard = ({ item, onSelect, isSelected }) => (
   <motion.div 
-      onClick={() => onSelect(item)}
-      className={`p-5 rounded-xl border-2 cursor-pointer transition-all duration-300 ${isSelected ? 'border-brand-rose bg-brand-pale-pink/50' : 'bg-white hover:border-brand-rose/50'}`}
+      onClick={onSelect}
+      className={`p-5 rounded-xl border-2 cursor-pointer transition-all duration-300 h-full ${isSelected ? 'border-brand-rose bg-brand-pale-pink/50' : 'bg-white hover:border-brand-rose/50'}`}
       whileTap={{ scale: 0.97 }}
   >
       <div className="flex items-center justify-between">
           <h4 className="font-semibold text-brand-text">{item.name}</h4>
-          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${isSelected ? 'bg-brand-rose border-brand-rose' : 'border-gray-300'}`}>
+          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all flex-shrink-0 ${isSelected ? 'bg-brand-rose border-brand-rose' : 'border-gray-300'}`}>
               {isSelected && <Check className="w-4 h-4 text-white"/>}
           </div>
       </div>

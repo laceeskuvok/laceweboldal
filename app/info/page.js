@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Newspaper, QrCode, Sparkles, CheckCircle, GitMerge } from 'lucide-react';
+import { Newspaper, QrCode, Sparkles, CheckCircle, GitMerge, Gift, MessageSquare, MapPin, Check } from 'lucide-react';
 import Header from '../../components/Header';
 import FOG from 'vanta/dist/vanta.fog.min.js';
 import * as THREE from 'three';
@@ -88,6 +88,8 @@ export default function InfoPage() {
               </div>
             </motion.div>
 
+            <DigitalExtrasSection />
+
             {/* === EGYÉB LEHETŐSÉGEK === */}
             <motion.div variants={itemVariants}>
                     <div className="text-center">
@@ -113,6 +115,165 @@ export default function InfoPage() {
     </>
   );
 }
+
+// === FELTURBÓZOTT DIGITÁLIS EXTRÁK KOMPONENS ===
+const DigitalExtrasSection = () => {
+    const features = [
+        { icon: <Gift size={24} />, title: "Interaktív Ajándéklista", description: "Segítsetek a vendégeknek egy online, kattintható ajándéklistával, ami valós időben frissül. Elkerülhetitek a felesleges ajándékokat, és a násznép is magabiztosan választhat.", demo: <GiftListDemo /> },
+        { icon: <MessageSquare size={24} />, title: "Online Vendégkönyv", description: "Gyűjtsétek a jókívánságokat egy helyen, amit az esküvő után is öröm lesz visszaolvasni. A távolabbi rokonok és barátok is hagyhatnak személyes üzenetet.", demo: <GuestbookDemo /> },
+        { icon: <MapPin size={24} />, title: "Információs Mini-Oldal", description: "A legfontosabb infók (térkép, program, szállás) egy elegáns, mobilon is tökéletesen elérhető oldalon. Praktikus és kényelmes megoldás a vendégek számára.", demo: <InfoPageDemo /> },
+        { icon: <Sparkles size={24} />, title: "A Teljes Esküvői Weboldal", description: "Az 'all-in-one' csomag a tökéletes digitális élményért. Tartalmazza az összes fenti funkciót, kiegészítve fotógalériával, videóval és online RSVP űrlappal.", demo: <div className="text-center p-8"><Link href="/demo/eskuvoi" target="_blank" className="btn-primary">Teljes Demó Megnyitása</Link></div> }
+    ];
+
+    return (
+        <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="space-y-12">
+            <div className="text-center">
+                <h2 className="font-serif text-4xl md:text-5xl text-brand-text">A Ti Digitális Emléketek – Modulárisan</h2>
+                <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed font-body">Válasszátok csak azokat a digitális funkciókat, amikre valóban szükségetek van, vagy kérjétek a teljes csomagot a tökéletes online élményért!</p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {features.map((feature, i) => (
+                    <motion.div key={feature.title}
+                        variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+                        className="bg-white/50 rounded-2xl shadow-lg border border-white/30 overflow-hidden flex flex-col">
+                        <div className="p-6">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 bg-brand-rose text-white rounded-lg flex items-center justify-center flex-shrink-0">{feature.icon}</div>
+                                <h3 className="font-serif text-2xl text-brand-text">{feature.title}</h3>
+                            </div>
+                            <p className="mt-4 text-sm text-gray-600 font-body leading-relaxed">{feature.description}</p>
+                        </div>
+                        <div className="bg-gray-100/70 p-4 border-t border-gray-200/80 mt-auto">
+                            {feature.demo}
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+};
+
+// === FELTURBÓZOTT MINI-DEMÓ KOMPONENSEK ===
+const GiftListDemo = () => {
+    const initialGifts = [
+        { id: 1, name: 'Wellness hétvége', is_claimed: true, claimed_by: 'Nóri & Gergő' },
+        { id: 2, name: 'Repülőjegy', is_claimed: false },
+    ];
+    const [gifts, setGifts] = useState(initialGifts);
+    const [newItem, setNewItem] = useState({ name: '', description: '', image: null });
+    
+    const handleClaim = (id) => {
+        const name = prompt("Kérjük, add meg a neved a foglaláshoz:");
+        if (name) {
+            setGifts(gifts.map(g => g.id === id ? { ...g, is_claimed: true, claimed_by: name } : g));
+        }
+    };
+
+    const handleAddItem = () => {
+        if (!newItem.name) return;
+        setGifts([...gifts, { id: Date.now(), name: newItem.name, description: newItem.description, image: newItem.image, is_claimed: false }]);
+        setNewItem({ name: '', description: '', image: null });
+    };
+
+    return (
+        <div className="p-2 space-y-3 text-sm">
+            <div className="space-y-2">
+                {gifts.map(gift => (
+                    <div key={gift.id} className={`p-2 rounded-md flex items-center gap-3 transition-all ${gift.is_claimed ? 'bg-gray-200' : 'bg-white shadow-sm'}`}>
+                        {gift.image && <img src={gift.image} className="w-8 h-8 rounded object-cover"/>}
+                        <div className="flex-grow">
+                            <p className={`font-semibold ${gift.is_claimed ? 'text-gray-400 line-through' : 'text-brand-text'}`}>{gift.name}</p>
+                            {gift.is_claimed && <p className="text-xs text-gray-500">Lefoglalva ({gift.claimed_by})</p>}
+                        </div>
+                        {!gift.is_claimed && <button onClick={() => handleClaim(gift.id)} className="w-6 h-6 flex items-center justify-center border-2 border-brand-rose text-brand-rose rounded-full hover:bg-brand-rose/10 transition"><Check size={12} /></button>}
+                    </div>
+                ))}
+            </div>
+            <div className="pt-3 border-t border-gray-200">
+                 <input type="text" value={newItem.name} onChange={e => setNewItem({...newItem, name: e.target.value})} placeholder="Új ötlet neve..." className="w-full text-xs p-2 border rounded-md mb-2"/>
+                 <button onClick={handleAddItem} className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition">Hozzáadás a demóhoz</button>
+            </div>
+        </div>
+    );
+};
+
+const GuestbookDemo = () => {
+    const [messages, setMessages] = useState([
+        { id: 1, name: 'Anna', text: 'Sok boldogságot kívánunk!' }
+    ]);
+    const [newMessage, setNewMessage] = useState({ name: '', text: ''});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!newMessage.name || !newMessage.text) return;
+        setIsSubmitting(true);
+        setTimeout(() => {
+            setMessages(prev => [...prev, { id: Date.now(), ...newMessage }]);
+            setNewMessage({ name: '', text: '' });
+            setIsSubmitting(false);
+        }, 500); // Szimulálunk egy kis késleltetést
+    };
+
+    return (
+        <div className="p-2 space-y-3">
+            <div className="space-y-2 max-h-32 overflow-y-auto pr-2">
+                <AnimatePresence>
+                    {messages.map(msg => (
+                        <motion.div 
+                            key={msg.id}
+                            layout
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="bg-white p-3 rounded-lg shadow-sm"
+                        >
+                            <p className="text-xs font-semibold text-brand-rose">{msg.name}</p>
+                            <p className="text-sm text-gray-600">{msg.text}</p>
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
+            </div>
+            <form onSubmit={handleSubmit} className="pt-3 border-t border-gray-200 space-y-2">
+                <input type="text" value={newMessage.name} onChange={e => setNewMessage({...newMessage, name: e.target.value})} placeholder="Neved..." className="w-full text-xs p-2 border rounded-md" required />
+                <input type="text" value={newMessage.text} onChange={e => setNewMessage({...newMessage, text: e.target.value})} placeholder="Írj egy üzenetet..." className="w-full text-xs p-2 border rounded-md" required />
+                <button type="submit" disabled={isSubmitting} className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition disabled:opacity-50">
+                    {isSubmitting ? "Küldés..." : "Üzenet elküldése"}
+                </button>
+            </form>
+        </div>
+    );
+};
+
+const InfoPageDemo = () => {
+    const locationName = "Liszkay Pincészet, Monoszló";
+    const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.172491125211!2d17.62181891559899!3d46.840224979141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769a6d0f28a8d7d%3A0x86c6b229c13b2c1!2sLiszkay%20Pinc%C3%A9szet!5e0!3m2!1shu!2shu!4v1678886543210!5m2!1shu!2shu";
+    const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Liszkay+Pincészet+Monoszló";
+
+    return (
+        <div className="p-2 space-y-3">
+            <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-brand-rose flex-shrink-0"/>
+                <p className="text-sm font-semibold text-gray-700 truncate">{locationName}</p>
+            </div>
+            <div className="h-28 bg-gray-200 rounded-lg overflow-hidden">
+                <iframe
+                    src={mapUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+            <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition block text-center">
+                Útvonaltervezés
+            </a>
+        </div>
+    );
+};
+
 
 const InteractiveCard = ({
   icon,
