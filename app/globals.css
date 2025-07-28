@@ -84,3 +84,11 @@
 .btn-primary:hover::before {
   transform: scale(2.5);
 }
+
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}

@@ -7,42 +7,44 @@ import Link from "next/link";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Header from "../../components/Header";
-import { CheckCircle, ArrowRight, PackageCheck, Check, ArrowBigRightDash } from "lucide-react";
+import { CheckCircle, Gift, MessageSquare, MapPin, Check, Plus, PackageCheck } from "lucide-react";
 import DemoDrawer from "../../components/DemoDrawer";
+import { useMediaQuery } from "../../lib/useMediaQuery";
+import { Dialog } from "@headlessui/react";
 
 
-// === ÚJ, VÉGLEGES ADATSTRUKTÚRA ===
-const featuredCollections = [
+// === VÉGLEGES ADATSTRUKTÚRA ===
+const collectionsData = [
   { 
-    id: "01", 
-    slug: "lace-gazette", 
-    name: "Lace Gazette", 
-    price: "29 900 Ft-tól", 
-    description: "4 oldalas meghívó újság formában. A címlapon természetesen ti szerepeltek, belül egy kedves interjú meséli el a szerelmetek történetét. A helyszín és a dátum kreatívan, játékos formában van elrejtve a sorok között, így az olvasás is élménnyé válik. Igény esetén a menü is helyet kap benne. Tökéletes választás, ha valami igazán különlegeset szeretnétek.", 
-    items: [ 
-      { name: "4 oldalas újság meghívó (színes/ff)", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Esküvői program", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Interjú a párral", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" },
+    id: "01",
+    slug: "lace-gazette",
+    name: "Lace Gazette",
+    price: "29 900 Ft-tól",
+    description: "4 oldalas meghívó újság formában. A címlapon természetesen ti szerepeltek, belül egy kedves interjú meséli el a szerelmetek történetét. A helyszín és a dátum kreatívan, játékos formában van elrejtve a sorok között, így az olvasás is élménnyé válik. Igény esetén a menü is helyet kap benne. Tökéletes választás, ha valami igazán különlegeset szeretnétek.",
+    items: [
+    { name: "4 oldalas újság meghívó (színes/ff)", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Esküvői program", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Interjú a párral", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" },
     ],
     notes: "Extraként feltűnthető benne a menü is.",
-    bgColor: "#FAF7F6" 
-  },
-  { 
-    id: "02", 
-    slug: "lace-message", 
-    name: "Lace Message", 
-    price: "34 900 Ft-tól", 
+    bgColor: "#FAF7F6"
+    },
+    {
+    id: "02",
+    slug: "lace-message",
+    name: "Lace Message",
+    price: "34 900 Ft-tól",
     description: "Lepjétek meg vendégeiteket egy igazán modern, mégis meghitt gesztussal! A meghívóba rejtett egyedi QR-kód egy személyes videóüzenetet kelt életre, amivel garantáltan felejthetetlen élménnyé teszitek a meghívást. A QR-kód bármelyik grafikai elemen elhelyezhető.",
     items: [
-      { name: "Meghívó QR-kóddal", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Hozzá illő boríték", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Meghívó QR-kóddal", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Hozzá illő boríték", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" },
     ],
     notes: "Extraként menükártya is kérhető.",
-    bgColor: "#F5EBEB" 
-  },
+    bgColor: "#F5EBEB"
+    },
   {
     id: "03", 
     slug: "lace-website", 
@@ -50,28 +52,34 @@ const featuredCollections = [
     price: "49 900 Ft-tól", 
     description: "Minden információ egy helyen, a meghívótok stílusában! Egy személyre szabott esküvői weboldal a legelegánsabb és legkényelmesebb módja, hogy a vendégeitekkel minden fontos részletet megosszátok, a helyszíntől az ajándéklistáig.", 
     items: [ 
-      { name: "Minden fontos információ egy helyen", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Interaktív ajándéklista (backenddel)", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Online vendégkönyv és üzenőfal", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Kép- és videógaléria", img: "/images/eskuvoihirlap.jpg" },
-      { name: "Beágyazott térkép a helyszínhez", img: "/images/eskuvoihirlap.jpg" }
+      { name: "Minden fontos információ egy helyen" }, { name: "Interaktív ajándéklista (backenddel)" },
+      { name: "Online vendégkönyv és üzenőfal" }, { name: "Kép- és videógaléria" },
+      { name: "Beágyazott térkép a helyszínhez" }
     ],
     notes: "Az ár tartalmazza a domain és a tárhely beállítását az első évre.",
     bgColor: "#F8F8FA" 
-}
+  },
+  { id: "04", slug: "lace-portrait", name: "Lace Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+
+{ id: "05", slug: "lace-pure", name: "Lace Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+
+{ id: "06", slug: "lace-bloom", name: "Lace Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 ];
 
-const otherCollections = [
-  { id: "04", slug: "lace-portrait", name: "Lace Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" }, 
-  { id: "05", slug: "lace-pure", name: "Lace Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
-  { id: "06", slug: "lace-bloom", name: "Lace Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
-];
-
-const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel! Ezek a kiegészítők minden kollekcióhoz opcionálisan kérhetők, hogy minden apró részlet tökéletes összhangban legyen.", items: [ { name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { name: "Esküvői weboldal a meghívó stílusában", img: "/images/eskuvoihirlap.jpg" }, { name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };
+const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!", items: [ { id: 'menu', name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { id: 'website', name: "Esküvői weboldal", img: "/images/eskuvoihirlap.jpg" }, { id: 'qr-code', name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };
 
 
 
 export default function CollectionsPage() {
+  const [selectedExtra, setSelectedExtra] = useState(null);
+  const openDrawer = (extra) => setSelectedExtra(extra);
+  const closeDrawer = () => setSelectedExtra(null);
+
+  const featuredCollectionsData = collectionsData.filter(c => ['lace-gazette', 'lace-message'].includes(c.slug));
+  const lacePageCollection = collectionsData.find(c => c.slug === 'lace-website');
+  const otherCollectionsData = collectionsData.filter(c => !featuredCollectionsData.includes(c) && c.slug !== 'lace-website');
+
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hash = window.location.hash.substring(1);
@@ -96,41 +104,21 @@ export default function CollectionsPage() {
              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body">Találjátok meg a stílusotokhoz leginkább illő történetet!</p>
         </div>
         
-        {featuredCollections.map((collection, index) => (
+        {featuredCollectionsData.map((collection, index) => (
             <CollectionSection key={collection.id} collection={collection} reverseLayout={index % 2 !== 0} />
         ))}
 
-        <ExtrasSection collection={extraCollection} />
+        {lacePageCollection && <LacePageSection collection={lacePageCollection} />}
 
-        <div id="tovabbi-kollekciok" className="py-24 bg-brand-background">
-            <h2 className="text-center font-serif text-4xl md:text-5xl text-brand-text">További inspirációk</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body text-center">A kiemelt kollekciókon túlmenően az alábbi stílusokban is alkotunk, de lehetőség van teljesen egyedi elképzelések megvalósítására is.</p>
-            <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
-                {otherCollections.map((collection, i) => (
-                    <motion.div
-                        key={collection.id}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.8, delay: i * 0.1 }}
-                    >
-                        <Link href={`#${collection.slug}`} className="block group rounded-xl">
-                            <div className="overflow-hidden rounded-3xl shadow-xl">
-                                <Image src={collection.img} alt={collection.name} width={800} height={600} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"/>
-                            </div>
-                            <h3 className="font-serif text-3xl mt-6 text-brand-text group-hover:text-brand-rose transition-colors">{collection.name}</h3>
-                        </Link>
-                    </motion.div>
-                ))}
-            </div>
-        </div>
         
-        {otherCollections.map((collection, index) => (
+        
+        {otherCollectionsData.map((collection, index) => (
             <CollectionSection key={collection.id} collection={collection} reverseLayout={index % 2 !== 0} />
         ))}
-
-        <CustomPackageBuilder />
+      <ExtrasSection collection={extraCollection} onExtraClick={openDrawer} />
+      <CustomPackageBuilder />
       </main>
+      <DemoDrawer isOpen={!!selectedExtra} onClose={closeDrawer} extra={selectedExtra} />
     </>
   );
 }
@@ -139,6 +127,8 @@ function CollectionSection({ collection, reverseLayout = false }) {
   const { id, name, description, items, bgColor, price, slug, notes } = collection;
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+
+  const imagePositions = [ { top: "5%", left: "10%", width: "60%", height: "80%", rotate: -8 }, { top: "25%", left: "45%", width: "50%", height: "65%", rotate: 5 }, { top: "50%", left: "5%", width: "45%", height: "45%", rotate: 10 }, { top: "60%", left: "60%", width: "35%", height: "40%", rotate: -3 }, ];
 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -196,6 +186,140 @@ function CollectionSection({ collection, reverseLayout = false }) {
     </>
   );
 }
+
+// === ÚJ, EGYEDI SZEKCIÓ A LACE PAGE-HEZ ===
+function LacePageSection({ collection }) {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { id, name, description, items, bgColor, price, slug, notes } = collection;
+  const websiteExtra = items.find(item => item.id === 'website');
+  const [selectedExtra, setSelectedExtra] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const closeDrawer = () => setIsDrawerOpen(false);
+
+
+
+  return (
+    <section id={slug} className="min-h-screen w-full flex items-center justify-center p-8" style={{ backgroundColor: bgColor }}>
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div>
+          <span className="font-serif text-7xl lg:text-8xl text-brand-rose opacity-20">{id}</span>
+          <h2 className="font-serif text-5xl lg:text-6xl text-brand-text -mt-8">{name}</h2>
+          <p className="mt-6 text-lg text-gray-600 max-w-md leading-relaxed font-body">{description}</p>
+          <div className="mt-8 border-t border-brand-rose/30 pt-6">
+            <h4 className="font-sans uppercase tracking-widest text-brand-text mb-4">A kollekció tartalma:</h4>
+            <ul className="space-y-3">
+              {items.map((item, i) => (
+                <li key={i} className="font-body text-gray-700 flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-brand-rose flex-shrink-0" /><span>{item.name}</span>
+                </li>
+              ))}
+            </ul>
+            {notes && <p className="text-sm text-gray-500 mt-4">{notes}</p>}
+            {price && (
+              <Link href={`/kapcsolat?kollekcio=${encodeURIComponent(name)}`} passHref legacyBehavior>
+                <a className="btn-primary mt-8">Árajánlatot kérek – {price}</a>
+              </Link>
+            )}
+          </div>
+          
+        </div>
+
+        <div className="relative w-full h-[550px]">
+          {isMobile ? <MobileDemoCarousel /> : <DesktopDemoCollage />}
+          {(() => {
+            const websiteExtra = extraCollection.items.find(item => item.id === 'website');
+            if (!websiteExtra) return null;
+
+            return (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mt-8 flex justify-center"
+              >
+                <button
+                  onClick={() => {
+                    setSelectedExtra(websiteExtra);
+                    setIsDrawerOpen(true);
+                  }}
+                  className="btn-primary mt-8"
+                >
+                  Esküvői Weboldal részletei
+                </button>
+              </motion.div>
+            );
+          })()}
+        </div>
+
+
+      </div>
+      <DemoDrawer isOpen={isDrawerOpen} onClose={closeDrawer} extra={selectedExtra} />
+
+    </section>
+    
+  );
+}
+
+function MobileDemoCarousel() {
+  const demos = [<InfoPageDemo />, <GuestbookDemo />, <GiftListDemo />];
+  const [index, setIndex] = useState(0);
+
+  const handleNext = () => setIndex((prev) => (prev + 1) % demos.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + demos.length) % demos.length);
+
+  return (
+    <div className="w-full h-full relative overflow-hidden rounded-2xl shadow-lg bg-white">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -300, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute top-0 left-0 w-full h-full p-4"
+        >
+          {demos[index]}
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute bottom-4 left-0 right-0 flex justify-between px-4">
+        <button onClick={handlePrev} className="text-xs text-gray-500">⟵ Előző</button>
+        <button onClick={handleNext} className="text-xs text-gray-500">Következő ⟶</button>
+      </div>
+    </div>
+  );
+}
+
+function DesktopDemoCollage() {
+  return (
+    <div className="relative w-full h-[550px] flex items-center justify-center">
+      <DemoCard position="center"><InfoPageDemo /></DemoCard>
+      <DemoCard position="topLeft"><GuestbookDemo /></DemoCard>
+      <DemoCard position="bottomRight"><GiftListDemo /></DemoCard>
+    </div>
+    
+  );
+}
+
+// === Új segédkomponensek a Demó Kollázshoz ===
+const DemoCard = ({ children, position }) => {
+  const positions = {
+    center: 'z-20 scale-100 relative',
+    topLeft: 'z-10 absolute top-5 left-5 scale-95',
+    bottomRight: 'z-10 absolute bottom-5 right-5 scale-95',
+  };
+
+  return (
+    <motion.div
+      className={`bg-white/90 backdrop-blur-sm rounded-xl border border-gray-100 shadow-md w-72 h-80 overflow-hidden ${positions[position]}`}
+      whileHover={{ scale: 1.04, zIndex: 30 }}
+      transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+    >
+      <div className="w-full h-full overflow-y-auto p-2 scrollbar-hide">{children}</div>
+    </motion.div>
+  );
+};
+
 
 // === JAVÍTOTT, INTERAKTÍV EXTRÁK SZEKCIÓ ===
 function ExtrasSection({ collection }) {
@@ -286,7 +410,7 @@ return (
 }
 
 
-const imagePositions = [ { top: "5%", left: "10%", width: "60%", height: "80%", rotate: -8 }, { top: "25%", left: "45%", width: "50%", height: "65%", rotate: 5 }, { top: "50%", left: "5%", width: "45%", height: "45%", rotate: 10 }, { top: "60%", left: "60%", width: "35%", height: "40%", rotate: -3 }, ];
+
 
 // === ÚJ, FELTURBÓZOTT CSOMAGÖSSZEÁLLÍTÓ ("Stílus-Keverő") ===
 const packageOptions = {
@@ -421,3 +545,210 @@ const OptionCard = ({ item, onSelect, isSelected }) => (
       <p className="text-sm text-gray-500 mt-1">{item.description}</p>
   </motion.div>
 );
+
+// === MODAL: név bekérés foglaláshoz ===
+const ClaimModal = ({ isOpen, onClose, onConfirm }) => {
+  const [name, setName] = useState("");
+
+  const handleConfirm = () => {
+    if (name.trim()) {
+      onConfirm(name.trim());
+      setName("");
+      onClose();
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" aria-hidden="true" />
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="z-50 bg-white rounded-xl shadow-lg p-6 w-[90%] max-w-sm"
+          >
+            <Dialog.Title className="text-lg font-bold text-gray-800 mb-3">Add meg a neved</Dialog.Title>
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="Pl. Nóri és Gergő"
+              className="w-full p-2 border rounded-md mb-4 text-sm"
+            />
+            <div className="flex justify-end gap-2">
+              <button onClick={onClose} className="px-4 py-1 text-sm text-gray-500 hover:text-gray-700">Mégse</button>
+              <button onClick={handleConfirm} disabled={!name.trim()} className="px-4 py-1 bg-brand-rose text-white rounded-md hover:bg-brand-rose/90 disabled:opacity-50 text-sm">
+                Lefoglalom
+              </button>
+            </div>
+          </motion.div>
+        </Dialog>
+      )}
+    </AnimatePresence>
+  );
+};
+
+// === FELTURBÓZOTT MINI-DEMÓ KOMPONENS ===
+const GiftListDemo = () => {
+  const initialGifts = [
+    { id: 1, name: 'Wellness hétvége', is_claimed: true, claimed_by: 'Nóri & Gergő' },
+    { id: 2, name: 'Repülőjegy', is_claimed: false },
+  ];
+  const [gifts, setGifts] = useState(initialGifts);
+  const [newItem, setNewItem] = useState({ name: '', description: '', image: null });
+  const [selectedGiftId, setSelectedGiftId] = useState(null);
+
+  const selectedGift = gifts.find(g => g.id === selectedGiftId);
+
+  const handleConfirmClaim = (name) => {
+    setGifts(gifts.map(g => g.id === selectedGiftId ? { ...g, is_claimed: true, claimed_by: name } : g));
+    setSelectedGiftId(null);
+  };
+
+  const handleAddItem = () => {
+    if (!newItem.name.trim()) return;
+    setGifts([...gifts, {
+      id: Date.now(),
+      name: newItem.name.trim(),
+      description: newItem.description?.trim(),
+      image: newItem.image,
+      is_claimed: false
+    }]);
+    setNewItem({ name: '', description: '', image: null });
+  };
+
+  return (
+    <div className="p-4 space-y-4 text-sm bg-gray-50 rounded-xl border border-gray-200">
+      <div className="space-y-3">
+        {gifts.map(gift => (
+          <div key={gift.id} className={`p-3 rounded-lg flex items-center gap-4 transition-all ${gift.is_claimed ? 'bg-gray-100' : 'bg-white shadow-sm hover:shadow-md'}`}>
+            {gift.image ? (
+              <img src={gift.image} alt={gift.name} className="w-10 h-10 rounded object-cover" />
+            ) : (
+              <div className="w-10 h-10 bg-gray-200 rounded flex items-center justify-center">
+                <Gift className="w-5 h-5 text-gray-400" />
+              </div>
+            )}
+            <div className="flex-grow">
+              <p className={`font-semibold ${gift.is_claimed ? 'text-gray-400 line-through' : 'text-brand-text'}`}>{gift.name}</p>
+              {gift.is_claimed && (
+                <p className="text-xs text-gray-500">Lefoglalva: <span className="italic">{gift.claimed_by}</span></p>
+              )}
+            </div>
+            {!gift.is_claimed && (
+              <button
+                onClick={() => setSelectedGiftId(gift.id)}
+                className="w-7 h-7 flex items-center justify-center border-2 border-brand-rose text-brand-rose rounded-full hover:bg-brand-rose/10 transition"
+              >
+                <Check size={14} />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="pt-4 border-t border-gray-200 space-y-2">
+        <input
+          type="text"
+          value={newItem.name}
+          onChange={e => setNewItem({ ...newItem, name: e.target.value })}
+          placeholder="Új ajándék neve (pl. Spa belépő)"
+          className="w-full text-sm p-2 border rounded-md"
+        />
+        <button
+          onClick={handleAddItem}
+          className="w-full text-sm p-2 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition"
+        >
+          Hozzáadás a demóhoz
+        </button>
+      </div>
+
+      {/* MODÁLIS ABLAK */}
+      <ClaimModal
+        isOpen={selectedGiftId !== null}
+        onClose={() => setSelectedGiftId(null)}
+        onConfirm={handleConfirmClaim}
+      />
+    </div>
+  );
+};
+
+const GuestbookDemo = () => {
+  const [messages, setMessages] = useState([
+      { id: 1, name: 'Anna', text: 'Sok boldogságot kívánunk!' }
+  ]);
+  const [newMessage, setNewMessage] = useState({ name: '', text: ''});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!newMessage.name || !newMessage.text) return;
+      setIsSubmitting(true);
+      setTimeout(() => {
+          setMessages(prev => [...prev, { id: Date.now(), ...newMessage }]);
+          setNewMessage({ name: '', text: '' });
+          setIsSubmitting(false);
+      }, 500); // Szimulálunk egy kis késleltetést
+  };
+
+  return (
+      <div className="p-2 space-y-3">
+          <div className="space-y-2 max-h-32 overflow-y-auto pr-2">
+              <AnimatePresence>
+                  {messages.map(msg => (
+                      <motion.div 
+                          key={msg.id}
+                          layout
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="bg-white p-3 rounded-lg shadow-sm"
+                      >
+                          <p className="text-xs font-semibold text-brand-rose">{msg.name}</p>
+                          <p className="text-sm text-gray-600">{msg.text}</p>
+                      </motion.div>
+                  ))}
+              </AnimatePresence>
+          </div>
+          <form onSubmit={handleSubmit} className="pt-3 border-t border-gray-200 space-y-2">
+              <input type="text" value={newMessage.name} onChange={e => setNewMessage({...newMessage, name: e.target.value})} placeholder="Neved..." className="w-full text-xs p-2 border rounded-md" required />
+              <input type="text" value={newMessage.text} onChange={e => setNewMessage({...newMessage, text: e.target.value})} placeholder="Írj egy üzenetet..." className="w-full text-xs p-2 border rounded-md" required />
+              <button type="submit" disabled={isSubmitting} className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition disabled:opacity-50">
+                  {isSubmitting ? "Küldés..." : "Üzenet elküldése"}
+              </button>
+          </form>
+      </div>
+  );
+};
+
+const InfoPageDemo = () => {
+  const locationName = "Liszkay Pincészet, Monoszló";
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.172491125211!2d17.62181891559899!3d46.840224979141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769a6d0f28a8d7d%3A0x86c6b229c13b2c1!2sLiszkay%20Pinc%C3%A9szet!5e0!3m2!1shu!2shu!4v1678886543210!5m2!1shu!2shu";
+  const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Liszkay+Pincészet+Monoszló";
+
+  return (
+      <div className="p-2 space-y-3">
+          <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-brand-rose flex-shrink-0"/>
+              <p className="text-sm font-semibold text-gray-700 truncate">{locationName}</p>
+          </div>
+          <div className="h-28 bg-gray-200 rounded-lg overflow-hidden">
+              <iframe
+                  src={mapUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+          </div>
+          <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition block text-center">
+              Útvonaltervezés
+          </a>
+      </div>
+  );
+};

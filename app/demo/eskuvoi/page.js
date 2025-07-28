@@ -382,41 +382,59 @@ export default function WeddingWebsiteDemo() {
             </div>
         </motion.section>
 
-        {/* Üzenetek Szekció - Felturbózva */}
-            <div className="text-center">
-                <h3 className="text-3xl font-semibold text-brand-rose mb-4">Jó Kívánságok</h3>
-                <p className="text-gray-600 mb-8">Hagyjatok nekünk egy kedves üzenetet, amit az esküvő után is örömmel olvasunk majd vissza!</p>
-            </div>
-            
-            {/* Üzenetek listája */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
-                {messages.length === 0 ? (
-                    <p className="text-center text-gray-500 py-8">Még nincs üzenet. Legyetek ti az elsők!</p>
-                ) : (
-                    displayedMessages.map((msg, index) => (
-                        <motion.div
-                            key={msg.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-white border border-rose-100 rounded-lg p-5 shadow-sm"
-                        >
-                            <p className="font-semibold text-brand-rose">{msg.name}</p>
-                            <p className="text-gray-700 mt-2 whitespace-pre-wrap">{msg.message}</p>
-                            <p className="text-xs text-gray-400 mt-3 text-right">{new Date(msg.created_at).toLocaleString('hu-HU')}</p>
-                        </motion.div>
-                    ))
-                )}
-            </motion.div>
+        {/* Üzenetek Szekció - Felturbózva boríték dizájnnal */}
+<div className="text-center">
+  <h3 className="text-3xl font-semibold text-brand-rose mb-4">Jó Kívánságok</h3>
+  <p className="text-gray-600 mb-8">
+    Hagyjatok nekünk egy kedves üzenetet, amit az esküvő után is örömmel olvasunk majd vissza!
+  </p>
+</div>
 
-            {/* "Több üzenet" gomb */}
-            {!showAllMessages && messages.length > 3 && (
-                <div className="text-center mt-8">
-                    <button onClick={() => setShowAllMessages(true)} className="text-brand-rose font-semibold hover:underline">
-                        További üzenetek betöltése ({messages.length - 3} db)
-                    </button>
-                </div>
-            )}
+{/* Üzenetek listája */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  className="flex flex-col items-center gap-6"
+>
+  {messages.length === 0 ? (
+    <p className="text-center text-gray-500 py-8">Még nincs üzenet. Legyetek ti az elsők!</p>
+  ) : (
+    displayedMessages.map((msg, index) => (
+      <motion.div
+        key={msg.id}
+        initial={{ rotateX: 90, opacity: 0 }}
+        animate={{ rotateX: 0, opacity: 1 }}
+        transition={{ delay: index * 0.15, duration: 0.6 }}
+        className="w-full max-w-md perspective"
+      >
+        <div className="relative w-full rounded-xl shadow-xl bg-gradient-to-tr from-rose-100 to-white p-4 border border-rose-200 transform-style-preserve-3d">
+          {/* Boríték felső rész */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-10 bg-rose-300 rounded-b-lg z-10"></div>
+          
+          {/* Üzenet belseje */}
+          <div className="relative z-20">
+            <p className="font-semibold text-brand-rose">{msg.name}</p>
+            <p className="text-gray-700 mt-2 whitespace-pre-wrap">{msg.message}</p>
+            <p className="text-xs text-gray-400 mt-3 text-right">{new Date(msg.created_at).toLocaleString('hu-HU')}</p>
+          </div>
+        </div>
+      </motion.div>
+    ))
+  )}
+</motion.div>
+
+{/* "Több üzenet" gomb */}
+{!showAllMessages && messages.length > 3 && (
+  <div className="text-center mt-8">
+    <button
+      onClick={() => setShowAllMessages(true)}
+      className="text-brand-rose font-semibold hover:underline"
+    >
+      További üzenetek betöltése ({messages.length - 3} db)
+    </button>
+  </div>
+)}
+
 
         {/* Program */}
         <motion.section
