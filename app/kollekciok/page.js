@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,7 +79,6 @@ export default function CollectionsPage() {
   const featuredCollectionsData = collectionsData.filter(c => ['lace-gazette', 'lace-message'].includes(c.slug));
   const lacePageCollection = collectionsData.find(c => c.slug === 'lace-website');
   const otherCollectionsData = collectionsData.filter(c => !featuredCollectionsData.includes(c) && c.slug !== 'lace-website');
-
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -197,7 +197,7 @@ function LacePageSection({ collection }) {
 
   const closeDrawer = () => setIsDrawerOpen(false);
 
-
+  const router = useRouter();
 
   return (
     <section id={slug} className="min-h-screen w-full flex items-center justify-center p-8" style={{ backgroundColor: bgColor }}>
@@ -239,11 +239,8 @@ function LacePageSection({ collection }) {
                 className="mt-8 flex justify-center"
               >
                 <button
-                  onClick={() => {
-                    setSelectedExtra(websiteExtra);
-                    setIsDrawerOpen(true);
-                  }}
-                  className="btn-primary mt-8"
+                  onClick={() => router.push("/demo/eskuvoi")}
+                  className="btn-primary -mt-5"
                 >
                   Esküvői Weboldal részletei
                 </button>
@@ -399,7 +396,7 @@ return (
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>
         <Link href={`/kapcsolat?kollekcio=${encodeURIComponent(name)}`} passHref legacyBehavior>
-          <a className="btn-primary mt-16">Részletekért kattínts a képekre!</a>
+          <a className="btn-primary mt-16">Kattints a részletekért!</a>
         </Link>
       </motion.div>
     </div>

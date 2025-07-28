@@ -43,8 +43,8 @@ export default function DemoDrawer({ isOpen, onClose }) {
             {/* Interaktív oldal iframe-ben */}
             <div className="flex-1 overflow-hidden">
               <iframe
-                src="/demo/eskuvoi"
-                title="Esküvői weboldal demó"
+                src="/demo/eskuvoi_info"
+                title="Esküvői információs oldal"
                 className="w-full h-full border-0"
               />
             </div>

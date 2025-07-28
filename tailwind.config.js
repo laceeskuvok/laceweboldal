@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'pulse-slow': 'pulse 3s ease-in-out infinite'
+      },
+      perspective: {
+        '1500': '1500px',
+      },
       colors: {
         'brand-white': '#FFFFFF',
         'brand-background': '#F9F6F6', // Enyhén törtfehér háttér
