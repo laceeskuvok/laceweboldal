@@ -13,6 +13,9 @@ import Collections from '../components/Collections';
 import ContactSection from '../components/Contact';
 import HomePageReviews from '../components/HomePageReviews';
 import HomePageBlog from '../components/HomePageBlog';
+import ScrollToTopButton from "../components/ScrollToTopButton"; 
+
+
 
 // === FELTURBÓZOTT HERO SZEKCIÓ VANTA.JS HÁTTÉRREL ===
 const HeroSection = () => {
@@ -105,15 +108,8 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* 4. "Görgess le" ikon */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-      >
-        <svg className="w-8 h-8 text-brand-text/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-      </motion.div>
+
+
       
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-white to-transparent z-5" />
     </section>
@@ -132,7 +128,7 @@ export default function HomePage() {
       </section>
       <AboutCard />
 
-      <section className="py-16 md:py-24 bg-white">
+      <section id="kollekcios" className="py-16 md:py-24 bg-white">
         <DividerWithTitle title="Kollekciók" link="/kollekciok" />
       </section>
       <Collections />
@@ -148,6 +144,7 @@ export default function HomePage() {
       <HomePageBlog />
 
       <ContactSection />
+      <ScrollToTopButton />
     </>
   );
 }

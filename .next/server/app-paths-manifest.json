@@ -1,6 +1,4 @@
 {
-  "/demo/menukartya/page": "app/demo/menukartya/page.js",
-  "/kollekciok/page": "app/kollekciok/page.js",
-  "/demo/qrkod/page": "app/demo/qrkod/page.js",
-  "/demo/eskuvoi_info/page": "app/demo/eskuvoi_info/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
 }
