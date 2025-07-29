@@ -98,7 +98,7 @@ const HeroSection = () => {
         >
             <Link href={`/kollekciok`} legacyBehavior>
                 {/* JAVÍTVA: Az új, egységes 'btn-primary' osztály használata */}
-                <a className="btn-primary mt-10">
+                <a className="btn-primary mt-32">
                     Kollekciók megtekintése
                 </a>
             </Link>

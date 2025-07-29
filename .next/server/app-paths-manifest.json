@@ -1,4 +1,8 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/demo/eskuvoi/page": "app/demo/eskuvoi/page.js",
-  "/kollekciok/page": "app/kollekciok/page.js"
+  "/demo/menukartya/page": "app/demo/menukartya/page.js",
+  "/kollekciok/page": "app/kollekciok/page.js",
+  "/demo/eskuvoi_info/page": "app/demo/eskuvoi_info/page.js"
 }

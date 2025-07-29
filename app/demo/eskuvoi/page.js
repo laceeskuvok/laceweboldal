@@ -13,6 +13,8 @@ import RsvpForm from '../../../components/RsvpForm';
 import WeddingHeader from '../../../components/WeddingHeader';
 import WeddingGifts from '../../../components/WeddingGifts';
 import WeddingMessages from '../../../components/WeddingMessages';
+import WeddingMessagesForm from '../../../components/WeddingMessagesForm';
+import WeddingCountdown from '../../../components/WeddingCountdown';
 
 
 
@@ -33,14 +35,7 @@ export default function WeddingWebsiteDemo() {
         { src: "/images/wedding7.jpg" },
         { src: "/images/wedding8.jpg" },
       ];
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [countdown, setCountdown] = useState("");
   const [showAllMessages, setShowAllMessages] = useState(false);
   const displayedMessages = showAllMessages ? messages : messages.slice(0, 3);
   const [selectedGift, setSelectedGift] = useState(null);
@@ -48,83 +43,13 @@ export default function WeddingWebsiteDemo() {
   const [isGalleryOpen, setGalleryOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  // Visszaszámláló logika
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const target = new Date("2026-06-10T15:00:00").getTime();
-      const now = new Date().getTime();
-      const difference = target - now;
-
-      if (difference > 0) {
-        setCountdown({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      } else {
-        clearInterval(interval);
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const fetchMessages = async () => {
-      const { data, error } = await supabase
-        .from('wedding_messages')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (!error) setMessages(data);
-    };
-
-    fetchMessages();
-  }, []);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setSubmitting(true);
-
-    const { error } = await supabase.from("wedding_messages").insert({
-      name,
-      email,
-      message,
-    });
-
-    if (!error) {
-      setSubmitted(true);
-      setName("");
-      setEmail("");
-      setMessage("");
-    }
-    setSubmitting(false);
-  }
 
   return (
     <main className="min-h-screen bg-white text-gray-800 font-body">
       <WeddingHeader />
 
       <div className="pt-24" id="info">
-        {/* Intro szekció - Látványosabb visszaszámlálóval */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center px-6 py-20 bg-gradient-to-b from-white to-rose-50"
-        >
-          <h2 className="text-5xl font-serif italic text-brand-rose mb-4">Anna & Balázs</h2>
-          <p className="text-gray-600 text-lg mb-8">2026. Június 10. – Debrecen</p>
-          
-          <div className="flex justify-center gap-4 md:gap-8 mb-8">
-            <div className="text-brand-text"><span className="text-4xl md:text-5xl font-serif">{countdown.days}</span><br/>Nap</div>
-            <div className="text-brand-text"><span className="text-4xl md:text-5xl font-serif">{countdown.hours}</span><br/>Óra</div>
-            <div className="text-brand-text"><span className="text-4xl md:text-5xl font-serif">{countdown.minutes}</span><br/>Perc</div>
-            <div className="text-brand-text"><span className="text-4xl md:text-5xl font-serif">{countdown.seconds}</span><br/>Másodperc</div>
-          </div>
-          
-        </motion.section>
-
+      <WeddingCountdown />
         <motion.section
                     id="rsvp-form"
                     initial={{ opacity: 0 }}
@@ -192,6 +117,8 @@ export default function WeddingWebsiteDemo() {
         </motion.section>
 
         <WeddingMessages/>
+
+        <WeddingMessagesForm/>
 
         {/* Program */}
         <motion.section
@@ -274,53 +201,6 @@ export default function WeddingWebsiteDemo() {
                   </div>
               </div>
           </motion.section>
-
-        {/* Üzenetküldés */}
-        <motion.section
-          id="uzenet"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="max-w-xl mx-auto px-6 py-20 text-center"
-        >
-          <h3 className="text-3xl font-semibold text-brand-rose mb-4">Üzenj nekünk!</h3>
-          {submitted ? (
-            <p className="text-green-600 font-medium">Köszönjük az üzeneted! ❤️</p>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Neved"
-                className="w-full border rounded px-4 py-2"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email (opcionális)"
-                className="w-full border rounded px-4 py-2"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <textarea
-                placeholder="Üzeneted..."
-                className="w-full border rounded px-4 py-2"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-              ></textarea>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="bg-brand-rose text-white px-6 py-2 rounded shadow hover:bg-brand-rose/80 transition"
-              >
-                {submitting ? "Küldés..." : "Üzenet elküldése"}
-              </button>
-            </form>
-          )}
-        </motion.section>
 
         {/* === ÚJ: GALÉRIA LIGHTBOX === */}
         <Lightbox

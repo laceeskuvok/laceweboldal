@@ -3,7 +3,22 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-export default function DemoDrawer({ isOpen, onClose }) {
+export default function DemoDrawer({ isOpen, onClose, extra }) {
+    if (!extra) return null;
+
+  const getIframeSrc = () => {
+    if (!extra) return '';
+  switch (extra.id) {
+    case 'menu':
+      return '/demo/menukartya';
+    case 'website':
+      return '/demo/eskuvoi_info';
+    default:
+      return '';
+  }
+  };
+
+  const iframeSrc = getIframeSrc();
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,11 +57,15 @@ export default function DemoDrawer({ isOpen, onClose }) {
 
             {/* Interaktív oldal iframe-ben */}
             <div className="flex-1 overflow-hidden">
-              <iframe
-                src="/demo/eskuvoi_info"
-                title="Esküvői információs oldal"
-                className="w-full h-full border-0"
-              />
+            <iframe
+  key={iframeSrc} // Ezt **mindenképp** add hozzá!
+  src={iframeSrc}
+  title={`${extra.name} demó`}
+  className="w-full h-full border-0 block"
+  loading="eager"
+/>
+
+
             </div>
           </motion.div>
         </>

@@ -24,8 +24,8 @@ export default function InfoPage() {
   }, []);
 
   const processSteps = [
-    { title: "Konzultáció & Álmodozás", description: "Egy inspiráló beszélgetés során megismerem az elképzeléseiteket és a nagy nap egyedi hangulatát." },
-    { title: "Az Első Varázslat", description: "A megbeszéltek alapján életre keltem az első, izgalmas látványterveket, amiket izgatottan küldök át nektek." },
+    { title: "Konzultáció", description: "Egy beszélgetés során megismerem az elképzeléseiteket és a nagy nap hangulatát." },
+    { title: "Látványtervek", description: "A megbeszéltek alapján elkészítem látványterveket." },
     { title: "Tökéletesítés", description: "Lehetőségetek van finomhangolni a részleteket (általában 2 körben), hogy minden pixel a helyére kerüljön." },
     { title: "A Kész Alkotás", description: "A jóváhagyott, végleges tervet prémium minőségben valósítjuk meg, hogy kézzelfogható emlékké váljon." }
   ];
@@ -116,7 +116,7 @@ const ProcessTimeline = ({ steps }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={containerVariants}
-            className="mt-16 flex flex-col md:flex-row items-start justify-center"
+            className="mt-16 flex flex-col md:flex-row items-stretch justify-center gap-x-8 gap-y-12"
         >
             {steps.map((step, index) => (
                 <ProcessStep key={index} index={index + 1} title={step.title} description={step.description} isLast={index === steps.length - 1} />
@@ -127,25 +127,24 @@ const ProcessTimeline = ({ steps }) => {
 
 const ProcessStep = ({ index, title, description, isLast }) => (
     <motion.div 
-        className="flex items-start md:items-center md:flex-col md:flex-1 w-full"
+        className="flex md:flex-col items-center text-center relative md:flex-1 w-full"
         variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
     >
-        <div className="flex md:flex-col items-center w-full">
-            <motion.div 
-                whileHover={{ scale: 1.1, y: -5 }} 
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="flex flex-col items-center text-center"
-            >
-                <div className="w-12 h-12 bg-white border-2 border-brand-rose text-brand-rose rounded-full flex items-center justify-center font-serif text-xl z-10 shadow-lg flex-shrink-0">
-                    {index}
-                </div>
-                <div className="ml-6 md:ml-0 text-left md:text-center">
-                    <h4 className="mt-0 md:mt-6 font-serif text-2xl text-brand-text">{title}</h4>
-                    <p className="mt-2 text-gray-500 font-body">{description}</p>
-                </div>
-            </motion.div>
+        <motion.div 
+            whileHover={{ scale: 1.05, y: -5 }} 
+            transition={{ type: 'spring', stiffness: 300 }}
+            className="flex flex-col items-center text-center p-4"
+        >
+            <div className="w-12 h-12 bg-white border-2 border-brand-rose text-brand-rose rounded-full flex items-center justify-center font-serif text-xl z-10 shadow-lg flex-shrink-0">
+                {index}
+            </div>
+            <div className="ml-6 md:ml-0">
+                <h4 className="mt-6 font-serif text-2xl text-brand-text">{title}</h4>
+                <p className="mt-2 text-gray-500 font-body">{description}</p>
+            </div>
+        </motion.div>
 
-            {!isLast && <div className="hidden md:block w-full h-px bg-gray-300 mt-8" />}
-        </div>
+        {/* Összekötő vonal */}
+        {!isLast && <div className="hidden md:block absolute top-6 left-1/2 w-full h-px bg-gray-300" />}
     </motion.div>
 );

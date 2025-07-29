@@ -67,7 +67,7 @@ const collectionsData = [
 { id: "06", slug: "lace-bloom", name: "Lace Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 ];
 
-const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!", items: [ { id: 'menu', name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { id: 'website', name: "Esküvői weboldal", img: "/images/eskuvoihirlap.jpg" }, { id: 'qr-code', name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };
+const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!", items: [ { id: 'menu', name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { id: 'website', name: "Esküvői mini weboldal", img: "/images/eskuvoihirlap.jpg" }, { id: 'qr-code', name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };
 
 
 
@@ -100,7 +100,7 @@ export default function CollectionsPage() {
       <Header />
       <main className="w-full bg-white">
         <div className="text-center py-24 bg-brand-background">
-             <h1 className="font-serif text-5xl md:text-7xl italic text-brand-text">Kollekcióink</h1>
+             <h1 className="font-serif text-5xl md:text-7xl italic text-brand-text">Kollekciók</h1>
              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body">Találjátok meg a stílusotokhoz leginkább illő történetet!</p>
         </div>
         
@@ -118,7 +118,6 @@ export default function CollectionsPage() {
       <ExtrasSection collection={extraCollection} onExtraClick={openDrawer} />
       <CustomPackageBuilder />
       </main>
-      <DemoDrawer isOpen={!!selectedExtra} onClose={closeDrawer} extra={selectedExtra} />
     </>
   );
 }
@@ -242,7 +241,7 @@ function LacePageSection({ collection }) {
                   onClick={() => router.push("/demo/eskuvoi")}
                   className="btn-primary -mt-5"
                 >
-                  Esküvői Weboldal részletei
+                  Megtekintem a weboldal demot
                 </button>
               </motion.div>
             );
@@ -251,7 +250,6 @@ function LacePageSection({ collection }) {
 
 
       </div>
-      <DemoDrawer isOpen={isDrawerOpen} onClose={closeDrawer} extra={selectedExtra} />
 
     </section>
     
@@ -339,13 +337,15 @@ useEffect(() => {
 }, []);
 
 const handleExtraClick = (item) => {
-  if (item.name.toLowerCase().includes("weboldal")) {
+  const name = item.name.toLowerCase();
+  if (name.includes("weboldal") || name.includes("menükártyák")) {
     setSelectedExtra(item);
     setIsDrawerOpen(true);
   } else {
     alert(`Részletek a "${item.name}" extráról hamarosan...`);
   }
 };
+
 
 const closeDrawer = () => setIsDrawerOpen(false);
 
@@ -401,7 +401,13 @@ return (
       </motion.div>
     </div>
 
-    <DemoDrawer isOpen={isDrawerOpen} onClose={closeDrawer} extra={selectedExtra} />
+    <DemoDrawer
+  key={selectedExtra?.id || selectedExtra?.name} // <== ez fontos!
+  isOpen={isDrawerOpen}
+  onClose={closeDrawer}
+  extra={selectedExtra}
+/>
+
   </section>
 );
 }
@@ -746,6 +752,72 @@ const InfoPageDemo = () => {
           <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="w-full text-xs p-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition block text-center">
               Útvonaltervezés
           </a>
+      </div>
+  );
+};
+
+// === ÚJ, FELTURBÓZOTT MENÜKÁRTYA DEMÓ KOMPONENS ===
+const MenuCardDetail = () => {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+  const handleMouseMove = (e) => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      x.set((e.clientX - rect.left) / rect.width - 0.5);
+      y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+  const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+  const menuItems = [
+      { icon: <Soup/>, category: 'Előétel', name: 'Erdei gombakrémleves pirított mandulával' },
+      { icon: <Beef/>, category: 'Főétel', name: 'Rozmaringos kacsamell burgonyapürével és vörösboros mártással' },
+      { icon: <Wine/>, category: 'Desszert & Italok', name: 'Somlói galuska és válogatott borok a Liszkay Pincészetből' },
+  ];
+  
+  return (
+      <div className="space-y-6">
+          <div>
+              <h3 className="font-serif text-xl text-brand-text mb-2">Egyedi Menükártya</h3>
+              <p className="font-body text-gray-600 leading-relaxed">
+                  Emeljétek az ünnepi asztal fényét egy, a meghívótok stílusához tökéletesen illeszkedő menükártyával! Minden darabot prémium papírra nyomtatunk, a ti egyedi menütökkel és design elemeitekkel.
+              </p>
+          </div>
+
+          <motion.div
+              ref={ref}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+              className="w-full max-w-sm mx-auto bg-rose-50 rounded-lg shadow-2xl p-8 border border-rose-100 aspect-[3/4] flex flex-col justify-between"
+          >
+              <div style={{ transform: "translateZ(40px)" }} className="text-center">
+                  <p className="text-sm tracking-widest text-gray-500">MENÜ</p>
+                  <h2 className="text-4xl mt-2 text-brand-rose" style={{ fontFamily: 'Great Vibes, cursive' }}>Anna & Bence</h2>
+              </div>
+              
+              <div className="space-y-6" style={{ transform: "translateZ(30px)" }}>
+                  {menuItems.map(item => (
+                      <div key={item.category}>
+                          <p className="font-sans text-xs uppercase tracking-widest text-gray-400 flex items-center gap-2">{item.icon} {item.category}</p>
+                          <p className="mt-1 text-brand-text">{item.name}</p>
+                      </div>
+                  ))}
+              </div>
+
+              <p style={{ transform: "translateZ(20px)" }} className="text-center text-xs text-gray-400">Jó étvágyat kívánunk!</p>
+          </motion.div>
+
+           <div className="pt-4 text-center">
+               <Link href="/kapcsolat?kollekcio=Egyedi+menükártya" passHref>
+                  <a className="btn-primary">Érdekel az ajánlat</a>
+              </Link>
+          </div>
       </div>
   );
 };
