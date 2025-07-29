@@ -11,19 +11,18 @@ import Header from '../../components/Header';
 
 // --- TELJES, VÉGLEGES ADATLISTA ---
 const collectionsData = [
-  { id: "01", name: "Lace Gazette", description: "4 oldalas meghívó újság formában...", price: "29 900 Ft-tól" },
-  { id: "02", name: "Lace Message", description: "Lepjétek meg vendégeiteket egy igazán modern, mégis meghitt gesztussal!...", price: "34 900 Ft-tól" },
-  { id: "03", name: "Lace Portrait", description: "Ebben a kollekcióban a főszerep a fotóitoké...", price: "39 900 Ft-tól" },
-  { id: "04", name: "Lace Pure", description: "A letisztultság és a minimalizmus kedvelőinek...", price: "32 000 Ft-tól" },
-  { id: "05", name: "Lace Bloom", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik...", price: "Egyedi árazás" },
-  // A korábbi 'otherCollections' és 'featuredCollections' itt egyesítve vannak
+  { id: "01", name: "LACE - Gazette", description: "4 oldalas meghívó újság formában...", price: "29 900 Ft-tól" },
+  { id: "02", name: "LACE - Page", description: "Minden információ egy helyen, a meghívótok stílusában...", price: "49 900 Ft-tól" },
+  { id: "03", name: "LACE - Message", description: "Lepjétek meg vendégeiteket egy igazán modern, mégis meghitt gesztussal...", price: "34 900 Ft-tól" },
+  { id: "04", name: "LACE - Portrait", description: "Ebben a kollekcióban a főszerep a fotóitoké...", price: "39 900 Ft-tól" },
+  { id: "05", name: "LACE - Pure", description: "A letisztultság és a minimalizmus kedvelőinek...", price: "32 000 Ft-tól" },
+  { id: "06", name: "LACE - Bloom", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik...", price: "39 990 Ft-tól" },
 ];
 
 const extrasData = [
     { name: "Kollekcióhoz illeszkedő menükártyák", price: "Egyedi" },
-    { name: "Esküvői weboldal a meghívó stílusában", price: "Egyedi" },
-    { name: "1 db QR-kód videóüzenettel", price: "Egyedi" },
-    // A korábbi 'extraCollection' items-ei alapján
+    { name: "Esküvői mini információs oldal", price: "Egyedi" },
+    { name: "QR-kód videóüzenettel", price: "Egyedi" },
 ];
 
 
