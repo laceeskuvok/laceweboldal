@@ -1623,14 +1623,14 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
-.bottom-10 {
-  bottom: 2.5rem;
-}
 .bottom-4 {
   bottom: 1rem;
 }
 .bottom-5 {
   bottom: 1.25rem;
+}
+.bottom-6 {
+  bottom: 1.5rem;
 }
 .bottom-\[-4px\] {
   bottom: -4px;
@@ -1662,6 +1662,9 @@ video {
 .right-5 {
   right: 1.25rem;
 }
+.right-6 {
+  right: 1.5rem;
+}
 .right-\[8\%\] {
   right: 8%;
 }
@@ -1691,12 +1694,6 @@ video {
 }
 .top-\[60\%\] {
   top: 60%;
-}
-.bottom-6 {
-  bottom: 1.5rem;
-}
-.right-6 {
-  right: 1.5rem;
 }
 .z-0 {
   z-index: 0;
@@ -1800,9 +1797,6 @@ video {
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.mr-8 {
-  margin-right: 2rem;
 }
 .block {
   display: block;
@@ -2089,21 +2083,6 @@ video {
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-@keyframes bounce {
-
-  0%, 100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8,0,1,1);
-  }
-
-  50% {
-    transform: none;
-    animation-timing-function: cubic-bezier(0,0,0.2,1);
-  }
-}
-.animate-bounce {
-  animation: bounce 1s infinite;
 }
 @keyframes spin {
 
@@ -2536,6 +2515,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
 }
+.bg-brand-rose\/20 {
+  background-color: rgb(217 196 196 / 0.2);
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -2794,9 +2776,6 @@ video {
 .pt-8 {
   padding-top: 2rem;
 }
-.pr-8 {
-  padding-right: 2rem;
-}
 .text-left {
   text-align: left;
 }
@@ -2923,9 +2902,6 @@ video {
 .text-brand-text {
   --tw-text-opacity: 1;
   color: rgb(92 84 84 / var(--tw-text-opacity, 1));
-}
-.text-brand-text\/50 {
-  color: rgb(92 84 84 / 0.5);
 }
 .text-brand-text\/80 {
   color: rgb(92 84 84 / 0.8);
@@ -3343,6 +3319,11 @@ video {
   border-color: rgb(217 196 196 / 0.5);
 }
 
+.hover\:bg-brand-rose:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 196 196 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-brand-rose\/10:hover {
   background-color: rgb(217 196 196 / 0.1);
 }
@@ -3388,11 +3369,6 @@ video {
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-brand-rose:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(217 196 196 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-opacity-80:hover {

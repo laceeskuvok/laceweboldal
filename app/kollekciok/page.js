@@ -8,11 +8,10 @@ import Link from "next/link";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Header from "../../components/Header";
-import { CheckCircle, Gift, MessageSquare, MapPin, Check, Plus, PackageCheck } from "lucide-react";
+import { CheckCircle, Gift, MessageSquare, MapPin, Check, Plus, PackageCheck, Utensils, Globe, QrCode } from "lucide-react";
 import DemoDrawer from "../../components/DemoDrawer";
 import { useMediaQuery } from "../../lib/useMediaQuery";
 import { Dialog } from "@headlessui/react";
-
 
 // === VÉGLEGES ADATSTRUKTÚRA ===
 const collectionsData = [
@@ -67,14 +66,36 @@ const collectionsData = [
 { id: "06", slug: "lace-bloom", name: "LACE - Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 ];
 
-const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!", items: [ { id: 'menu', name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { id: 'website', name: "Esküvői mini weboldal", img: "/images/eskuvoihirlap.jpg" }, { id: 'qr-code', name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };
-
-
+const extraCollection = {
+  id: "EX",
+  slug: "extrak",
+  name: "+ Extrák",
+  description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!",
+  items: [
+    {
+      id: "menu",
+      name: "Kollekcióhoz illő menükártyák",
+      icon: "Utensils" // Pl. Lucide ikon neve
+    },
+    {
+      id: "website",
+      name: "Esküvői mini weboldal",
+      icon: "Globe" // Pl. Lucide ikon neve
+    },
+    {
+      id: "qr-code",
+      name: "1 db QR-kód videóüzenettel",
+      icon: "QrCode" // Pl. Lucide ikon neve
+    }
+  ]
+};
 
 export default function CollectionsPage() {
   const [selectedExtra, setSelectedExtra] = useState(null);
   const openDrawer = (extra) => setSelectedExtra(extra);
   const closeDrawer = () => setSelectedExtra(null);
+
+  
 
   const featuredCollectionsData = collectionsData.filter(c => ['lace-gazette', 'lace-message'].includes(c.slug));
   const lacePageCollection = collectionsData.find(c => c.slug === 'lace-website');
@@ -346,7 +367,11 @@ const handleExtraClick = (item) => {
   }
 };
 
-
+const icons = {
+  Utensils: <Utensils className="w-10 h-10 text-white" />,
+  Globe: <Globe className="w-10 h-10 text-white" />,
+  QrCode: <QrCode className="w-10 h-10 text-white" />
+};
 const closeDrawer = () => setIsDrawerOpen(false);
 
 return (
@@ -367,14 +392,18 @@ return (
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
                 whileHover={{ scale: 1.05 }} transition={{ type: 'spring', stiffness: 300 }}
               >
-                <motion.div animate={{ scale: [1, 1.04, 1], transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }} className="relative w-24 h-24 rounded-full">
-                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-brand-rose/50">
-                    <Image src={item.img} alt={item.name} width={100} height={100} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"/>
-                  </div>
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-full">
-                    <div className="text-white text-xs font-bold uppercase tracking-wider">Részletek</div>
-                  </div>
-                </motion.div>
+                <motion.div
+  animate={{ scale: [1, 1.04, 1], transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
+  className="relative w-24 h-24 rounded-full"
+>
+  <div className="w-full h-full rounded-full overflow-hidden border-2 border-brand-rose/50 bg-brand-rose/20 flex items-center justify-center">
+    {icons[item.icon] || <div className="text-sm text-white">Nincs ikon</div>}
+  </div>
+  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-full">
+    <div className="text-white text-xs font-bold uppercase tracking-wider">Részletek</div>
+  </div>
+</motion.div>
+
                 <p className="text-sm text-gray-400 group-hover:text-white transition-colors duration-300">{item.name}</p>
               </motion.button>
             ))}
