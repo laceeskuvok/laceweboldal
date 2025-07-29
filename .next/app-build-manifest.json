@@ -6,6 +6,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/demo/menukartya/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/demo/menukartya/page.js"
+    ],
     "/kollekciok/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -17,21 +22,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/demo/eskuvoi_info/page.js"
     ],
-    "/demo/menukartya/page": [
+    "/demo/qrkod/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/demo/menukartya/page.js"
-    ],
-    "/demo/eskuvoi/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/demo/eskuvoi/page.css",
-      "static/chunks/app/demo/eskuvoi/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/demo/qrkod/page.js"
     ]
   }
 }

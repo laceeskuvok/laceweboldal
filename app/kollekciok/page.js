@@ -241,7 +241,7 @@ function LacePageSection({ collection }) {
                   onClick={() => router.push("/demo/eskuvoi")}
                   className="btn-primary -mt-5"
                 >
-                  Megtekintem a weboldal demot
+                  Megtekintem a weboldal demót
                 </button>
               </motion.div>
             );
@@ -338,7 +338,7 @@ useEffect(() => {
 
 const handleExtraClick = (item) => {
   const name = item.name.toLowerCase();
-  if (name.includes("weboldal") || name.includes("menükártyák")) {
+  if (name.includes("weboldal") || name.includes("menükártyák") || name.includes("videóüzenettel")) {
     setSelectedExtra(item);
     setIsDrawerOpen(true);
   } else {
@@ -394,11 +394,18 @@ return (
           </AnimatePresence>
       </div>
 
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>
-        <Link href={`/kapcsolat?kollekcio=${encodeURIComponent(name)}`} passHref legacyBehavior>
-          <a className="btn-primary mt-16">Kattints a részletekért!</a>
-        </Link>
-      </motion.div>
+      <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.6 }}
+    >
+      <p className="text-center text-brand-rose  text-xl font-medium mt-16">
+  Minden extra más és más – kattints a kiválasztott kiegészítőre a részletes infókért.
+</p>
+
+    </motion.div>
+
     </div>
 
     <DemoDrawer

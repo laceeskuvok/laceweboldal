@@ -27,11 +27,11 @@ export default function InfoPage() {
     { title: "Konzultáció", description: "Egy beszélgetés során megismerem az elképzeléseiteket és a nagy nap hangulatát." },
     { title: "Látványtervek", description: "A megbeszéltek alapján elkészítem látványterveket." },
     { title: "Tökéletesítés", description: "Lehetőségetek van finomhangolni a részleteket (általában 2 körben), hogy minden pixel a helyére kerüljön." },
-    { title: "A Kész Alkotás", description: "A jóváhagyott, végleges tervet prémium minőségben valósítjuk meg, hogy kézzelfogható emlékké váljon." }
+    { title: "A Kész Alkotás", description: "A jóváhagyott, végleges tervet prémium minőségben valósítom meg, hogy kézzelfogható emlékké váljon." }
   ];
 
   const orderingSteps = [
-    { title: "Válassz Kollekciót", description: "Böngészd végig a kész kollekcióinkat, vagy álmodd meg a sajátodat a csomagösszeállító segítségével." },
+    { title: "Válassz Kollekciót", description: "Böngészd végig a kész kollekciókat, vagy álmodd meg a sajátodat a csomagösszeállító segítségével." },
     { title: "Kérj Árajánlatot", description: "A kiválasztott kollekció oldalán, vagy a csomagösszeállító végén kattints az 'Árajánlatot kérek' gombra." },
     { title: "Add meg az adataidat", description: "Az űrlapon add meg a neved, email címed és az esetleges egyedi kéréseidet, darabszámokat." },
     { title: "Vedd fel a kapcsolatot!", description: "Az elküldött ajánlatkérés után hamarosan felveszem veled a kapcsolatot a további részletekkel." },

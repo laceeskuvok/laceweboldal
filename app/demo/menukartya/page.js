@@ -47,10 +47,10 @@ const MenuCardDetail = () => {
   return (
     <div className="p-8 max-w-3xl mx-auto space-y-10">
       <div>
-        <h3 className="font-serif text-2xl text-brand-text mb-3">Egyedi Menükártya</h3>
+        <h3 className="font-serif text-2xl text-brand-text mb-3">Menükártya</h3>
         <p className="text-gray-600 leading-relaxed">
           Emeljétek az ünnepi asztal fényét egy, a meghívótok stílusához tökéletesen illeszkedő menükártyával! 
-          Minden darabot prémium papírra nyomtatunk, a ti egyedi menütökkel és design elemeitekkel.
+          Minden darab prémium papírra nyomtatva, a ti menütökkel és design elemeitekkel.
         </p>
       </div>
 
@@ -58,10 +58,7 @@ const MenuCardDetail = () => {
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-        }}
+        style={{ rotateX, rotateY }}
         className="w-full max-w-sm mx-auto bg-rose-50 rounded-lg shadow-2xl p-8 border border-rose-100 aspect-[3/4] flex flex-col justify-between"
       >
         <div style={{ transform: "translateZ(40px)" }} className="text-center">
@@ -91,7 +88,7 @@ const MenuCardDetail = () => {
       </motion.div>
 
       <div className="pt-4 text-center">
-        <Link href="/kapcsolat?kollekcio=Egyedi+menükártya" passHref legacyBehavior>
+        <Link href="/kapcsolat?kollekcio=Menükártya" passHref legacyBehavior>
           <a className="btn-primary">Érdekel az ajánlat</a>
         </Link>
       </div>
