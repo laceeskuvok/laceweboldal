@@ -19,7 +19,7 @@ const collectionsData = [
   { 
     id: "01",
     slug: "lace-gazette",
-    name: "Lace Gazette",
+    name: "LACE - Gazette",
     price: "29 900 Ft-tól",
     description: "4 oldalas meghívó újság formában. A címlapon természetesen ti szerepeltek, belül egy kedves interjú meséli el a szerelmetek történetét. A helyszín és a dátum kreatívan, játékos formában van elrejtve a sorok között, így az olvasás is élménnyé válik. Igény esetén a menü is helyet kap benne. Tökéletes választás, ha valami igazán különlegeset szeretnétek.",
     items: [
@@ -34,7 +34,7 @@ const collectionsData = [
     {
     id: "02",
     slug: "lace-message",
-    name: "Lace Message",
+    name: "LACE - Message",
     price: "34 900 Ft-tól",
     description: "Lepjétek meg vendégeiteket egy igazán modern, mégis meghitt gesztussal! A meghívóba rejtett egyedi QR-kód egy személyes videóüzenetet kelt életre, amivel garantáltan felejthetetlen élménnyé teszitek a meghívást. A QR-kód bármelyik grafikai elemen elhelyezhető.",
     items: [
@@ -49,7 +49,7 @@ const collectionsData = [
   {
     id: "03", 
     slug: "lace-website", 
-    name: "Lace Page", 
+    name: "LACE - Page", 
     price: "49 900 Ft-tól", 
     description: "Minden információ egy helyen, a meghívótok stílusában! Egy személyre szabott esküvői weboldal a legelegánsabb és legkényelmesebb módja, hogy a vendégeitekkel minden fontos részletet megosszátok, a helyszíntől az ajándéklistáig.", 
     items: [ 
@@ -60,11 +60,11 @@ const collectionsData = [
     notes: "Az ár tartalmazza a domain és a tárhely beállítását az első évre.",
     bgColor: "#F8F8FA" 
   },
-  { id: "04", slug: "lace-portrait", name: "Lace Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+  { id: "04", slug: "lace-portrait", name: "LACE - Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 
-{ id: "05", slug: "lace-pure", name: "Lace Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+{ id: "05", slug: "lace-pure", name: "LACE - Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 
-{ id: "06", slug: "lace-bloom", name: "Lace Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+{ id: "06", slug: "lace-bloom", name: "LACE - Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
 ];
 
 const extraCollection = { id: "EX", slug: "extrak", name: "+ Extrák", description: "Tedd teljessé a nagy napot egyedi kiegészítőkkel!", items: [ { id: 'menu', name: "Kollekcióhoz illő menükártyák", img: "/images/eskuvoihirlap.jpg" }, { id: 'website', name: "Esküvői mini weboldal", img: "/images/eskuvoihirlap.jpg" }, { id: 'qr-code', name: "1 db QR-kód videóüzenettel", img: "/images/eskuvoihirlap.jpg" } ] };

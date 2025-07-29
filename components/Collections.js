@@ -11,7 +11,7 @@ import Image from "next/image";
 // === JAVÍTVA: Frissített adatok és a kollekciok/page.js-hez igazított slug-ok ===
 const collections = [
   {
-    title: "Lace Gazette",
+    title: "LACE - Gazette",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
@@ -21,7 +21,17 @@ const collections = [
     slug: "lace-gazette", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Lace Message",
+    title: "LACE - Page",
+    img: "/images/eskuvoihirlap.jpg",
+    preview: {
+      images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
+      price: "49 900 Ft-tól",
+      description: "Minden információ egy helyen, a meghívótok stílusában! Egy személyre szabott esküvői weboldal a legelegánsabb és legkényelmesebb módja, hogy a vendégeitekkel minden fontos részletet megosszátok, a helyszíntől az ajándéklistáig.",
+    },
+    slug: "lace-website", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
+  },
+  {
+    title: "LACE - Message",
     img: "/images/szines_mockup.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
@@ -31,7 +41,7 @@ const collections = [
     slug: "lace-message", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Lace Portrait",
+    title: "LACE - Portrait",
     img: "/images/letisztultelegancia.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
@@ -41,7 +51,7 @@ const collections = [
     slug: "lace-portrait", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Lace Pure",
+    title: "LACE - Pure",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
@@ -51,7 +61,7 @@ const collections = [
     slug: "lace-pure", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },
   {
-    title: "Lace Bloom",
+    title: "LACE - Bloom",
     img: "/images/eskuvoihirlap.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
