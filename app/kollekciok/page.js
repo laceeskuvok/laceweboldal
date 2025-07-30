@@ -59,11 +59,11 @@ const collectionsData = [
     notes: "Az ár tartalmazza a domain és a tárhely beállítását az első évre.",
     bgColor: "#F8F8FA" 
   },
-  { id: "04", slug: "lace-portrait", name: "LACE - Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+  { id: "04", slug: "lace-portrait", name: "LACE - Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#FAF7F6" },
 
-{ id: "05", slug: "lace-pure", name: "LACE - Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+{ id: "05", slug: "lace-pure", name: "LACE - Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#EDF4F1", },
 
-{ id: "06", slug: "lace-bloom", name: "LACE - Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg" },
+{ id: "06", slug: "lace-bloom", name: "LACE - Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#FAF7F6" },
 ];
 
 const extraCollection = {
@@ -120,7 +120,7 @@ export default function CollectionsPage() {
     <>
       <Header />
       <main className="w-full bg-white">
-        <div className="text-center py-24 bg-brand-background">
+        <div className="text-center pt-40 bg-brand-background">
              <h1 className="font-serif text-5xl md:text-7xl italic text-brand-text">Kollekciók</h1>
              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body">Találjátok meg a stílusotokhoz leginkább illő történetet!</p>
         </div>
@@ -451,60 +451,54 @@ return (
 
 
 
-// === ÚJ, FELTURBÓZOTT CSOMAGÖSSZEÁLLÍTÓ ("Stílus-Keverő") ===
+
 const packageOptions = {
   styles: [
-    { name: 'Időtlen Romantika', description: 'Klasszikus, elegáns betűtípusok és finom vonalak.' },
-    { name: 'Modern Minimalista', description: 'Letisztult formák, merész tipográfia, szellős elrendezés.' },
-    { name: 'Rusztikus Varázslat', description: 'Természetes textúrák, kézzel rajzolt motívumok.' },
+    { name: 'Romantikus', description: 'Klasszikus, elegáns betűtípusok és finom vonalak.' },
+    { name: 'Klasszikus', description: 'Időtlen formák, letisztult és méltóságteljes.' },
+    { name: 'Modern', description: 'Merész tipográfia, szellős elrendezés.' },
+    { name: 'Természetközeli', description: 'Pasztell színek, organikus motívumok.' },
+    { name: 'Minimalista', description: 'A kevesebb több elve, letisztult egyszerűség.' },
+    { name: 'Vintage', description: 'Retro hangulat, meleg színek és textúrák.' },
   ],
-  formats: [
-      { name: 'Klasszikus Meghívó', description: 'Kétoldalas kártya, prémium papíron.' },
-      { name: 'Esküvői Hírlap', description: '4 oldalas, magazinszerű élmény a történetetekkel.' },
-      { name: 'QR Kódos Meghívó', description: 'Interaktív megoldás videóüzenettel.' },
+  motifs: [
+      { name: 'Csipke', description: 'Finom és részletgazdag, a romantika jegyében.' },
+      { name: 'Virág', description: 'Kézzel festett vagy stilizált virágmotívumok.' },
+      { name: 'Geometrikus', description: 'Modern és letisztult, arany vagy ezüst vonalakkal.' },
+      { name: 'Monogram', description: 'A nevetek kezdőbetűiből alkotott elegáns embléma.' },
   ],
-  addons: [
-      { name: 'Ültetőkártya', description: 'Vendégek nevével ellátva' },
-      { name: 'Menükártya', description: 'A vacsora fogásai elegánsan' },
-      { name: 'Programkártya', description: 'A nagy nap menetrendje' },
-      { name: 'Köszönőkártya', description: 'Személyes üzenet a vendégeknek' },
-  ],
-  finishes: [
-      { name: 'Pecsét Monogrammal', description: 'Elegáns viaszpecsét a ti monogramotokkal a borítékra.' },
-      { name: 'Esküvői Weboldal', description: 'Minden információ egy helyen, a választott stílusban. Késöbb teljesen testreszabható a részletekkel.' },
+  extras: [
+      { name: 'Esküvői weboldal', description: 'Minden infó egy helyen, stílusosan.' },
+      { name: 'QR-kód videóüzenettel', description: 'Modern & meghitt gesztus.' },
+      { name: 'Menükártya', description: 'A vacsora fogásai elegánsan.' },
+      { name: 'Programkártya', description: 'A nagy nap menetrendje.' },
+      { name: 'Ültetőkártya/tábla', description: 'Segítség a vendégeknek az eligazodásban.' },
   ]
 };
 
 function CustomPackageBuilder() {
-    const [step, setStep] = useState(1);
-    const [selection, setSelection] = useState({ style: null, format: null, addons: [], finishes: [] });
+  const [step, setStep] = useState(1);
+  const [selection, setSelection] = useState({ style: null, colors: '', motif: null, extras: [] });
 
-    const handleSelect = (category, value) => {
-        if (category === 'addons' || category === 'finishes') {
-            setSelection(prev => ({
-                ...prev,
-                [category]: prev[category].includes(value) ? prev[category].filter(i => i !== value) : [...prev[category], value]
-            }));
-        } else {
-            setSelection(prev => ({ ...prev, [category]: value }));
-            setStep(prevStep => prevStep + 1);
-        }
-    };
-    
-    const canProceed = () => {
-        if (step === 1) return selection.style;
-        if (step === 2) return selection.format;
-        return true;
-    };
+  const handleSelect = (category, value) => {
+      if (category === 'extras') {
+          setSelection(prev => ({
+              ...prev,
+              extras: prev.extras.some(i => i.name === value.name) ? prev.extras.filter(i => i.name !== value.name) : [...prev.extras, value]
+          }));
+      } else {
+          setSelection(prev => ({ ...prev, [category]: value }));
+      }
+  };
     
     const getSummary = () => {
-        let summary = [];
-        if (selection.style) summary.push({ name: selection.style.name, type: 'Stílus' });
-        if (selection.format) summary.push({ name: selection.format.name, type: 'Formátum' });
-        selection.addons.forEach(item => summary.push({ name: item.name, type: 'Kiegészítő' }));
-        selection.finishes.forEach(item => summary.push({ name: item.name, type: 'Extra' }));
-        return summary;
-    };
+      let summary = [];
+      if (selection.style) summary.push({ name: selection.style.name, type: 'Stílus' });
+      if (selection.colors) summary.push({ name: selection.colors, type: 'Színek' });
+      if (selection.motif) summary.push({ name: selection.motif.name, type: 'Motívum' });
+      selection.extras.forEach(item => summary.push({ name: item.name, type: 'Extra' }));
+      return summary;
+  };
 
     const summaryItems = getSummary();
     const customPackageQuery = new URLSearchParams({ type: 'custom', items: summaryItems.map(i => i.name).join(',') }).toString();
@@ -519,10 +513,11 @@ function CustomPackageBuilder() {
 
               <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
                   <div className="lg:col-span-2">
-                    <AnimatePresence mode="wait">
-                        {step === 1 && <StepComponent key={1} title="1. Lépés: Mi legyen az alap stílus?" options={packageOptions.styles} selected={selection.style} onSelect={(val) => handleSelect('style', val)} />}
-                        {step === 2 && <StepComponent key={2} title="2. Lépés: Milyen formátumban mesélitek el a történetet?" options={packageOptions.formats} selected={selection.format} onSelect={(val) => handleSelect('format', val)} />}
-                        {step === 3 && <StepComponent key={3} title="3. Lépés: Válassz kiegészítőket és extrákat" options={[...packageOptions.addons, ...packageOptions.finishes]} selected={[...selection.addons, ...selection.finishes]} onSelect={(val) => val.price ? handleSelect('finishes', val) : handleSelect('addons', val)} isMultiSelect />}
+                  <AnimatePresence mode="wait">
+                        {step === 1 && <StepComponent key={1} title="1. Lépés: Melyik hangulat illik hozzátok a legközelebb?" options={packageOptions.styles} selected={selection.style} onSelect={(val) => handleSelect('style', val)} />}
+                        {step === 2 && <StepComponent key={2} title="2. Lépés: Milyen szín lesz az esküvőtök fő színe?" onSelect={(val) => handleSelect('colors', val)} selected={selection.colors} isTextInput />}
+                        {step === 3 && <StepComponent key={3} title="3. Lépés: Milyen minta tetszene nektek a legjobban?" options={packageOptions.motifs} selected={selection.motif} onSelect={(val) => handleSelect('motif', val)} />}
+                        {step === 4 && <StepComponent key={4} title="4. Lépés: Milyen extrákkal egészítenétek ki a csomagot?" options={packageOptions.extras} selected={selection.extras} onSelect={(val) => handleSelect('extras', val)} isMultiSelect />}
                     </AnimatePresence>
                   </div>
                   
@@ -547,8 +542,8 @@ function CustomPackageBuilder() {
                             </div>
                             <div className="flex items-center gap-4 mt-6">
                                 {step > 1 && <button onClick={() => setStep(s => s - 1)} className="text-sm text-gray-500 hover:text-brand-text">Vissza</button>}
-                                {step < 3 && <button onClick={() => setStep(s => s + 1)} disabled={!canProceed()} className="btn-primary flex-grow text-center disabled:opacity-50">Tovább</button>}
-                                {step === 3 && <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior><a className="btn-primary w-full text-center">Árajánlatot kérek</a></Link>}
+                                {step < 4 && <button onClick={() => setStep(s => s + 1)} className="btn-primary flex-grow text-center">Tovább</button>}
+                                {step === 4 && <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior><a className="btn-primary w-full text-center">Árajánlatot kérek</a></Link>}
                             </div>
                         </div>
                     </div>
@@ -558,15 +553,25 @@ function CustomPackageBuilder() {
   );
 }
 
-const StepComponent = ({ title, options, selected, onSelect, isMultiSelect = false }) => (
-    <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} transition={{ type: 'spring', stiffness: 200, damping: 25 }}>
-        <h3 className="font-serif text-2xl text-brand-text border-b border-brand-rose/30 pb-3 mb-6">{title}</h3>
-        <div className={`grid grid-cols-1 ${isMultiSelect ? 'sm:grid-cols-2' : 'sm:grid-cols-3'} gap-4`}>
-            {options.map(item => (
-                <OptionCard key={item.name} item={item} onSelect={() => onSelect(item)} isSelected={isMultiSelect ? selected.some(s => s.name === item.name) : selected?.name === item.name} />
-            ))}
-        </div>
-    </motion.div>
+const StepComponent = ({ title, options, selected, onSelect, isMultiSelect = false, isTextInput = false }) => (
+  <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} transition={{ type: 'spring', stiffness: 200, damping: 25 }}>
+      <h3 className="font-serif text-2xl text-brand-text pb-3 mb-6">{title}</h3>
+      {isTextInput ? (
+          <textarea
+              onChange={(e) => onSelect(e.target.value)}
+              value={selected || ''}
+              placeholder="Pl. bordó, arany, bézs..."
+              className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-brand-rose focus:border-brand-rose transition"
+              rows="3"
+          />
+      ) : (
+          <div className={`grid grid-cols-1 ${isMultiSelect ? 'sm:grid-cols-2' : 'sm:grid-cols-2'} gap-4`}>
+              {options.map(item => (
+                  <OptionCard key={item.name} item={item} onSelect={() => onSelect(item)} isSelected={isMultiSelect ? selected.some(s => s.name === item.name) : selected?.name === item.name} />
+              ))}
+          </div>
+      )}
+  </motion.div>
 );
 
 const OptionCard = ({ item, onSelect, isSelected }) => (
@@ -581,10 +586,9 @@ const OptionCard = ({ item, onSelect, isSelected }) => (
               {isSelected && <Check className="w-4 h-4 text-white"/>}
           </div>
       </div>
-      <p className="text-sm text-gray-500 mt-1">{item.description}</p>
+      {item.description && <p className="text-sm text-gray-500 mt-1">{item.description}</p>}
   </motion.div>
 );
-
 // === MODAL: név bekérés foglaláshoz ===
 const ClaimModal = ({ isOpen, onClose, onConfirm }) => {
   const [name, setName] = useState("");

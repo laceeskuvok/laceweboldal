@@ -17,6 +17,11 @@
       "static/chunks/main-app.js",
       "static/css/app/kollekciok/page.css",
       "static/chunks/app/kollekciok/page.js"
+    ],
+    "/kapcsolat/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/kapcsolat/page.js"
     ]
   }
 }

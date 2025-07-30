@@ -34,7 +34,7 @@ export default function InfoPage() {
     { title: "Válassz Kollekciót", description: "Böngészd végig a kész kollekciókat, vagy álmodd meg a sajátodat a csomagösszeállító segítségével." },
     { title: "Kérj Árajánlatot", description: "A kiválasztott kollekció oldalán, vagy a csomagösszeállító végén kattints az 'Árajánlatot kérek' gombra." },
     { title: "Add meg az adataidat", description: "Az űrlapon add meg a neved, email címed és az esetleges egyedi kéréseidet, darabszámokat." },
-    { title: "Vedd fel a kapcsolatot!", description: "Az elküldött ajánlatkérés után hamarosan felveszem veled a kapcsolatot a további részletekkel." },
+    { title: "Vedd fel a kapcsolatot", description: "Az elküldött ajánlatkérés után hamarosan felveszem veled a kapcsolatot a további részletekkel." },
   ];
 
   const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } };
@@ -72,7 +72,7 @@ export default function InfoPage() {
 
                 <motion.div variants={itemVariants} className="text-center pt-10 border-t border-brand-rose/20">
                     <h2 className="font-serif text-3xl md:text-4xl text-brand-text">Készen állsz belevágni?</h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-gray-600 font-body">Nézd meg a kollekciókat, vagy ha már tudod, mit szeretnél, vedd fel velem a kapcsolatot!</p>
+                    <p className="mt-4 max-w-2xl mx-auto text-gray-600 font-body">Nézd meg a kollekciókat, vagy ha már tudod, mit szeretnél, vedd fel velem a kapcsolatot.</p>
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/kollekciok" className="btn-primary w-full sm:w-auto">Kollekciók megtekintése</Link>
                         <Link href="/kapcsolat" className="btn-primary w-full sm:w-auto">Árajánlatot kérek</Link>

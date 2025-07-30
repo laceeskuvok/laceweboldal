@@ -65,8 +65,8 @@ const collections = [
     img: "/images/eskuvoihirlap.jpg",
     preview: {
       images: ["/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg", "/images/eskuvoihirlap.jpg"],
-      price: "Egyedi árazás",
-      description: "Extrém design, merész minták és látványos megjelenés. Kérd egyedi igényeid szerint!",
+      price: "31 000 Ft-tól",
+      description: "Extrém design, merész minták és látványos megjelenés.",
     },
     slug: "lace-bloom", // Megfelel a `kollekciok/page.js`-ben lévő ID-nak
   },

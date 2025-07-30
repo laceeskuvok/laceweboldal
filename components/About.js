@@ -49,17 +49,20 @@ const AboutCard = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <h2 className="text-3xl md:text-4xl font-semibold mb-6 leading-snug text-gray-900">
-            Szia, Cseh Vivien vagyok – a LACE megálmodója.
+          Szia, Cseh Vivien vagyok – a LACE megálmodója.
           </h2>
           <div className="space-y-5 text-base md:text-lg leading-relaxed font-light">
             <p>
-              Mindig is két világ vonzott: az esküvőszervezés precíz eleganciája és a grafika alkotási szabadsága. Bár nehéz volt a választás, végül a kreativitás iránti szenvedélyem győzött.
+            Mindig is két világ vonzott: az esküvőszervezés precíz eleganciája és a grafika alkotási szabadsága. Bár nehéz volt a választás, végül a kreativitás iránti szenvedélyem győzött.
             </p>
             <p>
               Így született meg a <strong className="font-medium text-gray-800">LACE</strong> – egy olyan tér, ahol az esküvők hangulata vizuális formát ölt, és ahol minden részlet a párról szól.
             </p>
             <p>
-              <strong className="text-gray-800">A LACE különlegessége</strong> az egyedi stílusra szabott dizájn és az a személyes videóüzenet, amit egy QR-kód segítségével fedezhetnek fel a vendégek.
+              Hat különböző kollekció közül választhatsz, amelyek az esküvő minden fontos nyomtatott elemét tartalmazzák. Emellett elérhető egyedi QR-kóddal működő videómeghívó csomag, valamint saját esküvői weboldal is – ha még személyesebbé és modernebbé szeretnétek tenni a nagy nap kommunikációját.
+            </p>
+            <p>
+            Ha egyik kollekció sem illik igazán hozzátok, lehetőség van egyedi összeállításra is – olyan részletekkel, amelyek valóban tükrözik a stílusotokat.
             </p>
             <p className="italic text-gray-600">
               A LACE nem csupán meghívó – egy történet, ami rólatok mesél.

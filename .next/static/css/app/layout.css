@@ -2425,6 +2425,9 @@ video {
 .bg-brand-rose\/10 {
   background-color: rgb(217 196 196 / 0.1);
 }
+.bg-brand-rose\/20 {
+  background-color: rgb(217 196 196 / 0.2);
+}
 .bg-brand-text {
   --tw-bg-opacity: 1;
   background-color: rgb(92 84 84 / var(--tw-bg-opacity, 1));
@@ -2514,9 +2517,6 @@ video {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
-}
-.bg-brand-rose\/20 {
-  background-color: rgb(217 196 196 / 0.2);
 }
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
@@ -2775,6 +2775,15 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pt-28 {
+  padding-top: 7rem;
+}
+.pt-44 {
+  padding-top: 11rem;
+}
+.pt-40 {
+  padding-top: 10rem;
 }
 .text-left {
   text-align: left;
