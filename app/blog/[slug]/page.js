@@ -58,7 +58,7 @@ export default function BlogPostPage() {
                 <article>
                     <header className="relative h-[50vh] flex items-center justify-center text-center px-4">
                         <div className="absolute inset-0 z-0">
-                            <Image src={post.cover_image_url || '/images/placeholder.jpg'} alt={post.title} layout="fill" objectFit="cover" className="opacity-30"/>
+                            
                             <div className="absolute inset-0 bg-gradient-to-t from-brand-background via-brand-background/70 to-transparent"/>
                         </div>
                         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="relative z-10">

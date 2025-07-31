@@ -50,7 +50,7 @@ const HomePageBlog = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center"
                 >
-                    <h2 className="font-serif text-4xl md:text-5xl italic text-brand-text">Friss Inspirációk</h2>
+                    <h2 className="font-serif text-4xl md:text-5xl italic text-brand-text">Inspirációk</h2>
                     <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-body">
                         Legújabb gondolataink, tippjeink és történeteink az esküvői grafika világából.
                     </p>

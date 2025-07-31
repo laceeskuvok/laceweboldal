@@ -2767,6 +2767,9 @@ video {
 .pt-4 {
   padding-top: 1rem;
 }
+.pt-40 {
+  padding-top: 10rem;
+}
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -2775,15 +2778,6 @@ video {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pt-28 {
-  padding-top: 7rem;
-}
-.pt-44 {
-  padding-top: 11rem;
-}
-.pt-40 {
-  padding-top: 10rem;
 }
 .text-left {
   text-align: left;
@@ -3015,9 +3009,6 @@ video {
 }
 .opacity-25 {
   opacity: 0.25;
-}
-.opacity-30 {
-  opacity: 0.3;
 }
 .opacity-40 {
   opacity: 0.4;
