@@ -54,6 +54,7 @@ const Footer = () => {
               <li><Link href="/kollekciok" className="text-gray-700 hover:text-brand-rose transition-colors">Kollekciók</Link></li>
               <li><Link href="/info" className="text-gray-700 hover:text-brand-rose transition-colors">Információk</Link></li>
               <li><Link href="/velemenyek" className="text-gray-700 hover:text-brand-rose transition-colors">Vélemények</Link></li>
+              <li><Link href="/blog" className="text-gray-700 hover:text-brand-rose transition-colors">Blog</Link></li>
               <li><Link href="/kapcsolat" className="text-gray-700 hover:text-brand-rose transition-colors">Kapcsolat</Link></li>
             </ul>
           </motion.div>
