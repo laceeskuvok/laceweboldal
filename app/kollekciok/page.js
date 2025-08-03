@@ -39,7 +39,7 @@ const collectionsData = [
     items: [
     { name: "Meghívó QR-kóddal", img: "/images/eskuvoihirlap.jpg" },
     { name: "Hozzá illő boríték", img: "/images/eskuvoihirlap.jpg" },
-    { name: "Ültetőtábla", img: "/images/eskuvoihirlap.jpg" },
+    { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" },
     { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" },
     ],
     notes: "Extraként menükártya is kérhető.",
@@ -59,9 +59,9 @@ const collectionsData = [
     notes: "Az ár tartalmazza a domain és a tárhely beállítását az első évre.",
     bgColor: "#F8F8FA" 
   },
-  { id: "04", slug: "lace-portrait", name: "LACE - Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőtábla", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#FAF7F6" },
+  { id: "04", slug: "lace-portrait", name: "LACE - Portrait", price: "39 900 Ft-tól", description: "Ebben a kollekcióban a főszerep a fotóitoké. Egy gyönyörűen megtervezett, kinyitható meghívó, ahol a képek mesélik el a történeteteket, minimális, de elegáns szöveggel kiegészítve. Boríték helyett finom szalaggal átkötve érkezik hozzátok.",notes: "Extraként menükártya is kérhető.", items: [ { name: "Kinyitható, képcentrikus meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Szalaggal átkötve", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#FAF7F6" },
 
-{ id: "05", slug: "lace-pure", name: "LACE - Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőtábla", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#EDF4F1", },
+{ id: "05", slug: "lace-pure", name: "LACE - Pure", price: "32 000 Ft-tól", description: "Ha szeretitek a minimalizmust és a letisztult elemeket, ez a csomag remek választás számotokra. Egyszerű, időtlen elegancia, ami sosem megy ki a divatból.", notes: "Extraként menükártya is kérhető.", items: [ { name: "Boríték", img: "/images/eskuvoihirlap.jpg" }, { name: "Meghívó", img: "/images/eskuvoihirlap.jpg" }, { name: "Ültetőkártya", img: "/images/eskuvoihirlap.jpg" }, { name: "Programkártya", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#EDF4F1", },
 
 { id: "06", slug: "lace-bloom", name: "LACE - Bloom", price: "32 000 Ft-tól", description: "A Lace Bloom kollekció azoknak szól, akik a merész mintákat és a különleges, látványos megjelenést keresik. A design középpontjában a gazdag grafika és az egyedi részletek állnak.", items: [ { name: "Extrém, mintás design", img: "/images/eskuvoihirlap.jpg" }, { name: "Látványos megjelenés", img: "/images/eskuvoihirlap.jpg" }, { name: "Egyedi részletek", img: "/images/eskuvoihirlap.jpg" }, { name: "Gazdag grafika", img: "/images/eskuvoihirlap.jpg" } ], img: "/images/eskuvoihirlap.jpg", bgColor: "#FAF7F6" },
 ];
@@ -472,7 +472,7 @@ const packageOptions = {
       { name: 'QR-kód videóüzenettel', description: 'Modern & meghitt gesztus.' },
       { name: 'Menükártya', description: 'A vacsora fogásai elegánsan.' },
       { name: 'Programkártya', description: 'A nagy nap menetrendje.' },
-      { name: 'Ültetőtábla', description: 'Segítség a vendégeknek az eligazodásban.' },
+      { name: 'Ültetőkártya/tábla', description: 'Segítség a vendégeknek az eligazodásban.' },
   ]
 };
 
@@ -543,7 +543,7 @@ function CustomPackageBuilder() {
                             <div className="flex items-center gap-4 mt-6">
                                 {step > 1 && <button onClick={() => setStep(s => s - 1)} className="text-sm text-gray-500 hover:text-brand-text">Vissza</button>}
                                 {step < 4 && <button onClick={() => setStep(s => s + 1)} className="btn-primary flex-grow text-center">Tovább</button>}
-                                {step === 4 && <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior><a className="btn-primary w-full text-center">Árajánlatot kérek</a></Link>}
+                                {step === 4 && <Link href={`/kapcsolat?${customPackageQuery}`} passHref legacyBehavior><a className="btn-primary size-12 text-sm flex-grow text-center">Árajánlatot kérek</a></Link>}
                             </div>
                         </div>
                     </div>
