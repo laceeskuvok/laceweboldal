@@ -54,6 +54,10 @@ export async function middleware(request) {
   return response
 }
 
+// ... (a fenti kód marad változatlan) ...
+
 export const config = {
   matcher: ['/admin/:path*', '/login'],
+  // Ezt a sort add hozzá:
+  runtime: 'nodejs', // Kényszerített Node.js runtime, elkerüli az Edge hibákat
 }

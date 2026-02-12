@@ -5,3 +5,7 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Ez a rész megpróbálja elkerülni az Edge bundling hibákat
+[functions]
+  included_files = ["!middleware.js"]
