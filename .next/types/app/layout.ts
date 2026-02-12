@@ -1,4 +1,4 @@
-// File: /Users/balintkovacs/vivi_grafika/app/layout.js
+// File: /Volumes/Samsung 1TB SSD/Weboldalak/laceweboldal/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

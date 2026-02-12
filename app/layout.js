@@ -2,7 +2,9 @@ import { cormorant, playfair, lora, montserrat, vibes, dancing } from '../lib/fo
 import './globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
+// Fontos: A CartProvider-nek 'use client' direktívával kell rendelkeznie a saját fájljában!
+import { CartProvider } from '../context/CartContext';
+import { ToastProvider } from '../context/ToastContext';
 
 export const metadata = {
   title: 'LACE Esküvők',
@@ -22,15 +24,22 @@ export const metadata = {
   },
 }
 
-
 const fontVariables = `${montserrat.variable} ${cormorant.variable} ${dancing.variable} ${playfair.variable} ${lora.variable} ${vibes.variable}`;
 
 export default function RootLayout({ children }) {
   return (
     <html lang="hu" className={fontVariables}>
       <body className="bg-white text-dark-text">
-        <main>{children}</main>
-        <Footer />
+        {/* A CartProvider "becsomagol" mindent, így a Header és az oldalak is elérik a kosarat */}
+        <ToastProvider>
+          <CartProvider>
+              <Header />
+              <main className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   )

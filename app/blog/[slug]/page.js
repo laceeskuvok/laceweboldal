@@ -3,27 +3,25 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useParams } from 'next/navigation'; // <-- 1. LÉPÉS: Importáljuk a useParams hook-ot
+import { useParams } from 'next/navigation';
 import Header from '../../../components/Header';
 import { createClient } from '@supabase/supabase-js';
 
-// --- SUPABASE INICIALIZÁLÁSA ---
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Markdown szöveget HTML-lé alakító komponens
 const MarkdownContent = ({ content }) => {
+    if (!content) return null;
     const paragraphs = content.split('\n').filter(p => p.trim() !== '');
     return (
-        <div className="prose lg:prose-lg max-w-full font-body text-gray-700 leading-relaxed space-y-6">
+        <div className="prose lg:prose-xl max-w-full font-serif text-[#5C5454] leading-loose space-y-6">
             {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
         </div>
     );
 }
 
 export default function BlogPostPage() {
-    // 2. LÉPÉS: A 'params'-ot lecseréljük a useParams hook használatára
     const params = useParams();
     const { slug } = params;
 
@@ -48,29 +46,53 @@ export default function BlogPostPage() {
         }
     }, [slug]);
 
-    if (isLoading) return <div className="h-screen flex items-center justify-center">Betöltés...</div>;
-    if (!post) return <div className="h-screen flex items-center justify-center">Bejegyzés nem található.</div>;
+    if (isLoading) return <div className="h-screen flex items-center justify-center bg-[#FDFCF8] text-[#B76E79]">Betöltés...</div>;
+    if (!post) return <div className="h-screen flex items-center justify-center bg-[#FDFCF8] text-[#5C5454]">Bejegyzés nem található.</div>;
 
     return (
         <>
             <Header />
-            <main>
-                <article>
-                    <header className="relative h-[50vh] flex items-center justify-center text-center px-4">
-                        <div className="absolute inset-0 z-0">
-                            
-                            <div className="absolute inset-0 bg-gradient-to-t from-brand-background via-brand-background/70 to-transparent"/>
-                        </div>
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="relative z-10">
-                            <h1 className="font-serif text-4xl md:text-6xl italic text-brand-text">{post.title}</h1>
-                        </motion.div>
-                    </header>
+            <main className="bg-[#FDFCF8] min-h-screen pt-32 pb-20">
+                <article className="max-w-4xl mx-auto px-6">
+                     <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.8 }} 
+                        className="text-center mb-12"
+                    >
+                        <h1 className="font-serif text-5xl md:text-7xl italic text-[#5C5454] mb-6 leading-tight">
+                            {post.title}
+                        </h1>
+                         <p className="text-[#B76E79] font-sans text-sm tracking-widest uppercase">
+                            {new Date(post.created_at).toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </p>
+                    </motion.div>
 
-                    <div className="py-16 md:py-24">
-                        <div className="max-w-3xl mx-auto px-4">
-                            <MarkdownContent content={post.content} />
-                        </div>
-                    </div>
+                    {post.cover_image_url && (
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="relative w-full aspect-video md:aspect-[2/1] rounded-2xl overflow-hidden shadow-sm mb-16 border border-[#E8DCC4]"
+                        >
+                            <Image 
+                                src={post.cover_image_url} 
+                                alt={post.title} 
+                                fill 
+                                className="object-cover"
+                                priority
+                            />
+                        </motion.div>
+                    )}
+
+                    <motion.div 
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-[#E8DCC4]"
+                    >
+                        <MarkdownContent content={post.content} />
+                    </motion.div>
                 </article>
             </main>
         </>

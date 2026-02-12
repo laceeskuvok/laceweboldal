@@ -14,6 +14,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
 
+@layer components {
+  .btn-primary {
+    @apply bg-[#B76E79] text-white rounded-full px-6 py-2 transition-all hover:bg-opacity-90 active:scale-95 shadow-md font-sans tracking-wide;
+  }
+  .input-field {
+    @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#B76E79] focus:border-[#B76E79] bg-[#FDFCF8] text-gray-700;
+  }
+}
+
 .font-akaya {
   font-family: "Akaya Kanadaka", sans-serif;
   font-weight: 600;
@@ -151,4 +160,9 @@
   background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
   transform: skewX(-25deg);
   animation: shine 3s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Ez FONTOS! Hogy a fix fejléc ne takarja ki a címet, ahova érkezik */
 }
