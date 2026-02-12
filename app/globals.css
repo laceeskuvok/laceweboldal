@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +13,6 @@
   font-family: "Anton";
   src: url("/fonts/Anton-Regular.ttf") format("truetype");
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
 
 @layer components {
   .btn-primary {
