@@ -1,0 +1,10 @@
+var R=require("./chunks/[turbopack]_runtime.js")("server/middleware.js")
+R.c("server/chunks/node_modules_@supabase_node-fetch_lib_index_8f64930b.js")
+R.c("server/chunks/node_modules_next_0233f4d4._.js")
+R.c("server/chunks/node_modules_tr46_0a7c9734._.js")
+R.c("server/chunks/node_modules_ws_d5f23f50._.js")
+R.c("server/chunks/node_modules_@supabase_auth-js_dist_module_562fbb5d._.js")
+R.c("server/chunks/node_modules_3b40eb5b._.js")
+R.c("server/chunks/[root-of-the-server]__91543932._.js")
+R.m("[project]/node_modules/next/dist/esm/build/templates/middleware.js { INNER_MIDDLEWARE_MODULE => \"[project]/middleware.js [middleware] (ecmascript)\" } [middleware] (ecmascript)")
+module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/middleware.js { INNER_MIDDLEWARE_MODULE => \"[project]/middleware.js [middleware] (ecmascript)\" } [middleware] (ecmascript)").exports

@@ -1,0 +1,15 @@
+[00:00:01.091] Server  LOG     
+[00:00:01.091] Server  LOG       We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:01.091] Server  LOG       The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+[00:00:01.091] Server  LOG       	- include was updated to add '.next/dev/types/**/*.ts'
+[00:00:01.091] Server  LOG     
+[00:00:01.091] Server  LOG       The following mandatory changes were made to your tsconfig.json:
+
+[00:00:01.091] Server  LOG       	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+[00:00:01.091] Server  LOG     
+[00:00:01.123] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.219] Server  LOG     ✓ Ready in 970ms
+[00:00:08.134] Server  WARN    ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+[00:00:09.694] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:09.694] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
