@@ -1,3 +1,12 @@
 {
-  "/page": "app/page.js"
+  "/admin/blog/edit/[id]/page": "app/admin/blog/edit/[id]/page.js",
+  "/admin/blog/new/page": "app/admin/blog/new/page.js",
+  "/admin/blog/page": "app/admin/blog/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/velemeny-iras/page": "app/velemeny-iras/page.js",
+  "/velemenyek/page": "app/velemenyek/page.js"
 }

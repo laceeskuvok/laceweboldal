@@ -1,0 +1,18 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/blog/page": [
+      "static/media/8bd76523131fa0fc-s.p.eb17b6b9.woff2",
+      "static/media/01e4147cff8141ee-s.p.7787e134.woff2",
+      "static/media/70e3db2de7f94926-s.p.347f98aa.woff2",
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2",
+      "static/media/5e5dfa9e86f764b8-s.p.da6e3317.woff2",
+      "static/media/8c2eb9ceedecfc8e-s.p.21935807.woff2",
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
+      "static/media/f48d461c03e0a8ec-s.p.4f85faee.woff2",
+      "static/media/406d3fc8d5ec9f59-s.p.3f4cab70.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

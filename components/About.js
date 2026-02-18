@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Check, Smartphone, TableProperties, Bell } from 'lucide-react'; // Ikonok a felsoroláshoz
 
 const AboutCard = () => {
-  const profileImageUrl = '/images/polish_save.png';
+  const profileImageUrl = '/images/polish_save.jpeg';
 
   return (
     <motion.section
