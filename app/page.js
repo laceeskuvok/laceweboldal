@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js'; // Supabase import
 import { Mail, Star, Quote, ArrowRight } from 'lucide-react'; // Ikonok bővítése
+import Image from 'next/image'; // FONTOS: Ne felejtsd el importálni!
 
 import Header from '../components/Header';
 import AboutCard from '../components/About';
@@ -15,48 +16,144 @@ import CartDrawer from '../components/CartDrawer';
 // --- SUPABASE CONFIG ---
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
-// === HERO SZEKCIÓ ===
+// === HERO SZEKCIÓ (PRÉMIUM KÖRBEÖLELŐ KÖD) ===
 const HeroSection = () => {
+  // --- SZÍNEK ---
+  const lightFog = '255, 240, 245'; // A te halvány rózsaszíned (Alap)
+  const darkFog = '250, 225, 232';  // Egy icipicit mélyebb rózsaszín a "kavargó" hatásért
+
   return (
-    <section className="relative h-screen overflow-hidden flex items-center justify-center">
-      {/* 1. VIDEÓ HÁTTÉR */}
-      <div className="absolute inset-0 z-0">
-        <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-full object-cover"
-        >
-            <source src="/videos/video.mov" type="video/quicktime" />
-            <source src="/videos/video.mov" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-white/10 mix-blend-overlay" />
-      </div>
+    <section className="relative h-screen overflow-hidden flex items-center justify-center bg-[#FDFCF8]">
       
-      {/* 2. Header */}
-      <div className="absolute top-0 left-0 w-full z-20">
+      {/* 1. HÁTTÉRKÉP */}
+      <div className="absolute inset-0 z-0">
+        <img 
+            src="/images/romantic-wedding-by-lake.jpg" 
+            alt="Esküvő a tónál" 
+            className="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      {/* ==========================================
+                 1. RÉTEG: ALAP KÖDFALAK (Világos)
+          ========================================== */}
+
+      {/* BAL OLDALI ALAP KÖD */}
+      <motion.div 
+        className="absolute top-0 left-0 bottom-0 w-1/2 md:w-1/3 z-10 pointer-events-none"
+        style={{
+          background: `linear-gradient(to right, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.95) 25%, transparent 60%)`,
+          filter: 'blur(20px)',
+          transform: 'scale(1.15) translateX(-5%)'
+        }}
+        animate={{ x: [-10, 0, -10], opacity: [0.85, 1, 0.85] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* JOBB OLDALI ALAP KÖD */}
+      <motion.div 
+        className="absolute top-0 right-0 bottom-0 w-1/2 md:w-1/3 z-10 pointer-events-none"
+        style={{
+          background: `linear-gradient(to left, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.95) 25%, transparent 60%)`,
+          filter: 'blur(20px)',
+          transform: 'scale(1.15) translateX(5%)'
+        }}
+        animate={{ x: [10, 0, 10], opacity: [0.85, 1, 0.85] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+
+      {/* ALSÓ ALAP KÖD (ÚJ) - "U" alakban körbeölel */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-1/5 md:h-2/7 z-10 pointer-events-none"
+        style={{
+          background: `linear-gradient(to top, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.9) 30%, transparent 80%)`,
+          filter: 'blur(20px)',
+          transform: 'scale(1.1) translateY(5%)' // Kicsit lejjebb toljuk, hogy a legalja sűrű legyen
+        }}
+        animate={{ y: [10, -5, 10], opacity: [0.85, 1, 0.85] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+
+
+      {/* ==========================================
+                 2. RÉTEG: KAVARGÓ KÖDFOLTOK (Sötétebb)
+          ========================================== */}
+
+      {/* BAL OLDALI KAVARGÓ FOLT */}
+      <motion.div 
+        className="absolute top-1/4 -left-10 w-1/3 h-1/2 z-10 pointer-events-none rounded-full"
+        style={{
+          background: `radial-gradient(circle, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+          filter: 'blur(40px)', // Nagyon homályos, felhőszerű
+        }}
+        animate={{ 
+          x: [-20, 20, -20],        // Jobbra-balra úszik
+          y: [-30, 30, -30],        // Fel-le úszik
+          scale: [1, 1.3, 1],       // Megnő majd összehúzódik
+          opacity: [0.4, 0.7, 0.4]  // Pulzál
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* JOBB OLDALI KAVARGÓ FOLT */}
+      <motion.div 
+        className="absolute bottom-1/4 -right-10 w-1/3 h-1/2 z-10 pointer-events-none rounded-full"
+        style={{
+          background: `radial-gradient(circle, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+          filter: 'blur(40px)',
+        }}
+        animate={{ 
+          x: [20, -20, 20],
+          y: [30, -30, 30],
+          scale: [1.2, 1, 1.2],
+          opacity: [0.5, 0.8, 0.5]
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+
+      {/* ALSÓ KAVARGÓ FOLT */}
+      <motion.div 
+        className="absolute -bottom-20 left-1/4 right-1/4 h-1/2 z-10 pointer-events-none rounded-full"
+        style={{
+          background: `radial-gradient(ellipse, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+          filter: 'blur(50px)',
+        }}
+        animate={{ 
+          x: [-40, 40, -40],
+          y: [0, -30, 0],
+          scale: [1, 1.2, 1],
+          opacity: [0.4, 0.7, 0.4]
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+
+      {/* ========================================== */}
+
+      {/* 4. HEADER */}
+      <div className="absolute top-0 left-0 w-full z-30">
         <Header />
       </div>
       
-      {/* 3. Központi tartalom */}
+      {/* 5. KÖZPONTI TARTALOM */}
       <motion.div 
-        className="relative z-10 w-full max-w-md px-6 md:max-w-2xl flex justify-center"
+        className="relative z-20 w-full max-w-md px-6 md:max-w-2xl flex justify-center"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <motion.div
-            animate={{ y: [0, -15, 0] }}
+            animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-full aspect-[3/4] md:aspect-[4/3]"
         >
-             {/* IDE MAJD A SAJÁT KÉPED JÖN, JELENLEG ÜRES A TIÉD ALAPJÁN */}
+             {/* Ide jöhet a meghívó kép, ha szükséges */}
         </motion.div>
       </motion.div>
     </section>
   );
 };
+
+// ... a fájl többi része változatlan ...
 
 // === RENDELÉSI INFÓ SZEKCIÓ ===
 const OrderInfo = () => {

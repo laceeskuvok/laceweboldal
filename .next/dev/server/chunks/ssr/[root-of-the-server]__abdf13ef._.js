@@ -2824,6 +2824,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/star.js [app-ssr] (ecmascript) <export default as Star>"); // Ikonok bővítése
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$quote$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Quote$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/quote.js [app-ssr] (ecmascript) <export default as Quote>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/arrow-right.js [app-ssr] (ecmascript) <export default as ArrowRight>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-ssr] (ecmascript)"); // FONTOS: Ne felejtsd el importálni!
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Header.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$About$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/About.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ProductSelection$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ProductSelection.js [app-ssr] (ecmascript)");
@@ -2841,72 +2842,252 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CartDrawer$2e$
 ;
 ;
 ;
+;
 // --- SUPABASE CONFIG ---
 const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(("TURBOPACK compile-time value", "https://bjjjpntdcydixfgurtus.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqampwbnRkY3lkaXhmZ3VydHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMxMjA2MDgsImV4cCI6MjA2ODY5NjYwOH0.9-cKVvAegirnwGSLZnBJdsCfeyUgt5ungalLzU_qbgQ"));
-// === HERO SZEKCIÓ ===
+// === HERO SZEKCIÓ (PRÉMIUM KÖRBEÖLELŐ KÖD) ===
 const HeroSection = ()=>{
+    // --- SZÍNEK ---
+    const lightFog = '255, 240, 245'; // A te halvány rózsaszíned (Alap)
+    const darkFog = '250, 225, 232'; // Egy icipicit mélyebb rózsaszín a "kavargó" hatásért
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "relative h-screen overflow-hidden flex items-center justify-center",
+        className: "relative h-screen overflow-hidden flex items-center justify-center bg-[#FDFCF8]",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 z-0",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
-                        autoPlay: true,
-                        loop: true,
-                        muted: true,
-                        playsInline: true,
-                        className: "w-full h-full object-cover",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
-                                src: "/videos/video.mov",
-                                type: "video/quicktime"
-                            }, void 0, false, {
-                                fileName: "[project]/app/page.js",
-                                lineNumber: 31,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
-                                src: "/videos/video.mov",
-                                type: "video/mp4"
-                            }, void 0, false, {
-                                fileName: "[project]/app/page.js",
-                                lineNumber: 32,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/app/page.js",
-                        lineNumber: 24,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute inset-0 bg-white/10 mix-blend-overlay"
-                    }, void 0, false, {
-                        fileName: "[project]/app/page.js",
-                        lineNumber: 34,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0))
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/page.js",
-                lineNumber: 23,
-                columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-0 left-0 w-full z-20",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                    src: "/images/romantic-wedding-by-lake.jpg",
+                    alt: "Esküvő a tónál",
+                    className: "w-full h-full object-cover object-center"
+                }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 39,
+                    lineNumber: 30,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 38,
+                lineNumber: 29,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                className: "relative z-10 w-full max-w-md px-6 md:max-w-2xl flex justify-center",
+                className: "absolute top-0 left-0 bottom-0 w-1/2 md:w-1/3 z-10 pointer-events-none",
+                style: {
+                    background: `linear-gradient(to right, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.95) 25%, transparent 60%)`,
+                    filter: 'blur(20px)',
+                    transform: 'scale(1.15) translateX(-5%)'
+                },
+                animate: {
+                    x: [
+                        -10,
+                        0,
+                        -10
+                    ],
+                    opacity: [
+                        0.85,
+                        1,
+                        0.85
+                    ]
+                },
+                transition: {
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 42,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "absolute top-0 right-0 bottom-0 w-1/2 md:w-1/3 z-10 pointer-events-none",
+                style: {
+                    background: `linear-gradient(to left, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.95) 25%, transparent 60%)`,
+                    filter: 'blur(20px)',
+                    transform: 'scale(1.15) translateX(5%)'
+                },
+                animate: {
+                    x: [
+                        10,
+                        0,
+                        10
+                    ],
+                    opacity: [
+                        0.85,
+                        1,
+                        0.85
+                    ]
+                },
+                transition: {
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 54,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "absolute bottom-0 left-0 right-0 h-1/5 md:h-2/7 z-10 pointer-events-none",
+                style: {
+                    background: `linear-gradient(to top, rgb(${lightFog}) 0%, rgba(${lightFog}, 0.9) 30%, transparent 80%)`,
+                    filter: 'blur(20px)',
+                    transform: 'scale(1.1) translateY(5%)' // Kicsit lejjebb toljuk, hogy a legalja sűrű legyen
+                },
+                animate: {
+                    y: [
+                        10,
+                        -5,
+                        10
+                    ],
+                    opacity: [
+                        0.85,
+                        1,
+                        0.85
+                    ]
+                },
+                transition: {
+                    duration: 9,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 66,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "absolute top-1/4 -left-10 w-1/3 h-1/2 z-10 pointer-events-none rounded-full",
+                style: {
+                    background: `radial-gradient(circle, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+                    filter: 'blur(40px)'
+                },
+                animate: {
+                    x: [
+                        -20,
+                        20,
+                        -20
+                    ],
+                    y: [
+                        -30,
+                        30,
+                        -30
+                    ],
+                    scale: [
+                        1,
+                        1.3,
+                        1
+                    ],
+                    opacity: [
+                        0.4,
+                        0.7,
+                        0.4
+                    ] // Pulzál
+                },
+                transition: {
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 83,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "absolute bottom-1/4 -right-10 w-1/3 h-1/2 z-10 pointer-events-none rounded-full",
+                style: {
+                    background: `radial-gradient(circle, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+                    filter: 'blur(40px)'
+                },
+                animate: {
+                    x: [
+                        20,
+                        -20,
+                        20
+                    ],
+                    y: [
+                        30,
+                        -30,
+                        30
+                    ],
+                    scale: [
+                        1.2,
+                        1,
+                        1.2
+                    ],
+                    opacity: [
+                        0.5,
+                        0.8,
+                        0.5
+                    ]
+                },
+                transition: {
+                    duration: 14,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 99,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "absolute -bottom-20 left-1/4 right-1/4 h-1/2 z-10 pointer-events-none rounded-full",
+                style: {
+                    background: `radial-gradient(ellipse, rgba(${darkFog}, 0.8) 0%, transparent 70%)`,
+                    filter: 'blur(50px)'
+                },
+                animate: {
+                    x: [
+                        -40,
+                        40,
+                        -40
+                    ],
+                    y: [
+                        0,
+                        -30,
+                        0
+                    ],
+                    scale: [
+                        1,
+                        1.2,
+                        1
+                    ],
+                    opacity: [
+                        0.4,
+                        0.7,
+                        0.4
+                    ]
+                },
+                transition: {
+                    duration: 16,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 115,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-0 left-0 w-full z-30",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                    fileName: "[project]/app/page.js",
+                    lineNumber: 134,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0))
+            }, void 0, false, {
+                fileName: "[project]/app/page.js",
+                lineNumber: 133,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                className: "relative z-20 w-full max-w-md px-6 md:max-w-2xl flex justify-center",
                 initial: {
                     opacity: 0,
                     y: 50
@@ -2923,7 +3104,7 @@ const HeroSection = ()=>{
                     animate: {
                         y: [
                             0,
-                            -15,
+                            -10,
                             0
                         ]
                     },
@@ -2935,21 +3116,22 @@ const HeroSection = ()=>{
                     className: "relative w-full aspect-[3/4] md:aspect-[4/3]"
                 }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 49,
+                    lineNumber: 144,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 43,
+                lineNumber: 138,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/page.js",
-        lineNumber: 21,
+        lineNumber: 26,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
+// ... a fájl többi része változatlan ...
 // === RENDELÉSI INFÓ SZEKCIÓ ===
 const OrderInfo = ()=>{
     const steps = [
@@ -2990,7 +3172,7 @@ const OrderInfo = ()=>{
                     children: "Rendelés menete"
                 }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 74,
+                    lineNumber: 171,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3003,7 +3185,7 @@ const OrderInfo = ()=>{
                                     children: step.num
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 78,
+                                    lineNumber: 175,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3011,7 +3193,7 @@ const OrderInfo = ()=>{
                                     children: step.title
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 81,
+                                    lineNumber: 178,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3019,29 +3201,29 @@ const OrderInfo = ()=>{
                                     children: step.desc
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 82,
+                                    lineNumber: 179,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, step.num, true, {
                             fileName: "[project]/app/page.js",
-                            lineNumber: 77,
+                            lineNumber: 174,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)))
                 }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 75,
+                    lineNumber: 172,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.js",
-            lineNumber: 73,
+            lineNumber: 170,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/app/page.js",
-        lineNumber: 72,
+        lineNumber: 169,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3091,7 +3273,7 @@ const Reviews = ()=>{
                                     className: "absolute top-4 right-6 w-8 h-8 text-[#E8DCC4]/30 fill-current"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 130,
+                                    lineNumber: 227,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3102,19 +3284,19 @@ const Reviews = ()=>{
                                         className: "w-16 h-16 rounded-full object-cover border-4 border-white shadow-md"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.js",
-                                        lineNumber: 135,
+                                        lineNumber: 232,
                                         columnNumber: 37
                                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "w-16 h-16 rounded-full bg-[#B76E79]/10 text-[#B76E79] flex items-center justify-center text-2xl font-serif font-bold border-4 border-white shadow-md",
                                         children: review.name.charAt(0)
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.js",
-                                        lineNumber: 141,
+                                        lineNumber: 238,
                                         columnNumber: 37
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 133,
+                                    lineNumber: 230,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3127,12 +3309,12 @@ const Reviews = ()=>{
                                             className: "stroke-none"
                                         }, i, false, {
                                             fileName: "[project]/app/page.js",
-                                            lineNumber: 150,
+                                            lineNumber: 247,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)))
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 148,
+                                    lineNumber: 245,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3140,7 +3322,7 @@ const Reviews = ()=>{
                                     children: review.name
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 155,
+                                    lineNumber: 252,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3154,12 +3336,12 @@ const Reviews = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.js",
-                                        lineNumber: 159,
+                                        lineNumber: 256,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 158,
+                                    lineNumber: 255,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3169,23 +3351,23 @@ const Reviews = ()=>{
                                         children: review.collection || "Egyedi tervezés"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.js",
-                                        lineNumber: 166,
+                                        lineNumber: 263,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.js",
-                                    lineNumber: 165,
+                                    lineNumber: 262,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, review.id, true, {
                             fileName: "[project]/app/page.js",
-                            lineNumber: 121,
+                            lineNumber: 218,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)))
                 }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 119,
+                    lineNumber: 216,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3199,29 +3381,29 @@ const Reviews = ()=>{
                                 size: 16
                             }, void 0, false, {
                                 fileName: "[project]/app/page.js",
-                                lineNumber: 177,
+                                lineNumber: 274,
                                 columnNumber: 52
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.js",
-                        lineNumber: 176,
+                        lineNumber: 273,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 175,
+                    lineNumber: 272,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.js",
-            lineNumber: 118,
+            lineNumber: 215,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/app/page.js",
-        lineNumber: 117,
+        lineNumber: 214,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3230,51 +3412,51 @@ function HomePage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HeroSection, {}, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 188,
+                lineNumber: 285,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "py-16 md:py-24 bg-white",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$About$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 191,
+                    lineNumber: 288,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 190,
+                lineNumber: 287,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ProductSelection$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 194,
+                lineNumber: 291,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(OrderInfo, {}, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 196,
+                lineNumber: 293,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Reviews, {}, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 199,
+                lineNumber: 296,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 id: "kapcsolat",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Contact$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/page.js",
-                    lineNumber: 202,
+                    lineNumber: 299,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 201,
+                lineNumber: 298,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CartDrawer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/page.js",
-                lineNumber: 205,
+                lineNumber: 302,
                 columnNumber: 7
             }, this)
         ]

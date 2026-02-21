@@ -214,18 +214,13 @@ const Header = ()=>{
         }
         return href;
     };
-    // --- ÚJ FÜGGVÉNY A SIMA GÖRGETÉSHEZ ---
     const handleLinkClick = (e, href)=>{
-        // 1. Mindig zárjuk be a mobil menüt kattintáskor
         setIsMenuOpen(false);
-        // 2. Ellenőrizzük, hogy horgony linkről van-e szó (#) és a főoldalon vagyunk-e
         if (href.includes('#') && pathname === '/') {
-            e.preventDefault(); // Megállítjuk a hirtelen ugrást
-            // Kinyerjük az ID-t a linkből (pl. "/#kapcsolat" -> "kapcsolat")
+            e.preventDefault();
             const targetId = href.replace('/#', '').replace('#', '');
             const elem = document.getElementById(targetId);
             if (elem) {
-                // Sima görgetés az elemhez
                 elem.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -285,23 +280,27 @@ const Header = ()=>{
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].header, {
-                animate: hasScrolled ? "scrolled" : "top",
-                variants: {
-                    top: {
-                        backgroundColor: 'rgba(253, 252, 248, 0)',
-                        borderBottomColor: 'rgba(0,0,0,0)'
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed top-0 left-0 w-full z-40 px-4 pt-4 md:px-8 md:pt-6 pointer-events-none transition-all duration-300",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].header, {
+                    animate: hasScrolled ? "scrolled" : "top",
+                    variants: {
+                        // MÁR AZ ELEJÉN IS ÜVEGHATÁS (hogy olvasható legyen a szöveg)
+                        top: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                            backdropFilter: 'blur(16px)',
+                            borderColor: 'rgba(255, 255, 255, 0.5)',
+                            boxShadow: '0 4px 16px rgba(0,0,0,0.03)'
+                        },
+                        // GÖRGETÉSKOR PICIT ERŐSEBB LESZ
+                        scrolled: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+                            backdropFilter: 'blur(20px)',
+                            borderColor: 'rgba(255, 255, 255, 0.7)',
+                            boxShadow: '0 8px 32px rgba(0,0,0,0.08)' // Nagyobb árnyék
+                        }
                     },
-                    scrolled: {
-                        backgroundColor: 'rgba(253, 252, 248, 0.9)',
-                        backdropFilter: 'blur(10px)',
-                        boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-                        borderBottomColor: 'rgba(0,0,0,0.05)'
-                    }
-                },
-                className: "fixed top-0 left-0 w-full z-40 border-b transition-all duration-300",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto px-6 h-24 flex items-center justify-between",
+                    className: "max-w-7xl mx-auto h-20 md:h-24 px-6 flex items-center justify-between rounded-2xl border pointer-events-auto transition-colors duration-300 relative",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
                             className: "hidden md:flex items-center space-x-8",
@@ -317,19 +316,19 @@ const Header = ()=>{
                                             className: "absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B76E79] transition-all duration-300 group-hover:w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Header.js",
-                                            lineNumber: 113,
+                                            lineNumber: 118,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, link.name, true, {
                                     fileName: "[project]/components/Header.js",
-                                    lineNumber: 106,
+                                    lineNumber: 111,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0));
                             })
                         }, void 0, false, {
                             fileName: "[project]/components/Header.js",
-                            lineNumber: 102,
+                            lineNumber: 107,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -342,17 +341,17 @@ const Header = ()=>{
                                     children: "Lace"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Header.js",
-                                    lineNumber: 122,
+                                    lineNumber: 127,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.js",
-                                lineNumber: 121,
+                                lineNumber: 126,
                                 columnNumber: 16
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/Header.js",
-                            lineNumber: 120,
+                            lineNumber: 125,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -367,7 +366,7 @@ const Header = ()=>{
                                             children: "Rendeléseim"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Header.js",
-                                            lineNumber: 134,
+                                            lineNumber: 139,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -377,7 +376,7 @@ const Header = ()=>{
                                                     className: "w-6 h-6 stroke-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Header.js",
-                                                    lineNumber: 136,
+                                                    lineNumber: 141,
                                                     columnNumber: 25
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 cartCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].span, {
@@ -391,19 +390,19 @@ const Header = ()=>{
                                                     children: cartCount
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Header.js",
-                                                    lineNumber: 138,
+                                                    lineNumber: 143,
                                                     columnNumber: 29
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Header.js",
-                                            lineNumber: 135,
+                                            lineNumber: 140,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Header.js",
-                                    lineNumber: 130,
+                                    lineNumber: 135,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -411,29 +410,29 @@ const Header = ()=>{
                                     className: "md:hidden text-[#5C5454]",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HamburgerIcon, {}, void 0, false, {
                                         fileName: "[project]/components/Header.js",
-                                        lineNumber: 149,
+                                        lineNumber: 154,
                                         columnNumber: 21
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/components/Header.js",
-                                    lineNumber: 148,
+                                    lineNumber: 153,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Header.js",
-                            lineNumber: 129,
+                            lineNumber: 134,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Header.js",
-                    lineNumber: 99,
+                    lineNumber: 85,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/Header.js",
-                lineNumber: 91,
+                lineNumber: 84,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -457,12 +456,12 @@ const Header = ()=>{
                                 className: "w-8 h-8"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.js",
-                                lineNumber: 164,
+                                lineNumber: 169,
                                 columnNumber: 17
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/components/Header.js",
-                            lineNumber: 163,
+                            lineNumber: 168,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -476,24 +475,24 @@ const Header = ()=>{
                                     children: link.name
                                 }, link.name, false, {
                                     fileName: "[project]/components/Header.js",
-                                    lineNumber: 170,
+                                    lineNumber: 175,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0));
                             })
                         }, void 0, false, {
                             fileName: "[project]/components/Header.js",
-                            lineNumber: 166,
+                            lineNumber: 171,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Header.js",
-                    lineNumber: 158,
+                    lineNumber: 163,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/components/Header.js",
-                lineNumber: 156,
+                lineNumber: 161,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]

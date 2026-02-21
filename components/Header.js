@@ -37,21 +37,13 @@ const Header = () => {
     return href;
   };
 
-  // --- ÚJ FÜGGVÉNY A SIMA GÖRGETÉSHEZ ---
   const handleLinkClick = (e, href) => {
-    // 1. Mindig zárjuk be a mobil menüt kattintáskor
     setIsMenuOpen(false);
-
-    // 2. Ellenőrizzük, hogy horgony linkről van-e szó (#) és a főoldalon vagyunk-e
     if (href.includes('#') && pathname === '/') {
-        e.preventDefault(); // Megállítjuk a hirtelen ugrást
-        
-        // Kinyerjük az ID-t a linkből (pl. "/#kapcsolat" -> "kapcsolat")
+        e.preventDefault(); 
         const targetId = href.replace('/#', '').replace('#', '');
         const elem = document.getElementById(targetId);
-
         if (elem) {
-            // Sima görgetés az elemhez
             elem.scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
@@ -88,15 +80,28 @@ const Header = () => {
 
   return (
     <>
-      <motion.header
-        animate={hasScrolled ? "scrolled" : "top"}
-        variants={{
-          top: { backgroundColor: 'rgba(253, 252, 248, 0)', borderBottomColor: 'rgba(0,0,0,0)' },
-          scrolled: { backgroundColor: 'rgba(253, 252, 248, 0.9)', backdropFilter: 'blur(10px)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', borderBottomColor: 'rgba(0,0,0,0.05)' }
-        }}
-        className="fixed top-0 left-0 w-full z-40 border-b transition-all duration-300"
-      >
-        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+      {/* === ÜVEGHATÁSÚ HEADER === */}
+      <div className="fixed top-0 left-0 w-full z-40 px-4 pt-4 md:px-8 md:pt-6 pointer-events-none transition-all duration-300">
+        <motion.header
+          animate={hasScrolled ? "scrolled" : "top"}
+          variants={{
+            // MÁR AZ ELEJÉN IS ÜVEGHATÁS (hogy olvasható legyen a szöveg)
+            top: { 
+              backgroundColor: 'rgba(255, 255, 255, 0.25)', 
+              backdropFilter: 'blur(16px)', 
+              borderColor: 'rgba(255, 255, 255, 0.5)',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.03)'
+            },
+            // GÖRGETÉSKOR PICIT ERŐSEBB LESZ
+            scrolled: { 
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', // Picit fehérebb
+              backdropFilter: 'blur(20px)', // Picit erősebb elmosás
+              borderColor: 'rgba(255, 255, 255, 0.7)', 
+              boxShadow: '0 8px 32px rgba(0,0,0,0.08)' // Nagyobb árnyék
+            }
+          }}
+          className="max-w-7xl mx-auto h-20 md:h-24 px-6 flex items-center justify-between rounded-2xl border pointer-events-auto transition-colors duration-300 relative"
+        >
             
             {/* BAL OLDAL: Menü */}
             <nav className="hidden md:flex items-center space-x-8">
@@ -106,7 +111,7 @@ const Header = () => {
                   <Link 
                     key={link.name}
                     href={finalHref}
-                    onClick={(e) => handleLinkClick(e, finalHref)} // Itt hívjuk meg a görgetést
+                    onClick={(e) => handleLinkClick(e, finalHref)}
                     className="font-serif text-lg text-[#5C5454] hover:text-[#B76E79] transition-colors relative group"
                   >
                     {link.name}
@@ -149,8 +154,8 @@ const Header = () => {
                     <HamburgerIcon />
                 </button>
             </div>
-        </div>
-      </motion.header>
+        </motion.header>
+      </div>
 
       {/* === MOBIL MENÜ === */}
       <AnimatePresence>
@@ -170,7 +175,7 @@ const Header = () => {
                         <Link 
                             key={link.name}
                             href={finalHref}
-                            onClick={(e) => handleLinkClick(e, finalHref)} // Mobilon is működjön a sima görgetés
+                            onClick={(e) => handleLinkClick(e, finalHref)}
                             className="font-serif text-3xl text-[#5C5454]"
                         >
                             {link.name}
