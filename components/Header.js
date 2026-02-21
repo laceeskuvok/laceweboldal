@@ -81,30 +81,31 @@ const Header = () => {
   return (
     <>
       {/* === ÜVEGHATÁSÚ HEADER === */}
-      <div className="fixed top-0 left-0 w-full z-40 px-4 pt-4 md:px-8 md:pt-6 pointer-events-none transition-all duration-300">
+      {/* md helyett lg-re cserélve a padding töréspontok is */}
+      <div className="fixed top-0 left-0 w-full z-40 px-4 pt-4 lg:px-8 lg:pt-6 pointer-events-none transition-all duration-300">
         <motion.header
           animate={hasScrolled ? "scrolled" : "top"}
           variants={{
-            // MÁR AZ ELEJÉN IS ÜVEGHATÁS (hogy olvasható legyen a szöveg)
             top: { 
               backgroundColor: 'rgba(255, 255, 255, 0.25)', 
               backdropFilter: 'blur(16px)', 
               borderColor: 'rgba(255, 255, 255, 0.5)',
               boxShadow: '0 4px 16px rgba(0,0,0,0.03)'
             },
-            // GÖRGETÉSKOR PICIT ERŐSEBB LESZ
             scrolled: { 
-              backgroundColor: 'rgba(255, 255, 255, 0.4)', // Picit fehérebb
-              backdropFilter: 'blur(20px)', // Picit erősebb elmosás
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+              backdropFilter: 'blur(20px)', 
               borderColor: 'rgba(255, 255, 255, 0.7)', 
-              boxShadow: '0 8px 32px rgba(0,0,0,0.08)' // Nagyobb árnyék
+              boxShadow: '0 8px 32px rgba(0,0,0,0.08)' 
             }
           }}
-          className="max-w-7xl mx-auto h-20 md:h-24 px-6 flex items-center justify-between rounded-2xl border pointer-events-auto transition-colors duration-300 relative"
+          // md:h-24 -> lg:h-24 lett, hogy az iPaden még a kompaktabb magasság maradjon
+          className="max-w-7xl mx-auto h-20 lg:h-24 px-6 flex items-center justify-between rounded-2xl border pointer-events-auto transition-colors duration-300 relative"
         >
             
             {/* BAL OLDAL: Menü */}
-            <nav className="hidden md:flex items-center space-x-8">
+            {/* hidden md:flex helyett hidden lg:flex */}
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {menuItems.map((link) => {
                 const finalHref = getLink(link.href, link.anchor);
                 return (
@@ -112,7 +113,7 @@ const Header = () => {
                     key={link.name}
                     href={finalHref}
                     onClick={(e) => handleLinkClick(e, finalHref)}
-                    className="font-serif text-lg text-[#5C5454] hover:text-[#B76E79] transition-colors relative group"
+                    className="font-serif text-lg text-[#5C5454] hover:text-[#B76E79] transition-colors relative group whitespace-nowrap"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B76E79] transition-all duration-300 group-hover:w-full"></span>
@@ -136,7 +137,8 @@ const Header = () => {
                     onClick={() => setIsCartOpen(true)}
                     className="font-serif text-lg text-[#5C5454] hover:text-[#B76E79] transition-colors flex items-center gap-2 group"
                 >
-                    <span className="hidden md:inline">Rendeléseim</span>
+                    {/* hidden md:inline helyett hidden lg:inline */}
+                    <span className="hidden lg:inline whitespace-nowrap">Rendeléseim</span>
                     <div className="relative">
                         <ShoppingBag className="w-6 h-6 stroke-1" />
                         {cartCount > 0 && (
@@ -150,7 +152,8 @@ const Header = () => {
                     </div>
                 </button>
 
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-[#5C5454]">
+                {/* md:hidden helyett lg:hidden */}
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-[#5C5454]">
                     <HamburgerIcon />
                 </button>
             </div>

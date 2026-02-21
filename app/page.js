@@ -28,7 +28,7 @@ const HeroSection = () => {
       {/* 1. HÁTTÉRKÉP */}
       <div className="absolute inset-0 z-0">
         <img 
-            src="/images/romantic-wedding-by-lake.jpg" 
+            src="/images/hero_vegleges.jpg" 
             alt="Esküvő a tónál" 
             className="w-full h-full object-cover object-center"
         />

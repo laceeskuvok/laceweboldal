@@ -50,7 +50,7 @@ const AboutCard = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           {/* Főcím */}
-          <h2 className="text-4xl md:text-5xl font-serif italic mb-2 text-brand-text">
+          <h2 className="text-4xl md:text-5xl font-serif italic mb-2 pt-12 text-brand-text">
             Lace - Elegáns design.
           </h2>
           <h2 className="text-4xl md:text-5xl font-serif italic mb-8 text-brand-rose">

@@ -1,176 +1,19 @@
-[00:00:01.377] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:01.548] Server  LOG     ✓ Ready in 1262ms
-[00:02:56.629] Server  WARN    ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
-[00:02:57.087] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:02:57.087] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:02:57.087] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:03:31.701] Server  LOG     ✓ Compiled in 83ms
-[00:03:31.917] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:04:01.415] Server  LOG     ✓ Compiled in 239ms
-[00:04:21.501] Server  LOG     ✓ Compiled in 141ms
-[00:04:21.748] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/images/hero-fog-bg.png" "received" null
-[00:04:21.917] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:04:21.917] Browser WARN    Image with src "/images/hero-fog-bg.png" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:04:25.871] Server  LOG     ✓ Compiled in 52ms
-[00:04:26.917] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:04:26.917] Browser ERROR   uncaughtError: TypeError: Failed to construct 'Image': Please use the 'new' operator, this DOM object constructor cannot be called as a function.
-[00:04:42.617] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:04:42.618] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:04:42.637] Server  LOG     ✓ Compiled in 96ms
-[00:04:42.914] Server  WARN    Image with src "/images/hero-fog-bg.png" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:04:43.012] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/images/hero-fog-bg.png" "received" null
-[00:04:43.319] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:04:43.319] Browser WARN    Image with src "/images/hero-fog-bg.png" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:04:48.553] Server  LOG     ✓ Compiled in 105ms
-[00:04:48.670] Browser ERROR   ./app/page.js:20:8
-Ecmascript file had an error
-  18 |
-  19 | // ... importok a fájl tetején ...
-> 20 | import Image from 'next/image'; // FONTOS: Ne felejtsd el importálni!
-     |        ^^^^^
-  21 |
-  22 | // === HERO SZEKCIÓ (Főoldal teteje) ===
-  23 | const HeroSection = () => {
-
-the name `Image` is defined multiple times
-
-Import traces:
-  Client Component Browser:
-    ./app/page.js [Client Component Browser]
-    ./app/page.js [Server Component]
-
-  Client Component SSR:
-    ./app/page.js [Client Component SSR]
-    ./app/page.js [Server Component]
-[00:04:53.150] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:05:08.557] Server  LOG     ✓ Compiled in 76ms
-[00:05:08.643] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:05:08.643] Browser WARN    Image with src "/images/romantic-wedding-by-lake.jpg" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:05:14.183] Server  WARN    Image with src "/images/romantic-wedding-by-lake.jpg" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:05:14.565] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:05:14.565] Browser WARN    Image with src "/images/romantic-wedding-by-lake.jpg" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:05:15.921] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:05:15.921] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:10:07.457] Server  LOG     ✓ Compiled in 282ms
-[00:10:15.407] Server  LOG     ✓ Compiled in 124ms
-[00:10:15.792] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:12:01.966] Server  LOG     ✓ Compiled in 217ms
-[00:12:02.193] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:14:00.697] Server  LOG     ✓ Compiled in 157ms
-[00:14:00.917] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:14:51.069] Server  LOG     ✓ Compiled in 99ms
-[00:14:51.420] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:14:57.206] Server  LOG     ✓ Compiled in 79ms
-[00:14:57.282] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:01.226] Server  LOG     ✓ Compiled in 73ms
-[00:15:01.300] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:05.854] Server  LOG     ✓ Compiled in 86ms
-[00:15:05.934] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:12.705] Server  LOG     ✓ Compiled in 75ms
-[00:15:12.791] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:18.603] Server  LOG     ✓ Compiled in 110ms
-[00:15:18.680] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:21.095] Server  LOG     ✓ Compiled in 58ms
-[00:15:21.173] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:24.773] Server  LOG     ✓ Compiled in 52ms
-[00:15:24.849] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:28.593] Server  LOG     ✓ Compiled in 52ms
-[00:15:28.672] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:33.606] Server  LOG     ✓ Compiled in 80ms
-[00:15:33.683] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:38.497] Server  LOG     ✓ Compiled in 76ms
-[00:15:38.581] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:15:49.670] Server  LOG     ✓ Compiled in 80ms
-[00:15:49.750] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:20:13.414] Server  LOG     ✓ Compiled in 230ms
-[00:20:13.615] Browser ERROR   ./app/page.js:20:17
-Parsing ecmascript source code failed
-  18 |
-  19 | // === HERO SZEKCIÓ (DRASZTIKUS KÖD ÉL) ===
-> 20 | Örülök, hogy tetszik ez az irány! Ezzel a módszerrel tényleg sokkal jobban kézben tartható a design.
-     |                 ^^^^^^^
-  21 |
-  22 | Hogy elérjük a Vanta.js-hez hasonló, "örvénylő" és térbeli hatást, a sima színátmenetek mellé bevetünk egy trükköt: úgynevezett "ködfoltokat" (szabadon mozgó, elmosott köröket) teszünk a szélekre és alulra. Ezek a foltok egy icipicit sötétebb/mélyebb rózsaszínek lesznek, és lassan mozognak fel-le, jobbra-balra, miközben nőnek és zsugorodnak. Ez adja meg a füst/köd kavargó érzését!
-  23 |
-
-Expected ';', '}' or <eof>
-
-Import traces:
-  Client Component Browser:
-    ./app/page.js [Client Component Browser]
-    ./app/page.js [Server Component]
-
-  Client Component SSR:
-    ./app/page.js [Client Component SSR]
-    ./app/page.js [Server Component]
-[00:20:28.035] Server  LOG     ✓ Compiled in 112ms
-[00:20:28.136] Browser ERROR   ./app/page.js:20:10
-Ecmascript file had an error
-  18 |
-  19 | // === HERO SZEKCIÓ (DRASZTIKUS KÖD ÉL) ===
-> 20 | import { motion } from 'framer-motion';
-     |          ^^^^^^
-  21 |
-  22 | // === HERO SZEKCIÓ (PRÉMIUM KÖRBEÖLELŐ KÖD) ===
-  23 | const HeroSection = () => {
-
-the name `motion` is defined multiple times
-
-Import traces:
-  Client Component Browser:
-    ./app/page.js [Client Component Browser]
-    ./app/page.js [Server Component]
-
-  Client Component SSR:
-    ./app/page.js [Client Component SSR]
-    ./app/page.js [Server Component]
-[00:20:35.961] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:20:43.240] Server  LOG     ✓ Compiled in 95ms
-[00:20:43.319] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:01.723] Server  LOG     ✓ Compiled in 105ms
-[00:21:01.800] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:08.363] Server  LOG     ✓ Compiled in 75ms
-[00:21:08.443] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:09.453] Server  LOG     ✓ Compiled in 68ms
-[00:21:09.532] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:17.411] Server  LOG     ✓ Compiled in 98ms
-[00:21:17.491] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:20.280] Server  LOG     ✓ Compiled in 56ms
-[00:21:20.358] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:23.878] Server  LOG     ✓ Compiled in 87ms
-[00:21:23.955] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:26.313] Server  LOG     ✓ Compiled in 70ms
-[00:21:26.387] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:27.892] Server  LOG     ✓ Compiled in 81ms
-[00:21:27.966] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:30.638] Server  LOG     ✓ Compiled in 53ms
-[00:21:30.715] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:33.565] Server  LOG     ✓ Compiled in 79ms
-[00:21:33.642] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:36.580] Server  LOG     ✓ Compiled in 93ms
-[00:21:36.659] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:40.929] Server  LOG     ✓ Compiled in 75ms
-[00:21:41.006] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:43.173] Server  LOG     ✓ Compiled in 47ms
-[00:21:43.248] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:45.685] Server  LOG     ✓ Compiled in 52ms
-[00:21:45.762] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:48.861] Server  LOG     ✓ Compiled in 89ms
-[00:21:48.937] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:21:58.952] Server  LOG     ✓ Compiled in 111ms
-[00:21:59.031] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:22:04.032] Server  LOG     ✓ Compiled in 120ms
-[00:22:04.106] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:22:07.828] Server  LOG     ✓ Compiled in 88ms
-[00:22:07.905] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:39:30.617] Server  LOG     ✓ Compiled in 393ms
-[00:48:53.301] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
-[00:49:03.621] Server  LOG     ✓ Compiled in 138ms
-[00:49:06.065] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:49:06.065] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:01.180] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.286] Server  LOG     ✓ Ready in 1007ms
+[00:00:07.699] Server  WARN    ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+[00:00:07.985] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:00:34.180] Server  LOG     ✓ Compiled in 946ms
+[00:00:34.302] Server  LOG     ✓ Compiled in 53ms
+[00:00:38.450] Server  LOG     ✓ Compiled in 78ms
+[00:00:41.472] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:49.993] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:00:50.278] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:50.278] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:56.707] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:01:00.957] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:15:12.398] Server  LOG     ✓ Compiled in 715ms
+[00:15:12.994] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:15:16.808] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[00:17:49.388] Server  LOG     ✓ Compiled in 302ms
+[00:18:07.892] Browser WARN    Image with src "/images/kalacs.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:18:07.892] Browser WARN    Image with src "/images/kecske.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
