@@ -4,47 +4,57 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useCart } from '../context/CartContext';
-import { X, ChevronLeft, ChevronRight, ZoomIn, Check, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn, Check, Maximize2, Info } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
 
-// === TERMÉK ADATOK (Változatlan) ===
+// === TERMÉK ADATOK (FRISSÍTVE AZ ÚJ SZÖVEGEKKEL ÉS MÉRETEKKEL) ===
 const products = [
     {
         id: 'layered',
         title: 'The Layered',
         coverImage: '/images/kalacs.jpeg',
-        description: 'Rétegelt elegancia, különleges textúrák.',
+        description: '',
         details: {
             images: [
                 { src: '/images/kalacs2.jpeg', label: 'Meghívó' },
                 { src: '/images/kalacs3.jpeg', label: 'Menükártya' },
                 { src: '/images/kalacs4.jpeg', label: 'Ültetőkártya' }
             ],
+            description: "A The Layered meghívócsaládot azoknak a pároknak terveztem, akik szeretik a rendszerezettséget. Ez a kollekció három, egymásra épülő lapból áll, egy szegeccsel vagy szalaggal összefogva.",
+            features: [
+                { label: 'Rétegek száma', value: '3 lap, harmonikus egységben.' },
+                { label: 'Interaktivitás', value: 'Egyedi QR-kód generálása a visszajelzésekhez (RSVP).' },
+                { label: 'Papír', value: 'Prémium minőségű dekorpapír.' }
+            ],
             sizes: {
-                invite: '148 x 210 mm (A5)',
-                menu: '99 x 210 mm (LA4)',
-                place: '90 x 50 mm'
-            },
-            description: "A The Layered kollekció a textúrák játékáról szól. Prémium minőségű, strukturált papírokat használunk, melyek rétegzésével érjük el a különleges, mélységgel rendelkező hatást. Tökéletes választás modern, mégis klasszikus eleganciát kedvelő pároknak."
+                invite: 'Kb. 105 × 148 mm (A6)',
+                menu: '148,5 × 210 mm (A5 - Félbehajtott, megáll az asztalon)',
+                place: '90 × 50 mm (Sátorkártya fazon)'
+            }
         }
     },
     {
         id: 'folded',
         title: 'The Folded',
         coverImage: '/images/kecske.jpeg',
-        description: 'Hajtogatott forma, meglepetés a borítékban.',
+        description: '',
         details: {
             images: [
                 { src: '/images/kecske2.jpeg', label: 'Meghívó' },
                 { src: '/images/kecske3.jpeg', label: 'Menükártya' },
                 { src: '/images/kecske4.jpeg', label: 'Ültetőkártya' }
             ],
+            description: "Egyszerű, mégis nagyszerű választás. Letisztult forma, amely minden lényeges információt elegánsan magában foglal, egyetlen finom ívre komponálva.",
+            features: [
+                { label: 'Kialakítás', value: 'Egyetlen, középen hajtott ív, rétegek nélkül.' },
+                { label: 'Interaktivitás', value: 'Egyedi QR-kód generálása a visszajelzésekhez (RSVP).' },
+                { label: 'Papír', value: 'Prémium minőségű dekorpapír.' }
+            ],
             sizes: {
-                invite: 'kihajtva A4, összehajtva 148 x 148 mm',
-                menu: '105 x 148 mm (A6)',
-                place: '85 x 55 mm'
-            },
-            description: "A The Folded kollekció az interaktivitásra épít. A különleges hajtogatási technika miatt a meghívó kibontása már önmagában egy élmény a vendégek számára. Játékos, egyedi és emlékezetes."
+                invite: 'Összehajtva 105 × 148 mm (A6)',
+                menu: '148,5 × 210 mm (A5 - Félbehajtott, megáll az asztalon)',
+                place: '90 × 50 mm (Sátorkártya fazon)'
+            }
         }
     }
 ];
@@ -86,15 +96,15 @@ const ProductSelection = () => {
 
         // Validáció modern alerttel
         if (!formData.color) {
-            showToast('Kérlek add meg a választott színvilágot!', 'error'); // <--- CSERE
+            showToast('Kérlek add meg a választott színvilágot!', 'error'); 
             return;
         }
         if (packageType === 'invite' && (!formData.inviteQty || formData.inviteQty < 15)) {
-            showToast('A minimum rendelési mennyiség 15 db!', 'error'); // <--- CSERE
+            showToast('A minimum rendelési mennyiség 15 db!', 'error'); 
             return;
         }
         if (packageType === 'full' && (!formData.inviteQty || !formData.menuQty || !formData.placeQty)) {
-             showToast('Kérlek töltsd ki az összes mennyiséget!', 'error'); // <--- CSERE
+             showToast('Kérlek töltsd ki az összes mennyiséget!', 'error'); 
              return;
         }
         const item = {
@@ -112,7 +122,7 @@ const ProductSelection = () => {
         };
 
         addToCart(item);
-        showToast(`${selectedProduct.title} sikeresen a kosárba került!`, 'success'); // <--- CSERE
+        showToast(`${selectedProduct.title} sikeresen a kosárba került!`, 'success'); 
         setSelectedProduct(null); 
     };
 
@@ -168,77 +178,54 @@ const ProductSelection = () => {
                         >
                             <div className="flex flex-col lg:flex-row">
                                 
-                                {/* BAL OLDAL: GALÉRIA */}
+                                {/* BAL OLDAL: GALÉRIA ÉS LEÍRÁS */}
                                 <div className="lg:w-1/2 p-6 lg:p-10 bg-[#faf9f6] border-r border-[#E8DCC4]">
                                     
                                     {/* Nagy Kép Konténer */}
                                     <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-sm mb-6 group bg-white">
-                                        
-                                        {/* Kép Animációval */}
                                         <AnimatePresence mode='wait'>
                                             <motion.div
                                                 key={activeImageIndex}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.5 }}
-                                                className="absolute inset-0"
+                                                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.5 }} className="absolute inset-0"
                                             >
-                                                <Image 
-                                                    src={selectedProduct.details.images[activeImageIndex].src} 
-                                                    alt={selectedProduct.title} 
-                                                    fill 
-                                                    className="object-cover" 
-                                                />
+                                                <Image src={selectedProduct.details.images[activeImageIndex].src} alt={selectedProduct.title} fill className="object-cover" />
                                             </motion.div>
                                         </AnimatePresence>
 
-                                        {/* Overlay ikonok (Nagyítás) */}
-                                        <div 
-                                            onClick={() => setIsLightboxOpen(true)}
-                                            className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors cursor-zoom-in flex items-center justify-center"
-                                        >
+                                        <div onClick={() => setIsLightboxOpen(true)} className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors cursor-zoom-in flex items-center justify-center">
                                             <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 bg-white/90 p-3 rounded-full shadow-lg">
                                                 <Maximize2 className="w-6 h-6 text-[#5C5454]" />
                                             </div>
                                         </div>
 
-                                        {/* Lapozó Nyilak (Inline) */}
-                                        <button 
-                                            onClick={prevImage}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-[#5C5454] transition-all opacity-0 group-hover:opacity-100 z-10"
-                                        >
-                                            <ChevronLeft className="w-5 h-5" />
-                                        </button>
-                                        <button 
-                                            onClick={nextImage}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-[#5C5454] transition-all opacity-0 group-hover:opacity-100 z-10"
-                                        >
-                                            <ChevronRight className="w-5 h-5" />
-                                        </button>
+                                        <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-[#5C5454] transition-all opacity-0 group-hover:opacity-100 z-10"><ChevronLeft className="w-5 h-5" /></button>
+                                        <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-[#5C5454] transition-all opacity-0 group-hover:opacity-100 z-10"><ChevronRight className="w-5 h-5" /></button>
                                     </div>
 
                                     {/* Kis képek (Thumbnails) */}
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-3 gap-4 mb-10">
                                         {selectedProduct.details.images.map((img, idx) => (
-                                            <div 
-                                                key={idx}
-                                                className={`relative aspect-square rounded-md overflow-hidden cursor-pointer transition-all duration-300 ${activeImageIndex === idx ? 'ring-2 ring-[#B76E79] ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`}
-                                                onMouseEnter={() => setActiveImageIndex(idx)}
-                                                onClick={() => setActiveImageIndex(idx)}
-                                            >
+                                            <div key={idx} className={`relative aspect-square rounded-md overflow-hidden cursor-pointer transition-all duration-300 ${activeImageIndex === idx ? 'ring-2 ring-[#B76E79] ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`} onMouseEnter={() => setActiveImageIndex(idx)} onClick={() => setActiveImageIndex(idx)}>
                                                 <Image src={img.src} alt={img.label} fill className="object-cover" />
                                             </div>
                                         ))}
                                     </div>
 
-                                    {/* Leírás és Méretek - IGÉNYESEBB ELRENDEZÉS */}
-                                    <div className="mt-10 space-y-8">
+                                    {/* Leírás, Jellemzők és Méretek */}
+                                    <div className="space-y-8">
                                         <div>
                                             <h4 className="font-serif text-2xl text-[#5C5454] mb-4 border-b border-[#E8DCC4] pb-2 inline-block">A kollekcióról</h4>
-                                            <p className="text-gray-600 font-light leading-relaxed text-justify">
+                                            <p className="text-gray-600 font-light leading-relaxed text-justify mb-4">
                                                 {selectedProduct.details.description}
                                             </p>
+                                            <ul className="space-y-2 mt-4">
+                                                {selectedProduct.details.features.map((feature, idx) => (
+                                                    <li key={idx} className="text-sm text-gray-600 font-light">
+                                                        <span className="font-medium text-[#5C5454]">{feature.label}:</span> {feature.value}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                         
                                         <div>
@@ -246,15 +233,15 @@ const ProductSelection = () => {
                                             <div className="space-y-0 bg-white border border-[#E8DCC4] rounded-lg overflow-hidden">
                                                 <div className="flex justify-between items-center p-4 border-b border-[#E8DCC4] bg-[#FDFCF8]">
                                                     <span className="font-serif text-lg text-[#B76E79] font-medium">Meghívó</span>
-                                                    <span className="text-gray-600 text-sm font-light">{selectedProduct.details.sizes.invite}</span>
+                                                    <span className="text-gray-600 text-xs md:text-sm font-light text-right">{selectedProduct.details.sizes.invite}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center p-4 border-b border-[#E8DCC4]">
                                                     <span className="font-serif text-lg text-[#B76E79] font-medium">Menükártya</span>
-                                                    <span className="text-gray-600 text-sm font-light">{selectedProduct.details.sizes.menu}</span>
+                                                    <span className="text-gray-600 text-xs md:text-sm font-light text-right max-w-[60%]">{selectedProduct.details.sizes.menu}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center p-4 bg-[#FDFCF8]">
                                                     <span className="font-serif text-lg text-[#B76E79] font-medium">Ültetőkártya</span>
-                                                    <span className="text-gray-600 text-sm font-light">{selectedProduct.details.sizes.place}</span>
+                                                    <span className="text-gray-600 text-xs md:text-sm font-light text-right">{selectedProduct.details.sizes.place}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,10 +255,10 @@ const ProductSelection = () => {
                                     </button>
 
                                     <h3 className="font-serif text-4xl text-[#5C5454] mb-2">{selectedProduct.title}</h3>
-                                    <p className="text-[#B76E79] font-serif italic text-lg mb-10">Konfiguráld egyedi rendelésed</p>
+                                    <p className="text-[#B76E79] font-serif italic text-lg mb-8">Konfiguráld egyedi rendelésed</p>
                                     
                                     {/* 1. Csomag típus választás */}
-                                    <div className="mb-10">
+                                    <div className="mb-8">
                                         <label className="block text-sm font-medium text-gray-500 mb-4 uppercase tracking-widest">Válassz csomagot</label>
                                         <div className="flex flex-col gap-4">
                                             <button 
@@ -299,6 +286,26 @@ const ProductSelection = () => {
                                             </button>
                                         </div>
                                     </div>
+
+                                    {/* --- FONTOS TUDNIVALÓ (Csak ha teljes kollekció van kiválasztva) --- */}
+                                    <AnimatePresence>
+                                        {packageType === 'full' && (
+                                            <motion.div 
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                className="mb-8 overflow-hidden"
+                                            >
+                                                <div className="bg-[#B76E79]/5 border border-[#B76E79]/20 p-4 rounded-xl flex gap-3">
+                                                    <Info className="w-6 h-6 text-[#B76E79] flex-shrink-0 mt-0.5" />
+                                                    <p className="text-sm text-gray-600 leading-relaxed font-light">
+                                                        <strong className="font-medium text-[#5C5454]">Fontos tudnivaló: </strong>
+                                                        A Lace kollekciók tervezésekor tudom, hogy a menü és az ültetési rend az utolsó pillanatig változhat. Ha a teljes kollekciót választod, a meghívókat azonnal elkészítem, a <span className="font-medium">menükártyák és ültetők szövegezésére pedig ráérünk 8 héttel az esküvő előtt is visszatérni!</span>
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
 
                                     {/* 2. Adatok megadása */}
                                     <div className="space-y-8">
@@ -374,7 +381,7 @@ const ProductSelection = () => {
                     )}
                 </AnimatePresence>
 
-                {/* --- FULLSCREEN LIGHTBOX (Finomítva) --- */}
+                {/* --- FULLSCREEN LIGHTBOX --- */}
                 <AnimatePresence>
                     {isLightboxOpen && selectedProduct && (
                         <motion.div 
@@ -382,46 +389,25 @@ const ProductSelection = () => {
                             className="fixed inset-0 z-[60] bg-[#faf9f6]/95 flex items-center justify-center backdrop-blur-md"
                             onClick={() => setIsLightboxOpen(false)}
                         >
-                            {/* Bezárás gomb */}
                             <button className="absolute top-6 right-6 text-[#5C5454] hover:text-[#B76E79] transition-colors p-2 z-50">
                                 <X className="w-10 h-10" />
                             </button>
-
-                            {/* Bal nyíl */}
-                            <button onClick={prevImage} className="absolute left-4 md:left-10 text-[#5C5454] hover:text-[#B76E79] hover:scale-110 transition-all p-4 z-50 bg-white/50 rounded-full shadow-sm">
-                                <ChevronLeft className="w-10 h-10" />
-                            </button>
-
-                            {/* Kép tartalom */}
+                            <button onClick={prevImage} className="absolute left-4 md:left-10 text-[#5C5454] hover:text-[#B76E79] hover:scale-110 transition-all p-4 z-50 bg-white/50 rounded-full shadow-sm"><ChevronLeft className="w-10 h-10" /></button>
                             <div className="relative w-full h-full max-w-6xl max-h-[85vh] p-4 flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
                                 <motion.div
                                     key={activeImageIndex}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.4 }}
-                                    className="relative w-full h-full"
+                                    initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.4 }} className="relative w-full h-full"
                                 >
-                                    <Image 
-                                        src={selectedProduct.details.images[activeImageIndex].src} 
-                                        alt="Nagyított kép" 
-                                        fill 
-                                        className="object-contain drop-shadow-2xl" 
-                                    />
+                                    <Image src={selectedProduct.details.images[activeImageIndex].src} alt="Nagyított kép" fill className="object-contain drop-shadow-2xl" />
                                 </motion.div>
-                                
-                                {/* Képaláírás - Elegánsabb */}
                                 <div className="absolute bottom-4 left-0 right-0 text-center">
                                     <span className="bg-white/90 px-6 py-2 rounded-full text-[#5C5454] text-xl font-serif italic shadow-md border border-[#E8DCC4]">
                                         {selectedProduct.details.images[activeImageIndex].label}
                                     </span>
                                 </div>
                             </div>
-
-                            {/* Jobb nyíl */}
-                            <button onClick={nextImage} className="absolute right-4 md:right-10 text-[#5C5454] hover:text-[#B76E79] hover:scale-110 transition-all p-4 z-50 bg-white/50 rounded-full shadow-sm">
-                                <ChevronRight className="w-10 h-10" />
-                            </button>
+                            <button onClick={nextImage} className="absolute right-4 md:right-10 text-[#5C5454] hover:text-[#B76E79] hover:scale-110 transition-all p-4 z-50 bg-white/50 rounded-full shadow-sm"><ChevronRight className="w-10 h-10" /></button>
                         </motion.div>
                     )}
                 </AnimatePresence>

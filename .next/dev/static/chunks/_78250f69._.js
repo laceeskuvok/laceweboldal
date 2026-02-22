@@ -108,7 +108,7 @@ const AboutCard = ()=>{
                     },
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-4xl md:text-5xl font-serif italic mb-2 pt-12 text-brand-text",
+                            className: "text-4xl md:text-5xl font-serif italic mb-2 pt-20 text-brand-text",
                             children: "Lace - Elegáns design."
                         }, void 0, false, {
                             fileName: "[project]/components/About.js",
@@ -406,6 +406,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-client] (ecmascript) <export default as ChevronRight>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/check.js [app-client] (ecmascript) <export default as Check>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$maximize$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Maximize2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/maximize-2.js [app-client] (ecmascript) <export default as Maximize2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$info$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Info$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/info.js [app-client] (ecmascript) <export default as Info>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$ToastContext$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/ToastContext.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -416,13 +417,13 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// === TERMÉK ADATOK (Változatlan) ===
+// === TERMÉK ADATOK (FRISSÍTVE AZ ÚJ SZÖVEGEKKEL ÉS MÉRETEKKEL) ===
 const products = [
     {
         id: 'layered',
         title: 'The Layered',
         coverImage: '/images/kalacs.jpeg',
-        description: 'Rétegelt elegancia, különleges textúrák.',
+        description: '',
         details: {
             images: [
                 {
@@ -438,19 +439,33 @@ const products = [
                     label: 'Ültetőkártya'
                 }
             ],
+            description: "A The Layered meghívócsaládot azoknak a pároknak terveztem, akik szeretik a rendszerezettséget. Ez a kollekció három, egymásra épülő lapból áll, egy szegeccsel vagy szalaggal összefogva.",
+            features: [
+                {
+                    label: 'Rétegek száma',
+                    value: '3 lap, harmonikus egységben.'
+                },
+                {
+                    label: 'Interaktivitás',
+                    value: 'Egyedi QR-kód generálása a visszajelzésekhez (RSVP).'
+                },
+                {
+                    label: 'Papír',
+                    value: 'Prémium minőségű dekorpapír.'
+                }
+            ],
             sizes: {
-                invite: '148 x 210 mm (A5)',
-                menu: '99 x 210 mm (LA4)',
-                place: '90 x 50 mm'
-            },
-            description: "A The Layered kollekció a textúrák játékáról szól. Prémium minőségű, strukturált papírokat használunk, melyek rétegzésével érjük el a különleges, mélységgel rendelkező hatást. Tökéletes választás modern, mégis klasszikus eleganciát kedvelő pároknak."
+                invite: 'Kb. 105 × 148 mm (A6)',
+                menu: '148,5 × 210 mm (A5 - Félbehajtott, megáll az asztalon)',
+                place: '90 × 50 mm (Sátorkártya fazon)'
+            }
         }
     },
     {
         id: 'folded',
         title: 'The Folded',
         coverImage: '/images/kecske.jpeg',
-        description: 'Hajtogatott forma, meglepetés a borítékban.',
+        description: '',
         details: {
             images: [
                 {
@@ -466,12 +481,26 @@ const products = [
                     label: 'Ültetőkártya'
                 }
             ],
+            description: "Egyszerű, mégis nagyszerű választás. Letisztult forma, amely minden lényeges információt elegánsan magában foglal, egyetlen finom ívre komponálva.",
+            features: [
+                {
+                    label: 'Kialakítás',
+                    value: 'Egyetlen, középen hajtott ív, rétegek nélkül.'
+                },
+                {
+                    label: 'Interaktivitás',
+                    value: 'Egyedi QR-kód generálása a visszajelzésekhez (RSVP).'
+                },
+                {
+                    label: 'Papír',
+                    value: 'Prémium minőségű dekorpapír.'
+                }
+            ],
             sizes: {
-                invite: 'kihajtva A4, összehajtva 148 x 148 mm',
-                menu: '105 x 148 mm (A6)',
-                place: '85 x 55 mm'
-            },
-            description: "A The Folded kollekció az interaktivitásra épít. A különleges hajtogatási technika miatt a meghívó kibontása már önmagában egy élmény a vendégek számára. Játékos, egyedi és emlékezetes."
+                invite: 'Összehajtva 105 × 148 mm (A6)',
+                menu: '148,5 × 210 mm (A5 - Félbehajtott, megáll az asztalon)',
+                place: '90 × 50 mm (Sátorkártya fazon)'
+            }
         }
     }
 ];
@@ -514,15 +543,15 @@ const ProductSelection = ()=>{
         if (!selectedProduct) return;
         // Validáció modern alerttel
         if (!formData.color) {
-            showToast('Kérlek add meg a választott színvilágot!', 'error'); // <--- CSERE
+            showToast('Kérlek add meg a választott színvilágot!', 'error');
             return;
         }
         if (packageType === 'invite' && (!formData.inviteQty || formData.inviteQty < 15)) {
-            showToast('A minimum rendelési mennyiség 15 db!', 'error'); // <--- CSERE
+            showToast('A minimum rendelési mennyiség 15 db!', 'error');
             return;
         }
         if (packageType === 'full' && (!formData.inviteQty || !formData.menuQty || !formData.placeQty)) {
-            showToast('Kérlek töltsd ki az összes mennyiséget!', 'error'); // <--- CSERE
+            showToast('Kérlek töltsd ki az összes mennyiséget!', 'error');
             return;
         }
         const item = {
@@ -539,7 +568,7 @@ const ProductSelection = ()=>{
             totalPrice: 0
         };
         addToCart(item);
-        showToast(`${selectedProduct.title} sikeresen a kosárba került!`, 'success'); // <--- CSERE
+        showToast(`${selectedProduct.title} sikeresen a kosárba került!`, 'success');
         setSelectedProduct(null);
     };
     // --- NAVIGÁCIÓS LOGIKA ---
@@ -565,7 +594,7 @@ const ProductSelection = ()=>{
                     children: "Válassz kollekciót"
                 }, void 0, false, {
                     fileName: "[project]/components/ProductSelection.js",
-                    lineNumber: 136,
+                    lineNumber: 146,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -586,12 +615,12 @@ const ProductSelection = ()=>{
                                         className: "object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ProductSelection.js",
-                                        lineNumber: 148,
+                                        lineNumber: 158,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 147,
+                                    lineNumber: 157,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -599,7 +628,7 @@ const ProductSelection = ()=>{
                                     children: product.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 150,
+                                    lineNumber: 160,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -607,7 +636,7 @@ const ProductSelection = ()=>{
                                     children: product.description
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 151,
+                                    lineNumber: 161,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -615,18 +644,18 @@ const ProductSelection = ()=>{
                                     children: "Kiválasztom"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 152,
+                                    lineNumber: 162,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, product.id, true, {
                             fileName: "[project]/components/ProductSelection.js",
-                            lineNumber: 141,
+                            lineNumber: 151,
                             columnNumber: 25
                         }, ("TURBOPACK compile-time value", void 0)))
                 }, void 0, false, {
                     fileName: "[project]/components/ProductSelection.js",
-                    lineNumber: 139,
+                    lineNumber: 149,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -680,17 +709,17 @@ const ProductSelection = ()=>{
                                                             className: "object-cover"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 187,
+                                                            lineNumber: 192,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, activeImageIndex, false, {
                                                         fileName: "[project]/components/ProductSelection.js",
-                                                        lineNumber: 179,
+                                                        lineNumber: 187,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 178,
+                                                    lineNumber: 186,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -702,17 +731,17 @@ const ProductSelection = ()=>{
                                                             className: "w-6 h-6 text-[#5C5454]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 202,
+                                                            lineNumber: 198,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ProductSelection.js",
-                                                        lineNumber: 201,
+                                                        lineNumber: 197,
                                                         columnNumber: 45
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 197,
+                                                    lineNumber: 196,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -722,12 +751,12 @@ const ProductSelection = ()=>{
                                                         className: "w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ProductSelection.js",
-                                                        lineNumber: 211,
-                                                        columnNumber: 45
+                                                        lineNumber: 202,
+                                                        columnNumber: 245
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 207,
+                                                    lineNumber: 202,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -737,22 +766,22 @@ const ProductSelection = ()=>{
                                                         className: "w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ProductSelection.js",
-                                                        lineNumber: 217,
-                                                        columnNumber: 45
+                                                        lineNumber: 203,
+                                                        columnNumber: 246
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 213,
+                                                    lineNumber: 203,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 175,
+                                            lineNumber: 185,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid grid-cols-3 gap-4",
+                                            className: "grid grid-cols-3 gap-4 mb-10",
                                             children: selectedProduct.details.images.map((img, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `relative aspect-square rounded-md overflow-hidden cursor-pointer transition-all duration-300 ${activeImageIndex === idx ? 'ring-2 ring-[#B76E79] ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`,
                                                     onMouseEnter: ()=>setActiveImageIndex(idx),
@@ -764,21 +793,21 @@ const ProductSelection = ()=>{
                                                         className: "object-cover"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ProductSelection.js",
-                                                        lineNumber: 230,
+                                                        lineNumber: 210,
                                                         columnNumber: 49
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, idx, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 224,
+                                                    lineNumber: 209,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0)))
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 222,
+                                            lineNumber: 207,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "mt-10 space-y-8",
+                                            className: "space-y-8",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     children: [
@@ -787,21 +816,50 @@ const ProductSelection = ()=>{
                                                             children: "A kollekcióról"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 238,
+                                                            lineNumber: 218,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-gray-600 font-light leading-relaxed text-justify",
+                                                            className: "text-gray-600 font-light leading-relaxed text-justify mb-4",
                                                             children: selectedProduct.details.description
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 239,
+                                                            lineNumber: 219,
+                                                            columnNumber: 45
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                            className: "space-y-2 mt-4",
+                                                            children: selectedProduct.details.features.map((feature, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                    className: "text-sm text-gray-600 font-light",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "font-medium text-[#5C5454]",
+                                                                            children: [
+                                                                                feature.label,
+                                                                                ":"
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/components/ProductSelection.js",
+                                                                            lineNumber: 225,
+                                                                            columnNumber: 57
+                                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                                        " ",
+                                                                        feature.value
+                                                                    ]
+                                                                }, idx, true, {
+                                                                    fileName: "[project]/components/ProductSelection.js",
+                                                                    lineNumber: 224,
+                                                                    columnNumber: 53
+                                                                }, ("TURBOPACK compile-time value", void 0)))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/ProductSelection.js",
+                                                            lineNumber: 222,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 237,
+                                                    lineNumber: 217,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -811,7 +869,7 @@ const ProductSelection = ()=>{
                                                             children: "Méretek"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 245,
+                                                            lineNumber: 232,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -825,21 +883,21 @@ const ProductSelection = ()=>{
                                                                             children: "Meghívó"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 248,
+                                                                            lineNumber: 235,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "text-gray-600 text-sm font-light",
+                                                                            className: "text-gray-600 text-xs md:text-sm font-light text-right",
                                                                             children: selectedProduct.details.sizes.invite
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 249,
+                                                                            lineNumber: 236,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 247,
+                                                                    lineNumber: 234,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -850,21 +908,21 @@ const ProductSelection = ()=>{
                                                                             children: "Menükártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 252,
+                                                                            lineNumber: 239,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "text-gray-600 text-sm font-light",
+                                                                            className: "text-gray-600 text-xs md:text-sm font-light text-right max-w-[60%]",
                                                                             children: selectedProduct.details.sizes.menu
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 253,
+                                                                            lineNumber: 240,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 251,
+                                                                    lineNumber: 238,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -875,45 +933,45 @@ const ProductSelection = ()=>{
                                                                             children: "Ültetőkártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 256,
+                                                                            lineNumber: 243,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "text-gray-600 text-sm font-light",
+                                                                            className: "text-gray-600 text-xs md:text-sm font-light text-right",
                                                                             children: selectedProduct.details.sizes.place
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 257,
+                                                                            lineNumber: 244,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 255,
+                                                                    lineNumber: 242,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 246,
+                                                            lineNumber: 233,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 244,
+                                                    lineNumber: 231,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 236,
+                                            lineNumber: 216,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 172,
+                                    lineNumber: 182,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -926,12 +984,12 @@ const ProductSelection = ()=>{
                                                 className: "w-8 h-8"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ProductSelection.js",
-                                                lineNumber: 267,
+                                                lineNumber: 254,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 266,
+                                            lineNumber: 253,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -939,26 +997,26 @@ const ProductSelection = ()=>{
                                             children: selectedProduct.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 270,
+                                            lineNumber: 257,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#B76E79] font-serif italic text-lg mb-10",
+                                            className: "text-[#B76E79] font-serif italic text-lg mb-8",
                                             children: "Konfiguráld egyedi rendelésed"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 271,
+                                            lineNumber: 258,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "mb-10",
+                                            className: "mb-8",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "block text-sm font-medium text-gray-500 mb-4 uppercase tracking-widest",
                                                     children: "Válassz csomagot"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 275,
+                                                    lineNumber: 262,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -972,7 +1030,7 @@ const ProductSelection = ()=>{
                                                                     className: `absolute inset-0 bg-[#B76E79]/5 transition-opacity duration-300 ${packageType === 'full' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 281,
+                                                                    lineNumber: 268,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -983,7 +1041,7 @@ const ProductSelection = ()=>{
                                                                             children: "Teljes kollekció"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 283,
+                                                                            lineNumber: 270,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -991,13 +1049,13 @@ const ProductSelection = ()=>{
                                                                             children: "Tartalma: Meghívó, menükártya, ültetőkártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 284,
+                                                                            lineNumber: 271,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 282,
+                                                                    lineNumber: 269,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 packageType === 'full' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1006,18 +1064,18 @@ const ProductSelection = ()=>{
                                                                         className: "w-5 h-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/ProductSelection.js",
-                                                                        lineNumber: 286,
+                                                                        lineNumber: 273,
                                                                         columnNumber: 158
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 286,
+                                                                    lineNumber: 273,
                                                                     columnNumber: 76
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 277,
+                                                            lineNumber: 264,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1028,7 +1086,7 @@ const ProductSelection = ()=>{
                                                                     className: `absolute inset-0 bg-[#B76E79]/5 transition-opacity duration-300 ${packageType === 'invite' ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 293,
+                                                                    lineNumber: 280,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1039,7 +1097,7 @@ const ProductSelection = ()=>{
                                                                             children: "Csak meghívó"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 295,
+                                                                            lineNumber: 282,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1047,13 +1105,13 @@ const ProductSelection = ()=>{
                                                                             children: "Kizárólag az esküvői meghívó kártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 296,
+                                                                            lineNumber: 283,
                                                                             columnNumber: 53
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 294,
+                                                                    lineNumber: 281,
                                                                     columnNumber: 49
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 packageType === 'invite' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1062,30 +1120,97 @@ const ProductSelection = ()=>{
                                                                         className: "w-5 h-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/ProductSelection.js",
-                                                                        lineNumber: 298,
+                                                                        lineNumber: 285,
                                                                         columnNumber: 160
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 298,
+                                                                    lineNumber: 285,
                                                                     columnNumber: 78
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 289,
+                                                            lineNumber: 276,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 276,
+                                                    lineNumber: 263,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 274,
+                                            lineNumber: 261,
+                                            columnNumber: 37
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                                            children: packageType === 'full' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                                initial: {
+                                                    opacity: 0,
+                                                    height: 0
+                                                },
+                                                animate: {
+                                                    opacity: 1,
+                                                    height: 'auto'
+                                                },
+                                                exit: {
+                                                    opacity: 0,
+                                                    height: 0
+                                                },
+                                                className: "mb-8 overflow-hidden",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "bg-[#B76E79]/5 border border-[#B76E79]/20 p-4 rounded-xl flex gap-3",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$info$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Info$3e$__["Info"], {
+                                                            className: "w-6 h-6 text-[#B76E79] flex-shrink-0 mt-0.5"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/ProductSelection.js",
+                                                            lineNumber: 300,
+                                                            columnNumber: 53
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-sm text-gray-600 leading-relaxed font-light",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    className: "font-medium text-[#5C5454]",
+                                                                    children: "Fontos tudnivaló: "
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/ProductSelection.js",
+                                                                    lineNumber: 302,
+                                                                    columnNumber: 57
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                "A Lace kollekciók tervezésekor tudom, hogy a menü és az ültetési rend az utolsó pillanatig változhat. Ha a teljes kollekciót választod, a meghívókat azonnal elkészítem, a ",
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "font-medium",
+                                                                    children: "menükártyák és ültetők szövegezésére pedig ráérünk 8 héttel az esküvő előtt is visszatérni!"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/components/ProductSelection.js",
+                                                                    lineNumber: 303,
+                                                                    columnNumber: 228
+                                                                }, ("TURBOPACK compile-time value", void 0))
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/components/ProductSelection.js",
+                                                            lineNumber: 301,
+                                                            columnNumber: 53
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/ProductSelection.js",
+                                                    lineNumber: 299,
+                                                    columnNumber: 49
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/ProductSelection.js",
+                                                lineNumber: 293,
+                                                columnNumber: 45
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/ProductSelection.js",
+                                            lineNumber: 291,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1098,7 +1223,7 @@ const ProductSelection = ()=>{
                                                             children: "Színvilág"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 306,
+                                                            lineNumber: 313,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1112,13 +1237,13 @@ const ProductSelection = ()=>{
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 307,
+                                                            lineNumber: 314,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 305,
+                                                    lineNumber: 312,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 packageType === 'invite' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1132,13 +1257,13 @@ const ProductSelection = ()=>{
                                                                     children: "(Min. 15 db)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 318,
+                                                                    lineNumber: 325,
                                                                     columnNumber: 154
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 318,
+                                                            lineNumber: 325,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1152,13 +1277,13 @@ const ProductSelection = ()=>{
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 319,
+                                                            lineNumber: 326,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 317,
+                                                    lineNumber: 324,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     children: [
@@ -1167,7 +1292,7 @@ const ProductSelection = ()=>{
                                                             children: "Rendelt mennyiségek"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 329,
+                                                            lineNumber: 336,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1180,7 +1305,7 @@ const ProductSelection = ()=>{
                                                                             children: "Meghívó"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 332,
+                                                                            lineNumber: 339,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1193,13 +1318,13 @@ const ProductSelection = ()=>{
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 333,
+                                                                            lineNumber: 340,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 331,
+                                                                    lineNumber: 338,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1209,7 +1334,7 @@ const ProductSelection = ()=>{
                                                                             children: "Menükártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 341,
+                                                                            lineNumber: 348,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1222,13 +1347,13 @@ const ProductSelection = ()=>{
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 342,
+                                                                            lineNumber: 349,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 340,
+                                                                    lineNumber: 347,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1238,7 +1363,7 @@ const ProductSelection = ()=>{
                                                                             children: "Ültetőkártya"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 350,
+                                                                            lineNumber: 357,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1251,31 +1376,31 @@ const ProductSelection = ()=>{
                                                                                 })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/ProductSelection.js",
-                                                                            lineNumber: 351,
+                                                                            lineNumber: 358,
                                                                             columnNumber: 57
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/ProductSelection.js",
-                                                                    lineNumber: 349,
+                                                                    lineNumber: 356,
                                                                     columnNumber: 53
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/ProductSelection.js",
-                                                            lineNumber: 330,
+                                                            lineNumber: 337,
                                                             columnNumber: 49
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ProductSelection.js",
-                                                    lineNumber: 328,
+                                                    lineNumber: 335,
                                                     columnNumber: 45
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 304,
+                                            lineNumber: 311,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1286,34 +1411,34 @@ const ProductSelection = ()=>{
                                                 children: "Hozzáadás a rendeléshez"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ProductSelection.js",
-                                                lineNumber: 364,
+                                                lineNumber: 371,
                                                 columnNumber: 41
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 363,
+                                            lineNumber: 370,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 265,
+                                    lineNumber: 252,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/ProductSelection.js",
-                            lineNumber: 169,
+                            lineNumber: 179,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/components/ProductSelection.js",
-                        lineNumber: 162,
+                        lineNumber: 172,
                         columnNumber: 25
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/ProductSelection.js",
-                    lineNumber: 160,
+                    lineNumber: 170,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1336,12 +1461,12 @@ const ProductSelection = ()=>{
                                     className: "w-10 h-10"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 387,
+                                    lineNumber: 393,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/ProductSelection.js",
-                                lineNumber: 386,
+                                lineNumber: 392,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1351,12 +1476,12 @@ const ProductSelection = ()=>{
                                     className: "w-10 h-10"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 392,
-                                    columnNumber: 33
+                                    lineNumber: 395,
+                                    columnNumber: 207
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/ProductSelection.js",
-                                lineNumber: 391,
+                                lineNumber: 395,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1386,7 +1511,7 @@ const ProductSelection = ()=>{
                                             className: "object-contain drop-shadow-2xl"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 405,
+                                            lineNumber: 402,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, activeImageIndex, false, {
@@ -1401,12 +1526,12 @@ const ProductSelection = ()=>{
                                             children: selectedProduct.details.images[activeImageIndex].label
                                         }, void 0, false, {
                                             fileName: "[project]/components/ProductSelection.js",
-                                            lineNumber: 415,
+                                            lineNumber: 405,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/components/ProductSelection.js",
-                                        lineNumber: 414,
+                                        lineNumber: 404,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
@@ -1422,34 +1547,34 @@ const ProductSelection = ()=>{
                                     className: "w-10 h-10"
                                 }, void 0, false, {
                                     fileName: "[project]/components/ProductSelection.js",
-                                    lineNumber: 423,
-                                    columnNumber: 33
+                                    lineNumber: 410,
+                                    columnNumber: 209
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/components/ProductSelection.js",
-                                lineNumber: 422,
+                                lineNumber: 410,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/ProductSelection.js",
-                        lineNumber: 380,
+                        lineNumber: 387,
                         columnNumber: 25
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/components/ProductSelection.js",
-                    lineNumber: 378,
+                    lineNumber: 385,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/components/ProductSelection.js",
-            lineNumber: 135,
+            lineNumber: 145,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/components/ProductSelection.js",
-        lineNumber: 134,
+        lineNumber: 144,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -1779,7 +1904,7 @@ const ContactSection = ()=>{
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                    href: "#",
+                                                    href: "https://www.instagram.com/laceeskuvok?igsh=MTV0cDdrdTBrOWs0Mg%3D%3D&utm_source=qr",
                                                     target: "_blank",
                                                     className: "flex items-center gap-4 group hover:text-[#B76E79] transition-colors",
                                                     children: [

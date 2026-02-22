@@ -141,7 +141,7 @@ const ContactSection = () => {
                     </a>
 
                     {/* Instagram */}
-                    <a href="#" target="_blank" className="flex items-center gap-4 group hover:text-[#B76E79] transition-colors">
+                    <a href="https://www.instagram.com/laceeskuvok?igsh=MTV0cDdrdTBrOWs0Mg%3D%3D&utm_source=qr" target="_blank" className="flex items-center gap-4 group hover:text-[#B76E79] transition-colors">
                         <div className="bg-white p-3 rounded-full shadow-sm group-hover:shadow-md transition-shadow">
                             <Instagram className="w-5 h-5 text-[#B76E79]" />
                         </div>
