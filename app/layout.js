@@ -7,8 +7,35 @@ import { CartProvider } from '../context/CartContext';
 import { ToastProvider } from '../context/ToastContext';
 
 export const metadata = {
-  title: 'LACE Esküvők',
-  description: 'Esküvői meghívók és grafikai tervezés',
+  // 1. ALAP SEO ÉS CÍM (A te meglévő adataid kibővítve)
+  metadataBase: new URL('https://laceeskuvok.hu/'), // FONTOS: Ezt cseréld le az élő weboldalad linkjére!
+  title: {
+    default: 'LACE Esküvők | Prémium Esküvői Meghívók',
+    template: '%s | LACE Esküvők' // Így az aloldalak címe automatikusan ilyen lesz: "Kapcsolat | LACE Esküvők"
+  },
+  description: 'Esküvői meghívók, menükártyák, ültetőkártyák és teljes körű grafikai tervezés a nagy napra. Fedezd fel egyedi kollekcióinkat!',
+  keywords: ['esküvői meghívó', 'prémium meghívó', 'esküvő 2026', 'grafikai tervezés', 'menükártya', 'ültetőkártya', 'Lace esküvő'],
+  authors: [{ name: 'LACE Esküvők' }],
+  creator: 'LACE Esküvők',
+
+  // 2. OPEN GRAPH (Facebook, Instagram, iMessage megosztáshoz)
+  openGraph: {
+    title: 'LACE Esküvők | Prémium Esküvői Meghívók',
+    description: 'Egyedi tervezésű, prémium minőségű esküvői meghívók és grafikai tervezés.',
+    url: 'https://laceeskuvok.hu/',
+    siteName: 'LACE Esküvők',
+    images: [
+      {
+        url: '/images/romantic-wedding-by-lake.jpg', // Ez a kép jelenik meg, ha valakinek átküldöd a linket!
+        width: 1200,
+        height: 630,
+        alt: 'LACE Esküvők',
+      },
+    ],
+    locale: 'hu_HU',
+    type: 'website',
+  },
+
   icons: {
     icon: [
       { url: '/images/favicon.ico' },

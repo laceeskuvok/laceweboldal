@@ -7,6 +7,43 @@ import { useRouter } from 'next/navigation';
 import { PlusCircle, Edit, Trash2, AlertTriangle, MessageSquare, LogOut, Eye, EyeOff, Globe, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Ezt a függvényt a Next.js automatikusan lefutatja a háttérben SEO generáláshoz
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  // Lekérjük a cikket a Supabase-ből
+  const { data: post } = await supabase
+    .from('blog')
+    .select('title, content, cover_image_url')
+    .eq('slug', slug)
+    .single();
+
+  if (!post) {
+    return { title: 'Bejegyzés nem található' };
+  }
+
+  // Csinálunk egy rövid kivonatot a tartalomból a description-höz (első 150 karakter)
+  const plainTextDescription = post.content.replace(/[#*`_]/g, '').substring(0, 150) + '...';
+
+  return {
+    title: post.title,
+    description: plainTextDescription,
+    openGraph: {
+      title: post.title,
+      description: plainTextDescription,
+      images: [
+        {
+          url: post.cover_image_url || '/images/default-blog.jpg',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      type: 'article',
+    },
+  };
+}
+
 // --- SUPABASE ---
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 

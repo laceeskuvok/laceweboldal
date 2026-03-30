@@ -436,8 +436,45 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$ToastContext$2e$j
 ;
 ;
 const metadata = {
-    title: 'LACE Esküvők',
-    description: 'Esküvői meghívók és grafikai tervezés',
+    // 1. ALAP SEO ÉS CÍM (A te meglévő adataid kibővítve)
+    metadataBase: new URL('https://laceeskuvok.hu/'),
+    title: {
+        default: 'LACE Esküvők | Prémium Esküvői Meghívók',
+        template: '%s | LACE Esküvők' // Így az aloldalak címe automatikusan ilyen lesz: "Kapcsolat | LACE Esküvők"
+    },
+    description: 'Esküvői meghívók, menükártyák, ültetőkártyák és teljes körű grafikai tervezés a nagy napra. Fedezd fel egyedi kollekcióinkat!',
+    keywords: [
+        'esküvői meghívó',
+        'prémium meghívó',
+        'esküvő 2026',
+        'grafikai tervezés',
+        'menükártya',
+        'ültetőkártya',
+        'Lace esküvő'
+    ],
+    authors: [
+        {
+            name: 'LACE Esküvők'
+        }
+    ],
+    creator: 'LACE Esküvők',
+    // 2. OPEN GRAPH (Facebook, Instagram, iMessage megosztáshoz)
+    openGraph: {
+        title: 'LACE Esküvők | Prémium Esküvői Meghívók',
+        description: 'Egyedi tervezésű, prémium minőségű esküvői meghívók és grafikai tervezés.',
+        url: 'https://laceeskuvok.hu/',
+        siteName: 'LACE Esküvők',
+        images: [
+            {
+                url: '/images/romantic-wedding-by-lake.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'LACE Esküvők'
+            }
+        ],
+        locale: 'hu_HU',
+        type: 'website'
+    },
     icons: {
         icon: [
             {
@@ -482,7 +519,7 @@ function RootLayout({ children }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/app/layout.js",
-                            lineNumber: 36,
+                            lineNumber: 63,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -490,33 +527,33 @@ function RootLayout({ children }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/app/layout.js",
-                            lineNumber: 37,
+                            lineNumber: 64,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Footer$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/app/layout.js",
-                            lineNumber: 40,
+                            lineNumber: 67,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/layout.js",
-                    lineNumber: 35,
+                    lineNumber: 62,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/layout.js",
-                lineNumber: 34,
+                lineNumber: 61,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/layout.js",
-            lineNumber: 32,
+            lineNumber: 59,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.js",
-        lineNumber: 31,
+        lineNumber: 58,
         columnNumber: 5
     }, this);
 }
